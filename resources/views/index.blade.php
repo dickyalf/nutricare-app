@@ -1,26 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts/app')
+@section("title", "KeeBod")
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="" />
-  <meta name="author" content="" />
-  <title>Gainioz - Charity &amp; Donation HTML Template - Home 01 </title>
-  <link rel="icon" href="image/favicon.png" type="image/png">
-  <link rel="stylesheet" href="assets/animation/animate.min.css">
-  <link rel="stylesheet" href="assets/animation/custom-animation.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/swiper/swiper.min.css">
-  <link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
-  <link rel="stylesheet" href="assets/nice-select/nice-select.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/main.css">
-</head>
+@section("body")
 
-<body>
   <!-- Preloader -->
   <div id="preloader">
     <div class="ctn-preloader" id="ctn-preloader">
@@ -47,7 +29,7 @@
             <div class="header__wrapper">
               <!-- logo start -->
               <div class="header__logo">
-                <a href="index.html" class="header__logo__link">
+                <a href="/" class="header__logo__link">
                   <img src="image/logos/logo_1.svg" alt="Gainioz" class="header__logo__image">
                 </a>
               </div>
@@ -56,27 +38,20 @@
               <div class="header__menu">
                 <nav class="mainMenu">
                   <ul>
-                    <li class="dropdown"><a href="index.html">Home</a>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="{{ route('donation') }}">Donations</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li class="dropdown"><a href="#">Pages</a>
                       <ul class="dropdown_menu dropdown_menu-2">
-                        <li class="dropdown_item-1"><a href="index.html">Home 1</a></li>
-                        <li class="dropdown_item-2"><a href="index-2.html">Home 2</a></li>
-                        <li class="dropdown_item-3"><a href="index-3.html">Home 3</a></li>
-                        <li class="dropdown_item-4"><a href="index-4.html">Home 4</a></li>
+                        <li class="dropdown_item-1"><a href="#">Events</a></li>
+                        <li class="dropdown_item-2"><a href="#">FAQ`s</a></li>
+                        <li class="dropdown_item-3"><a href="#">Shop</a></li>
+                        <li class="dropdown_item-4"><a href="#">Services</a></li>
+                        <li class="dropdown_item-5"><a href="#">Volunteers</a></li>
                       </ul>
                     </li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="donation-listing.html">Donations</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li class="dropdown"><a href="index.html">Pages</a>
-                      <ul class="dropdown_menu dropdown_menu-2">
-                        <li class="dropdown_item-1"><a href="events.html">Events</a></li>
-                        <li class="dropdown_item-2"><a href="faq.html">FAQ`s</a></li>
-                        <li class="dropdown_item-3"><a href="products.html">Shop</a></li>
-                        <li class="dropdown_item-4"><a href="service.html">Services</a></li>
-                        <li class="dropdown_item-5"><a href="volunteers.html">Volunteers</a></li>
-                      </ul>
-                    </li>
-                    <li><a href="contact.html">Contacts</a></li>
+                    <li><a href="#">Contacts</a></li>
                   </ul>
                 </nav>
               </div>
@@ -103,7 +78,7 @@
                   </ul>
                 </div>
                 <div class="header__button">
-                  <a class="btn btn--styleOne btn--secondary it-btn" href="donation-listing.html">
+                  <a class="btn btn--styleOne btn--secondary it-btn" href="{{ route('donation') }}">
                     <span class="btn__text">donate now</span>
                     <i class="fa-solid fa-heart btn__icon"></i>
                     <span class="it-btn__inner">
@@ -178,61 +153,43 @@
     <!-- Mobile Menu Navbar -->
     <div class="cc cc--slideNav">
       <div class="cc__logo mb-40">
-        <a href="index.html">
+        <a href="/">
           <img class="mean-bar__logo" alt="Techkit" src="image/logos/logo_1.svg" />
         </a>
       </div>
       <div class="offscreen-navigation mb-40">
         <nav class="menu-main-primary-container">
           <ul class="menu">
-            <li class="list menu-item-parent menu-item-has-children">
-              <a class="animation" href="index.html">Home</a>
-              <ul class="main-menu__dropdown sub-menu">
-                <li><a href="index.html">Home One</a></li>
-                <li>
-                  <a href="index-2.html">Home Two</a>
-                </li>
-                <li><a href="index-3.html">Home Three</a></li>
-                <li>
-                  <a href="index-4.html">Home Four</a>
-                </li>
-                <!-- <li class="list menu-item-has-children">
-                            <a href="vertical-slider.html">Home Dummy</a>
-                            <ul class="main-menu__dropdown sub-menu">
-                                <li><a href="single-post1.html">Home Demo 1</a></li>
-                                <li><a href="single-post2.html">Home Demo 2</a></li>
-                                <li><a href="single-post3.html">Home Demo 3</a></li>
-                            </ul>
-                        </li> -->
-              </ul>
+            <li class="list menu-item-parent">
+              <a class="animation" href="/">Home</a>
             </li>
             <li class="list menu-item-parent">
-              <a class="animation" href="about.html">About</a>
+              <a class="animation" href="#">About</a>
             </li>
             <li class="list menu-item-parent">
-              <a class="animation" href="donation-listing.html">Donations</a>
+              <a class="animation" href="{{ route('donation') }}">Donations</a>
             </li>
             <li class="list menu-item-parent">
-              <a class="animation" href="blog.html">Blog</a>
+              <a class="animation" href="#">Blog</a>
             </li>
             <li class="list menu-item-parent menu-item-has-children">
-              <a class="animation" href="index.html">Pages</a>
+              <a class="animation" href="#">Pages</a>
               <ul class="main-menu__dropdown sub-menu">
-                <li><a href="events.html">Events</a></li>
+                <li><a href="#">Events</a></li>
                 <li>
-                  <a href="faq.html">Faq</a>
+                  <a href="#">Faq</a>
                 </li>
-                <li><a href="products.html">Shop</a></li>
+                <li><a href="#">Shop</a></li>
                 <li>
-                  <a href="service.html">Service</a>
+                  <a href="#">Service</a>
                 </li>
                 <li>
-                  <a href="volunteers.html">Volunteers</a>
+                  <a href="#">Volunteers</a>
                 </li>
               </ul>
             </li>
             <li class="list menu-item-parent">
-              <a class="animation" href="contact.html">Contacts</a>
+              <a class="animation" href="#">Contacts</a>
             </li>
           </ul>
         </nav>
@@ -240,22 +197,22 @@
       <div class="itSocial itSocial--sidebar mb-40">
         <ul>
           <li>
-            <a class="facebook" href="https://codercredit.com/" rel="nofollow">
+            <a class="facebook" href="#" rel="nofollow">
               <i class="fab fa-facebook-f"></i>
             </a>
           </li>
           <li>
-            <a class="twitter" href="https://codercredit.com/" rel="nofollow">
+            <a class="twitter" href="#" rel="nofollow">
               <i class="fab fa-twitter"></i>
             </a>
           </li>
           <li>
-            <a class="instagram" href="https://codercredit.com/" rel="nofollow">
+            <a class="instagram" href="#" rel="nofollow">
               <i class="fab fa-instagram"></i>
             </a>
           </li>
           <li>
-            <a class="linkedin" href="https://codercredit.com/" rel="nofollow">
+            <a class="linkedin" href="#" rel="nofollow">
               <i class="fab fa-linkedin-in"></i>
             </a>
           </li>
@@ -263,7 +220,7 @@
       </div>
       <div class="cc__button">
         <div class="header__button">
-          <a class="btn btn--styleOne btn--secondary it-btn" href="donation-listing.html">
+          <a class="btn btn--styleOne btn--secondary it-btn" href="{{ route('donation') }}">
             <span class="btn__text">Contact Us</span>
             <i class="fa-solid fa-heart btn__icon"></i>
             <span class="it-btn__inner">
@@ -307,7 +264,7 @@
               <p class="hero__text wow animate__fadeInUp animate__animated" data-wow-duration="1200ms" data-wow-delay="400ms">We help nonprofits from Afghanistan to Zimbabwe (and hundreds of places in between)
                 access the
                 tools, training,</p>
-              <a class="btn btn--styleOne btn--primary it-btn wow animate__fadeInUp animate__animated" data-wow-duration="1200ms" data-wow-delay="500ms" href="donation-listing.html">
+              <a class="btn btn--styleOne btn--primary it-btn wow animate__fadeInUp animate__animated" data-wow-duration="1200ms" data-wow-delay="500ms" href="{{ route('donation') }}">
                 <span class="btn__text">join the journey</span>
                 <i class="fa-solid fa-heart btn__icon"></i>
                 <span class="it-btn__inner">
@@ -376,7 +333,7 @@
                   passages
                 </p>
                 <span class="aboutContent__quote">join our Action and everyone can help</span>
-                <a class="btn btn--styleOne btn--secondary it-btn" href="donation-listing.html">
+                <a class="btn btn--styleOne btn--secondary it-btn" href="{{ route('donation') }}">
                   <span class="btn__text">donate now</span>
                   <i class="fa-solid fa-heart btn__icon"></i>
                   <span class="it-btn__inner">
@@ -422,7 +379,7 @@
                       </div>
                       <div class="keyFeatureBlock__content">
                         <h3 class="keyFeatureBlock__heading">
-                          <a class="keyFeatureBlock__heading__link" href="services.html">
+                          <a class="keyFeatureBlock__heading__link" href="#">
                             healthy Food
                           </a>
                         </h3>
@@ -442,7 +399,7 @@
                       </div>
                       <div class="keyFeatureBlock__content">
                         <h3 class="keyFeatureBlock__heading">
-                          <a class="keyFeatureBlock__heading__link" href="services.html">
+                          <a class="keyFeatureBlock__heading__link" href="#">
                             Dedicated
                           </a>
                         </h3>
@@ -462,7 +419,7 @@
                       </div>
                       <div class="keyFeatureBlock__content">
                         <h3 class="keyFeatureBlock__heading">
-                          <a class="keyFeatureBlock__heading__link" href="services.html">
+                          <a class="keyFeatureBlock__heading__link" href="#">
                             Strong Team
                           </a>
                         </h3>
@@ -488,8 +445,8 @@
                     <span class="donnerAreaContent__bigTitle__text">mln</span>
                   </h2>
                   <h3 class="donnerAreaContent__heading text-uppercase wow animate__fadeInUp" data-wow-duration="1200ms" data-wow-delay="300ms">People Live with a disability</h3>
-                  <a class="btn btn--styleOne btn--black it-btn wow animate__fadeInUp" data-wow-duration="1200ms" data-wow-delay="400ms" href="donation-listing.html">
-                    <span class="btn__text">dECAME A VOLEENTEER</span>
+                  <a class="btn btn--styleOne btn--black it-btn wow animate__fadeInUp" data-wow-duration="1200ms" data-wow-delay="400ms" href="{{ route('donation') }}">
+                    <span class="btn__text">BECAME A VOLEENTEER</span>
                     <i class="fa-solid fa-heart btn__icon"></i>
                     <span class="it-btn__inner">
                     <span class="it-btn__blobs">
@@ -554,16 +511,16 @@
                   <div class="featureBlock featureBlock--active">
                     <div class="featureBlock__wrap">
                       <figure class="featureBlock__thumb">
-                        <a class="featureBlock__thumb__link" href="donation-details.html">
+                        <a class="featureBlock__thumb__link" href="#">
                           <img src="image/featured/featuredThumb1.jpg" alt="Gainioz Featured Thumb">
                         </a>
-                        <a class="featureBlock__hashLink" href="donation-details.html">
+                        <a class="featureBlock__hashLink" href="#">
                           <span class="featureBlock__hashLink__text">#Life</span>
                         </a>
                       </figure>
                       <div class="featureBlock__content">
                         <h3 class="featureBlock__heading">
-                          <a class="featureBlock__heading__link" href="donation-details.html">
+                          <a class="featureBlock__heading__link" href="#">
                             Help poor people give food & Careing african child
                           </a>
                         </h3>
@@ -604,16 +561,16 @@
                   <div class="featureBlock">
                     <div class="featureBlock__wrap">
                       <figure class="featureBlock__thumb">
-                        <a class="featureBlock__thumb__link" href="donation-details.html">
+                        <a class="featureBlock__thumb__link" href="#">
                           <img src="image/featured/featuredThumb2.jpg" alt="Gainioz Featured Thumb">
                         </a>
-                        <a class="featureBlock__hashLink" href="donation-details.html">
+                        <a class="featureBlock__hashLink" href="#">
                           <span class="featureBlock__hashLink__text">#Education</span>
                         </a>
                       </figure>
                       <div class="featureBlock__content">
                         <h3 class="featureBlock__heading">
-                          <a class="featureBlock__heading__link" href="donation-details.html">
+                          <a class="featureBlock__heading__link" href="#">
                             Contribute for the Make somalians happy- 2022
                           </a>
                         </h3>
@@ -654,16 +611,16 @@
                   <div class="featureBlock">
                     <div class="featureBlock__wrap">
                       <figure class="featureBlock__thumb">
-                        <a class="featureBlock__thumb__link" href="donation-details.html">
+                        <a class="featureBlock__thumb__link" href="#">
                           <img src="image/featured/featuredThumb3.jpg" alt="Gainioz Featured Thumb">
                         </a>
-                        <a class="featureBlock__hashLink" href="donation-details.html">
+                        <a class="featureBlock__hashLink" href="#">
                           <span class="featureBlock__hashLink__text">#Health</span>
                         </a>
                       </figure>
                       <div class="featureBlock__content">
                         <h3 class="featureBlock__heading">
-                          <a class="featureBlock__heading__link" href="donation-details.html">
+                          <a class="featureBlock__heading__link" href="#">
                             Collect Donation for zimbabwe's School & Hospital
                           </a>
                         </h3>
@@ -916,7 +873,7 @@
                 </div>
               </figure>
               <div class="portfolioBlock__content">
-                <h2 class="portfolioBlock__heading text-uppercase"><a href="story-details.html">Homeless People In
+                <h2 class="portfolioBlock__heading text-uppercase"><a href="#">Homeless People In
                     africa</a></h2>
                 <a class="portfolioBlock__hashLink" href="https://instagram.com" target="_blank"><span># Build
                   Home</span></a>
@@ -932,7 +889,7 @@
                 </div>
               </figure>
               <div class="portfolioBlock__content">
-                <h2 class="portfolioBlock__heading text-uppercase"><a href="story-details.html">Homeless People In
+                <h2 class="portfolioBlock__heading text-uppercase"><a href="#">Homeless People In
                     myanmar</a></h2>
                 <a class="portfolioBlock__hashLink" href="https://instagram.com" target="_blank"><span># Build
                   Home</span></a>
@@ -948,7 +905,7 @@
                 </div>
               </figure>
               <div class="portfolioBlock__content">
-                <h2 class="portfolioBlock__heading text-uppercase"><a href="story-details.html">Foodless People In
+                <h2 class="portfolioBlock__heading text-uppercase"><a href="#">Foodless People In
                     Sudan</a></h2>
                 <a class="portfolioBlock__hashLink" href="https://instagram.com" target="_blank"><span># Grow
                   Grain</span></a>
@@ -979,14 +936,14 @@
           <div class="col-12">
             <div class="blogBlock blogBlock--style1 mb-60">
               <figure class="blogBlock__figure">
-                <a href="blog-details.html" class="blogBlock__figure__link">
+                <a href="#" class="blogBlock__figure__link">
                   <img src="image/blog/blog1.jpg" alt="Gainioz Blog" class="blogBlock__figure__image">
                 </a>
               </figure>
               <div class="blogBlock__content">
                 <div class="blogBlock__header">
                   <span class="blogBlock__tag tag mb-20">Charity</span>
-                  <h2 class="blogBlock__heading heading text-uppercase mb-20"><a class="blogBlock__heading__link" href="blog-details.html">Start a
+                  <h2 class="blogBlock__heading heading text-uppercase mb-20"><a class="blogBlock__heading__link" href="#">Start a
                       fundraiser for yourself
                       in World
                       Charity
@@ -1025,7 +982,7 @@
           <div class="col-md-6">
             <div class="blogBlock blogBlock--style2 mb-60">
               <figure class="blogBlock__figure">
-                <a href="blog-details.html" class="blogBlock__figure__link">
+                <a href="#" class="blogBlock__figure__link">
                   <img src="image/blog/blog2.jpg" alt="Gainioz Blog" class="blogBlock__figure__image">
                 </a>
               </figure>
@@ -1033,7 +990,7 @@
                 <div class="blogBlock__header">
                   <span class="blogBlock__tag tag mb-20">Health</span>
                   <h2 class="blogBlock__heading heading text-uppercase mb-20">
-                    <a class="blogBlock__heading__link" href="blog-details.html">
+                    <a class="blogBlock__heading__link" href="#">
                       do you know why african people year of year waterless?
                     </a>
                   </h2>
@@ -1071,7 +1028,7 @@
           <div class="col-md-6">
             <div class="blogBlock blogBlock--style2 mb-60">
               <figure class="blogBlock__figure">
-                <a href="blog-details.html" class="blogBlock__figure__link">
+                <a href="#" class="blogBlock__figure__link">
                   <img src="image/blog/blog3.jpg" alt="Gainioz Blog" class="blogBlock__figure__image">
                 </a>
               </figure>
@@ -1079,7 +1036,7 @@
                 <div class="blogBlock__header">
                   <span class="blogBlock__tag tag mb-20">Education</span>
                   <h2 class="blogBlock__heading heading text-uppercase mb-20">
-                    <a class="blogBlock__heading__link" href="blog-details.html">
+                    <a class="blogBlock__heading__link" href="#">
                       Why you should join as a volunteer
                       with us - 2022
                     </a>
@@ -1168,169 +1125,4 @@
       </div>
     </section>
     <!-- Sponsors End -->
-  </main>
-  <!-- Main End -->
-  <!-- footer -->
-  <footer class="footer footer--bg footer--styleOne pt-70 pb-40">
-    <img src="image/shapes/footerShape2.png" alt="Gainioz Shape" class="footer__shape">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col">
-          <div class="footer__logo">
-            <img src="image/logos/logo_2.svg" alt="Gainioz Logo" class="footer__logo__image">
-          </div>
-        </div>
-        <div class="col">
-          <div class="footer__social itSocial">
-            <ul>
-              <li>
-                <a class="facebook" href="https://codercredit.com/" rel="nofollow">
-                  <i class="fab fa-facebook-f"></i>
-                </a>
-              </li>
-              <li>
-                <a class="twitter" href="https://codercredit.com/" rel="nofollow">
-                  <i class="fab fa-twitter"></i>
-                </a>
-              </li>
-              <li>
-                <a class="instagram" href="https://codercredit.com/" rel="nofollow">
-                  <i class="fab fa-instagram"></i>
-                </a>
-              </li>
-              <li>
-                <a class="linkedin" href="https://codercredit.com/" rel="nofollow">
-                  <i class="fab fa-linkedin-in"></i>
-                </a>
-              </li>
-              <li>
-                <a class="pinterest" href="https://codercredit.com/" rel="nofollow">
-                  <i class="fab fa-pinterest-p"></i>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-12">
-          <hr class="footer__line" />
-        </div>
-      </div>
-      <div class="row">
-        <div class="footer__middle pt-65 pb-35">
-          <div class="row justify-content-between">
-            <div class="col-lg-2 col-md-4 mb-30">
-              <div class="footer__widget">
-                <div class="footer__title">
-                  <h2 class="footer__heading text-uppercase text-white">About us</h2>
-                </div>
-                <div class="footer__menu">
-                  <ul>
-                    <li><a href="index.html">Policy Priorities</a></li>
-                    <li><a href="index.html">Careers</a></li>
-                    <li><a href="index.html">Internships</a></li>
-                    <li><a href="index.html">Financial Reports</a></li>
-                    <li><a href="index.html">Contact Us</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-2 col-md-4 mb-30">
-              <div class="footer__widget">
-                <div class="footer__title">
-                  <h2 class="footer__heading text-uppercase text-white">Support us</h2>
-                </div>
-                <div class="footer__menu">
-                  <ul>
-                    <li><a href="donation-listing.html">Donate Now</a></li>
-                    <li><a href="products.html">Store</a></li>
-                    <li><a href="index.html">Reports</a></li>
-                    <li><a href="index.html">Press Releases</a></li>
-                    <li><a href="index.html">Privacy & Policy</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-2 col-md-4 mb-30">
-              <div class="footer__widget">
-                <div class="footer__title">
-                  <h2 class="footer__heading text-uppercase text-white">Quick LInks</h2>
-                </div>
-                <div class="footer__menu">
-                  <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About us</a></li>
-                    <li><a href="contact.html">Contact us</a></li>
-                    <li><a href="donation-listing.html">Donation</a></li>
-                    <li><a href="stories.html">Join Volentter</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-5 mb-30">
-              <form action="#" method="post" class="footer__newsletter">
-                <div class="footer__title">
-                  <h2 class="footer__heading text-uppercase text-white">News Latter</h2>
-                </div>
-                <div class="footer__newsletter__formGroup mb-20">
-                  <input type="text" class="footer__newsletter__input" placeholder="Enter mail">
-                  <input class="footer__newsletter__button" type="button" value="Subscribe">
-                </div>
-                <div class="footer__newsletter__formGroup">
-                  <input id="agree" type="checkbox" class="footer__newsletter__check form-check-input">
-                  <label class="footer__newsletter__label" for="agree">I agree that my submitted data is
-                    being
-                    collected and stored.</label>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="footer__bottom">
-          <div class="row">
-            <div class="col-12">
-              <hr class="footer__line">
-            </div>
-            <div class="col mb-20">
-              <div class="footer__copyright pt-20">
-                <p class="footer__copyright__text mb-0">Copyright@example 2022 all right receved</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
-  <!-- CURSOR -->
-  <div class="mouseCursor cursor-outer"></div>
-  <div class="mouseCursor cursor-inner"></div>
-  <!-- /CURSOR -->
-  <div class="progress-wrap">
-    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
-      <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
-    </svg>
-  </div>
-  <!-- Template Search -->
-  <div id="template-search" class="template-search">
-    <button type="button" class="close">
-      <i class="fa-solid fa-xmark"></i>
-    </button>
-    <form class="search-form">
-      <input type="search" value="" placeholder="Type your search" />
-      <button type="submit" class="search-btn">
-        <i class="fas fa-search"></i>
-      </button>
-    </form>
-  </div>
-  <!-- Template Search End -->
-  <script src="assets/jquery/jquery.min.js"></script>
-  <script src="assets/bootstrap/js/bootstrap.bundle.js"></script>
-  <script src="assets/swiper/swiper.min.js"></script>
-  <script src="assets/nice-select/jquery.nice-select.min.js"></script>
-  <script src="assets/validator.min.js"></script>
-  <script src="assets/animation/wow.min.js"></script>
-  <script src="js/app.js"></script>
-</body>
-
-</html>
+@endsection

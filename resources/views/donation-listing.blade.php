@@ -1,27 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts/app')
+@section("title", "KeeBod")
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="" />
-  <meta name="author" content="" />
-  <title>Gainioz - Charity &amp; Donation HTML Template - Donation List </title>
-  <link rel="icon" href="image/favicon.png" type="image/png">
-  <link rel="stylesheet" href="assets/animation/animate.min.css">
-  <link rel="stylesheet" href="assets/animation/custom-animation.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/swiper/swiper.min.css">
-  <link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
-  <link rel="stylesheet" href="assets/nice-select/nice-select.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/main.css">
-</head>
-
-<body>
-  <!-- Preloader -->
+@section("body")
+<!-- Preloader -->
   <div id="preloader">
     <div class="ctn-preloader" id="ctn-preloader">
       <div class="round_spinner">
@@ -47,7 +28,7 @@
               <div class="header__wrapper">
                 <!-- logo start -->
                 <div class="header__logo">
-                  <a href="index.html" class="header__logo__link">
+                  <a href="/" class="header__logo__link">
                     <img src="image/logos/logo_1.svg" alt="Gainioz" class="header__logo__image">
                   </a>
                 </div>
@@ -56,27 +37,20 @@
                 <div class="header__menu">
                   <nav class="mainMenu">
                     <ul>
-                      <li class="dropdown"><a href="index.html">Home</a>
+                      <li><a href="/">Home</a></li>
+                      <li><a href="#">About</a></li>
+                      <li><a href="{{ route('donation') }}">Donations</a></li>
+                      <li><a href="#">Blog</a></li>
+                      <li class="dropdown"><a href="#">Pages</a>
                         <ul class="dropdown_menu dropdown_menu-2">
-                          <li class="dropdown_item-1"><a href="index.html">Home 1</a></li>
-                          <li class="dropdown_item-2"><a href="index-2.html">Home 2</a></li>
-                          <li class="dropdown_item-3"><a href="index-3.html">Home 3</a></li>
-                          <li class="dropdown_item-4"><a href="index-4.html">Home 4</a></li>
+                          <li class="dropdown_item-1"><a href="#">Events</a></li>
+                          <li class="dropdown_item-2"><a href="#">FAQ`s</a></li>
+                          <li class="dropdown_item-3"><a href="#">Shop</a></li>
+                          <li class="dropdown_item-4"><a href="#">Services</a></li>
+                          <li class="dropdown_item-5"><a href="#">Volunteers</a></li>
                         </ul>
                       </li>
-                      <li><a href="about.html">About</a></li>
-                      <li><a href="donation-listing.html">Donations</a></li>
-                      <li><a href="blog.html">Blog</a></li>
-                      <li class="dropdown"><a href="index.html">Pages</a>
-                        <ul class="dropdown_menu dropdown_menu-2">
-                          <li class="dropdown_item-1"><a href="events.html">Events</a></li>
-                          <li class="dropdown_item-2"><a href="faq.html">FAQ`s</a></li>
-                          <li class="dropdown_item-3"><a href="products.html">Shop</a></li>
-                          <li class="dropdown_item-4"><a href="service.html">Services</a></li>
-                          <li class="dropdown_item-5"><a href="volunteers.html">Volunteers</a></li>
-                        </ul>
-                      </li>
-                      <li><a href="contact.html">Contacts</a></li>
+                      <li><a href="#">Contacts</a></li>
                     </ul>
                   </nav>
                 </div>
@@ -103,7 +77,7 @@
                     </ul>
                   </div>
                   <div class="header__button">
-                    <a class="btn btn--styleOne btn--secondary it-btn" href="donation-listing.html">
+                    <a class="btn btn--styleOne btn--secondary it-btn" href="{{ route('donation') }}">
                       <span class="btn__text">donate now</span>
                       <i class="fa-solid fa-heart btn__icon"></i>
                       <span class="it-btn__inner">
@@ -139,7 +113,7 @@
     <!-- Mobile Menu Button Start -->
     <div class="header header--mobile cc-header-menu mean-container position-relative" id="meanmenu">
       <div class="mean-bar headerBurgerMenu">
-        <a href="index.html">
+        <a href="/">
           <img class="mean-bar__logo" alt="Techkit" src="image/logos/logo_1.svg" />
         </a>
         <!-- Header Right Buttons Search Cart -->
@@ -147,7 +121,7 @@
           <div class="header__actions">
             <ul>
               <li>
-                <a href="products.html">
+                <a href="#">
                   <svg width="25" height="20" viewBox="0 0 25 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M24.2344 7H20.9258L14.9102 0.382812C14.6523 0.0820312 14.2227 0.0820312 13.9648 0.339844C13.6641 0.597656 13.6641 1.02734 13.9219 1.28516L19.0781 7H5.62891L10.7852 1.28516C11.043 1.02734 11.043 0.597656 10.7422 0.339844C10.4844 0.0820312 10.0547 0.0820312 9.79688 0.382812L3.78125 7H0.515625C0.214844 7 0 7.25781 0 7.51562V7.85938C0 8.16016 0.214844 8.375 0.515625 8.375H1.20312L2.49219 17.6133C2.62109 18.6445 3.48047 19.375 4.51172 19.375H20.1953C21.2266 19.375 22.0859 18.6445 22.2148 17.6133L23.5039 8.375H24.2344C24.4922 8.375 24.75 8.16016 24.75 7.85938V7.51562C24.75 7.25781 24.4922 7 24.2344 7ZM20.8828 17.4414C20.7969 17.7852 20.5391 18 20.1953 18H4.51172C4.16797 18 3.91016 17.7852 3.82422 17.4414L2.57812 8.375H22.1289L20.8828 17.4414ZM13.0625 10.7812C13.0625 10.4375 12.7188 10.0938 12.375 10.0938C11.9883 10.0938 11.6875 10.4375 11.6875 10.7812V15.5938C11.6875 15.9805 11.9883 16.2812 12.375 16.2812C12.7188 16.2812 13.0625 15.9805 13.0625 15.5938V10.7812ZM17.875 10.7812C17.875 10.4375 17.5312 10.0938 17.1875 10.0938C16.8008 10.0938 16.5 10.4375 16.5 10.7812V15.5938C16.5 15.9805 16.8008 16.2812 17.1875 16.2812C17.5312 16.2812 17.875 15.9805 17.875 15.5938V10.7812ZM8.25 10.7812C8.25 10.4375 7.90625 10.0938 7.5625 10.0938C7.17578 10.0938 6.875 10.4375 6.875 10.7812V15.5938C6.875 15.9805 7.17578 16.2812 7.5625 16.2812C7.90625 16.2812 8.25 15.9805 8.25 15.5938V10.7812Z" fill="#7FB432" />
                   </svg>
@@ -179,7 +153,7 @@
     <!-- Mobile Menu Navbar -->
     <div class="cc cc--slideNav">
       <div class="cc__logo mb-40">
-        <a href="index.html">
+        <a href="/">
           <img class="mean-bar__logo" alt="Techkit" src="image/logos/logo_1.svg" />
         </a>
       </div>
@@ -187,16 +161,9 @@
         <nav class="menu-main-primary-container">
           <ul class="menu">
             <li class="list menu-item-parent menu-item-has-children">
-              <a class="animation" href="index.html">Home</a>
-              <ul class="main-menu__dropdown sub-menu">
-                <li><a href="index.html">Home One</a></li>
-                <li>
-                  <a href="index-2.html">Home Two</a>
-                </li>
-                <li><a href="index-3.html">Home Three</a></li>
-                <li>
-                  <a href="index-4.html">Home Four</a>
-                </li>
+              <li class="list menu-item-parent">
+                <a class="animation" href="/">Home</a>
+              </li>
                 <!-- <li class="list menu-item-has-children">
                             <a href="vertical-slider.html">Home Dummy</a>
                             <ul class="main-menu__dropdown sub-menu">
@@ -205,35 +172,34 @@
                                 <li><a href="single-post3.html">Home Demo 3</a></li>
                             </ul>
                         </li> -->
-              </ul>
             </li>
             <li class="list menu-item-parent">
-              <a class="animation" href="about.html">About</a>
+              <a class="animation" href="#">About</a>
             </li>
             <li class="list menu-item-parent">
-              <a class="animation" href="donation-listing.html">Donations</a>
+              <a class="animation" href="{{ route('donation') }}">Donations</a>
             </li>
             <li class="list menu-item-parent">
-              <a class="animation" href="blog.html">Blog</a>
+              <a class="animation" href="#">Blog</a>
             </li>
             <li class="list menu-item-parent menu-item-has-children">
-              <a class="animation" href="index.html">Pages</a>
+              <a class="animation" href="#">Pages</a>
               <ul class="main-menu__dropdown sub-menu">
-                <li><a href="events.html">Events</a></li>
+                <li><a href="#">Events</a></li>
                 <li>
-                  <a href="faq.html">Faq</a>
+                  <a href="#">Faq</a>
                 </li>
-                <li><a href="products.html">Shop</a></li>
+                <li><a href="#">Shop</a></li>
                 <li>
-                  <a href="service.html">Service</a>
+                  <a href="#">Service</a>
                 </li>
                 <li>
-                  <a href="volunteers.html">Volunteers</a>
+                  <a href="#">Volunteers</a>
                 </li>
               </ul>
             </li>
             <li class="list menu-item-parent">
-              <a class="animation" href="contact.html">Contacts</a>
+              <a class="animation" href="#">Contacts</a>
             </li>
           </ul>
         </nav>
@@ -241,22 +207,22 @@
       <div class="itSocial itSocial--sidebar mb-40">
         <ul>
           <li>
-            <a class="facebook" href="https://codercredit.com/" rel="nofollow">
+            <a class="facebook" href="#" rel="nofollow">
               <i class="fab fa-facebook-f"></i>
             </a>
           </li>
           <li>
-            <a class="twitter" href="https://codercredit.com/" rel="nofollow">
+            <a class="twitter" href="#" rel="nofollow">
               <i class="fab fa-twitter"></i>
             </a>
           </li>
           <li>
-            <a class="instagram" href="https://codercredit.com/" rel="nofollow">
+            <a class="instagram" href="#" rel="nofollow">
               <i class="fab fa-instagram"></i>
             </a>
           </li>
           <li>
-            <a class="linkedin" href="https://codercredit.com/" rel="nofollow">
+            <a class="linkedin" href="#" rel="nofollow">
               <i class="fab fa-linkedin-in"></i>
             </a>
           </li>
@@ -264,7 +230,7 @@
       </div>
       <div class="cc__button">
         <div class="header__button">
-          <a class="btn btn--styleOne btn--secondary it-btn" href="donation-listing.html">
+          <a class="btn btn--styleOne btn--secondary it-btn" href="{{ route('donation') }}">
             <span class="btn__text">Contact Us</span>
             <i class="fa-solid fa-heart btn__icon"></i>
             <span class="it-btn__inner">
@@ -295,7 +261,7 @@
     <!-- Page Breadcumb -->
     <section class="pageBreadcumb pageBreadcumb--style1 position-relative" data-bg-image="image/bg/pageBreadcumbBg1.jpg">
       <div class="pageBreadcumbTopDown">
-        <a class="btn btn--styleOne btn--icon btn--icon2 it-btn" href="donation-listing.html">
+        <a class="btn btn--styleOne btn--icon btn--icon2 it-btn" href="{{ route('donation') }}">
           <svg class="btn__icon" width="10" height="14" viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M0.869141 8.70508L1.45508 8.11914C1.60156 8.00195 1.80664 8.00195 1.95312 8.14844L4.23828 10.4922V0.414062C4.23828 0.208984 4.38477 0.0625 4.58984 0.0625H5.41016C5.58594 0.0625 5.76172 0.208984 5.76172 0.414062V10.4922L8.01758 8.14844C8.16406 8.00195 8.36914 8.00195 8.51562 8.11914L9.10156 8.70508C9.21875 8.85156 9.21875 9.05664 9.10156 9.20312L5.23438 13.0703C5.08789 13.1875 4.88281 13.1875 4.73633 13.0703L0.869141 9.20312C0.751953 9.05664 0.751953 8.85156 0.869141 8.70508Z" fill="#60646B" />
           </svg>
@@ -332,7 +298,7 @@
               <h2 class="pageTitle__heading text-white text-uppercase mb-25">Donation Listing</h2>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                  <li class="breadcrumb-item"><a href="/">Home</a></li>
                   <li class="breadcrumb-item active" aria-current="page">Donation</li>
                 </ol>
               </nav>
@@ -1319,7 +1285,7 @@
                     </div>
                     <div class="col-12">
                       <div class="sectionButton text-center pt-15">
-                        <a class="btn btn--styleOne btn--primary it-btn" href="volunteers.html">
+                        <a class="btn btn--styleOne btn--primary it-btn" href="#">
                           <span class="btn__text">see all Volunteers</span>
                           <i class="fa-solid fa-heart btn__icon"></i>
                           <span class="it-btn__inner">
@@ -1799,7 +1765,7 @@
                     </div>
                     <div class="col-12">
                       <div class="sectionButton text-center pt-15">
-                        <a class="btn btn--styleOne btn--primary it-btn" href="volunteers.html">
+                        <a class="btn btn--styleOne btn--primary it-btn" href="#">
                           <span class="btn__text">see all Volunteers</span>
                           <i class="fa-solid fa-heart btn__icon"></i>
                           <span class="it-btn__inner">
@@ -1834,167 +1800,4 @@
     <!-- About Feature -->
   </main>
   <!-- Main End -->
-  <!-- footer -->
-  <footer class="footer footer--bg footer--styleOne pt-70 pb-40">
-    <img src="image/shapes/footerShape2.png" alt="Gainioz Shape" class="footer__shape">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col">
-          <div class="footer__logo">
-            <img src="image/logos/logo_2.svg" alt="Gainioz Logo" class="footer__logo__image">
-          </div>
-        </div>
-        <div class="col">
-          <div class="footer__social itSocial">
-            <ul>
-              <li>
-                <a class="facebook" href="https://codercredit.com/" rel="nofollow">
-                  <i class="fab fa-facebook-f"></i>
-                </a>
-              </li>
-              <li>
-                <a class="twitter" href="https://codercredit.com/" rel="nofollow">
-                  <i class="fab fa-twitter"></i>
-                </a>
-              </li>
-              <li>
-                <a class="instagram" href="https://codercredit.com/" rel="nofollow">
-                  <i class="fab fa-instagram"></i>
-                </a>
-              </li>
-              <li>
-                <a class="linkedin" href="https://codercredit.com/" rel="nofollow">
-                  <i class="fab fa-linkedin-in"></i>
-                </a>
-              </li>
-              <li>
-                <a class="pinterest" href="https://codercredit.com/" rel="nofollow">
-                  <i class="fab fa-pinterest-p"></i>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-12">
-          <hr class="footer__line" />
-        </div>
-      </div>
-      <div class="row">
-        <div class="footer__middle pt-65 pb-35">
-          <div class="row justify-content-between">
-            <div class="col-lg-2 col-md-4 mb-30">
-              <div class="footer__widget">
-                <div class="footer__title">
-                  <h2 class="footer__heading text-uppercase text-white">About us</h2>
-                </div>
-                <div class="footer__menu">
-                  <ul>
-                    <li><a href="index.html">Policy Priorities</a></li>
-                    <li><a href="index.html">Careers</a></li>
-                    <li><a href="index.html">Internships</a></li>
-                    <li><a href="index.html">Financial Reports</a></li>
-                    <li><a href="index.html">Contact Us</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-2 col-md-4 mb-30">
-              <div class="footer__widget">
-                <div class="footer__title">
-                  <h2 class="footer__heading text-uppercase text-white">Support us</h2>
-                </div>
-                <div class="footer__menu">
-                  <ul>
-                    <li><a href="donation-listing.html">Donate Now</a></li>
-                    <li><a href="products.html">Store</a></li>
-                    <li><a href="index.html">Reports</a></li>
-                    <li><a href="index.html">Press Releases</a></li>
-                    <li><a href="index.html">Privacy & Policy</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-2 col-md-4 mb-30">
-              <div class="footer__widget">
-                <div class="footer__title">
-                  <h2 class="footer__heading text-uppercase text-white">Quick LInks</h2>
-                </div>
-                <div class="footer__menu">
-                  <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About us</a></li>
-                    <li><a href="contact.html">Contact us</a></li>
-                    <li><a href="donation-listing.html">Donation</a></li>
-                    <li><a href="stories.html">Join Volentter</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-5 mb-30">
-              <form action="#" method="post" class="footer__newsletter">
-                <div class="footer__title">
-                  <h2 class="footer__heading text-uppercase text-white">News Latter</h2>
-                </div>
-                <div class="footer__newsletter__formGroup mb-20">
-                  <input type="text" class="footer__newsletter__input" placeholder="Enter mail">
-                  <input class="footer__newsletter__button" type="button" value="Subscribe">
-                </div>
-                <div class="footer__newsletter__formGroup">
-                  <input id="agree" type="checkbox" class="footer__newsletter__check form-check-input">
-                  <label class="footer__newsletter__label" for="agree">I agree that my submitted data is
-                    being
-                    collected and stored.</label>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="footer__bottom">
-          <div class="row">
-            <div class="col-12">
-              <hr class="footer__line">
-            </div>
-            <div class="col mb-20">
-              <div class="footer__copyright pt-20">
-                <p class="footer__copyright__text mb-0">Copyright@example 2022 all right receved</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
-  <!-- CURSOR -->
-  <div class="mouseCursor cursor-outer"></div>
-  <div class="mouseCursor cursor-inner"></div>
-  <!-- /CURSOR -->
-  <div class="progress-wrap">
-    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
-      <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
-    </svg>
-  </div>
-  <!-- Template Search -->
-  <div id="template-search" class="template-search">
-    <button type="button" class="close">
-      <i class="fa-solid fa-xmark"></i>
-    </button>
-    <form class="search-form">
-      <input type="search" value="" placeholder="Type your search" />
-      <button type="submit" class="search-btn">
-        <i class="fas fa-search"></i>
-      </button>
-    </form>
-  </div>
-  <!-- Template Search End -->
-  <script src="assets/jquery/jquery.min.js"></script>
-  <script src="assets/bootstrap/js/bootstrap.bundle.js"></script>
-  <script src="assets/swiper/swiper.min.js"></script>
-  <script src="assets/nice-select/jquery.nice-select.min.js"></script>
-  <script src="assets/validator.min.js"></script>
-  <script src="assets/animation/wow.min.js"></script>
-  <script src="js/app.js"></script>
-</body>
-
-</html>
+@endsection
