@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Kampanye;
+use App\Models\Transaksi;
 
 class KontrollerKampanye extends Controller
 {

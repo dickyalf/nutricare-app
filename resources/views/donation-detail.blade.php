@@ -29,7 +29,7 @@
               <!-- logo start -->
               <div class="header__logo">
                 <a href="index.html" class="header__logo__link">
-                  <img src="image/logos/logo_1.svg" alt="Gainioz" class="header__logo__image">
+                  <img src="{{ asset('image/logos/logo_1.svg') }}" alt="Gainioz" class="header__logo__image">
                 </a>
               </div>
               <!-- logo end -->
@@ -301,10 +301,10 @@
       </a>
     </div>
     <div class="sectionShape sectionShape--top">
-      <img src="image/shapes/pagebreadcumbShapeTop.svg" alt="Gainioz">
+      <img src="{{ asset('image/shapes/pagebreadcumbShapeTop.svg') }}" alt="Gainioz">
     </div>
     <div class="sectionShape sectionShape--bottom">
-      <img src="image/shapes/pagebreadcumbShapeBottom.svg" alt="Gainioz">
+      <img src="{{ asset('image/shapes/pagebreadcumbShapeBottom.svg') }}" alt="Gainioz">
     </div>
     <div class="container">
       <div class="row">
@@ -332,9 +332,12 @@
             <div class="donationDetails">
               <div class="donationDetails__header mb-45">
                 <figure class="thumb mb-45">
-                  <img src="image/utilites/dontaion-details-thumb1.jpg" alt="Gainioz">
+                    <!-- melakukan pengecekan apakah terdapat gambar banner kampanye menuggnakan fitur dari blade -->
+                    @if($dataDetilKampanye->gambar == "")
+                        <img src="{{ asset('$dataDetilKampanye->gambar') }}" alt="Gambar Kampanye">
+                    @endif
                 </figure>
-                <h3 class="donationDetails__title text-uppercase">Donate for African Child Education</h3>
+                <h3 class="donationDetails__title text-uppercase">{{ $dataDetilKampanye->nama }}</h3>
               </div>
               <div class="featureBlock__donation featureBlock__donation--style2 mb-50">
                 <div class="featureBlock__donation__progress">
@@ -350,7 +353,7 @@
                 <div class="featureBlock__eqn">
                   <div class="featureBlock__eqn__block">
                     <span class="featureBlock__eqn__title">our goal</span>
-                    <span class="featureBlock__eqn__price">Rp13,0000,000</span>
+                    <span class="featureBlock__eqn__price">Rp{{ number_format($dataDetilKampanye->targetDonasi) }}</span>
                   </div>
                   <div class="featureBlock__eqn__block text-center">
                     <span class="featureBlock__eqn__title">Raised</span>
@@ -385,7 +388,6 @@
                     <div class="paymentsInput">
                       <input class="paymentsCustoms__field" type="text" placeholder="Masukkan Jumlah Makanan">
                     </div>
-                    <div class="paymentsAmountChoice">
                       <div class="payments__method">
                         <input class="payments__input" id="pay4" type="radio" name="pay2">
                         <label class="paymentsAmountChoice__label" for="pay4">1 Porsi</label>
@@ -407,7 +409,6 @@
                         <label class="paymentsAmountChoice__label" for="pay8">20 Porsi</label>
                       </div>
                     </div>
-                  </div>
                 </div>
               </div>
               <div class="donationDetails__cross mb-45">
@@ -425,18 +426,8 @@
                   administrator for assistance.
                 </p>
               </div>
-              <p class="donationDetails__text mb-30">We have covered many special events such as fireworks, fairs,
-                parades,
-                races, walks, awards ceremonies, fashion shows,
-                sporting events, and even a memorial service.</p>
-              <p class="donationDetails__text mb-30">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-                vulputate vestibulum rhoncus, dolor eget viverra
-                pretium, dolor tellus aliquet nunc, vitae ultricies erat elit eu lacus. Vestibulum non justo
-                consectetur,
-                cursus ante,
-                tincidunt sapien. Nulla quis diam sit amet turpis interd enim. Vivamus faucibus ex sed nibh egestas
-                elementum. Mauris et
-                bibendum dui. Aenean consequat pulvinar luctus. Suspendisse consectetur tristique tortor</p>
+              <h4 class="donationDetails__heading mb-25">{{ $dataDetilKampanye->makanan->nama }}</h4>
+              <p class="donationDetails__text mb-30">{{ $dataDetilKampanye->makanan->deskripsi }}</p>
               <h4 class="donationDetails__heading mb-25">Our challenge & Goal</h4>
               <p class="donationDetails__text mb-30">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
                 vulputate vestibulum Phasellus rhoncus, dolor eget

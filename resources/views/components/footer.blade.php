@@ -154,10 +154,10 @@
   </form>
 </div>
 <!-- Template Search End -->
-<script src="assets/jquery/jquery.min.js"></script>
-<script src="assets/bootstrap/js/bootstrap.bundle.js"></script>
-<script src="assets/swiper/swiper.min.js"></script>
-<script src="assets/nice-select/jquery.nice-select.min.js"></script>
-<script src="assets/validator.min.js"></script>
-<script src="assets/animation/wow.min.js"></script>
-<script src="js/app.js"></script>
+<script src="{{ asset('assets/jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('assets/bootstrap/js/bootstrap.bundle.js') }}"></script>
+<script src="{{ asset('assets/swiper/swiper.min.js') }}"></script>
+<script src="{{ asset('assets/nice-select/jquery.nice-select.min.js') }}"></script>
+<script src="{{ asset('assets/validator.min.js') }}"></script>
+<script src="{{ asset('assets/animation/wow.min.js') }}"></script>
+<script src="{{ asset('js/app.js') }}"></script>
