@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('kampanye', function (Blueprint $table) {
             $table->id();
+            $table->string('slug');
             $table->string('nama');
             $table->text('gambar')->nullable();
             $table->timestamp('tanggal_awal');
