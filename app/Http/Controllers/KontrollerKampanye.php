@@ -2,23 +2,35 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kampanye;
 use Illuminate\Http\Request;
 
 class KontrollerKampanye extends Controller
 {
-    public function mintaSemuaKampanye() {
-        $semuaKampanye = Kampanye::all();
-        return view('donation', [
+
+    public function index() {
+        $semuaKampanye = Kampanye::paginate(9);
+        return view('donation-listing', [
             'semuaKampanye' => $semuaKampanye
         ]);
     }
 
+    // public function mintaSemuaKampanye() {
+    //     $semuaKampanye = Kampanye::paginate(9);
+    //     return view('donation-listing', [
+    //         'semuaKampanye' => $semuaKampanye
+    //     ]);
+    // }
+
     public function cariKampanye(Request $request) {
-        // $keyword = $request->search;
+        $search = $request->input('search'); // Retrieve the search input
 
-        $results = Kampanye::where('name', 'like', '%')->get();
+        // Query to search in 'nama' and 'deskripsi' columns
+        $results = Kampanye::where('nama', 'like', '%' . $search . '%')->paginate(9);
+            // ->orWhere('deskripsi', 'like', '%' . $search . '%')
+            // ->get();
 
-        return view('donation', [
+        return view('donation-listing', [
             'semuaKampanye' => $results
         ]);
     }
