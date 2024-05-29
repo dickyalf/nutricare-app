@@ -11,9 +11,10 @@ Route::get("/donation", function () {
     return view("donation-listing");
 })->name("donation");
 
-Route::get("/donation-detail", function () {
-    return view("donation-detail");
-})->name("donation-detail");
+Route::get("/donation-detail/{kampanye}", [
+    KontrollerKampanye::class,
+    "pilihKampanye",
+])->name("donation-detail");
 
 // Route::get('/donation', [DonationController::class, 'index'])->name('donation');
 // Route::get('/search', [DonationController::class, 'search'])->name('search');
