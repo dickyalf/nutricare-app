@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\KontrollerKampanye;
 use Illuminate\Support\Facades\Route;
 
 Route::get("/", function () {
@@ -13,3 +14,11 @@ Route::get("/donation", function () {
 Route::get("/donation-detail", function () {
     return view("donation-detail");
 })->name("donation-detail");
+
+// Route::get('/donation', [DonationController::class, 'index'])->name('donation');
+// Route::get('/search', [DonationController::class, 'search'])->name('search');
+
+// Route::get('/donation', [KontrollerKampanye::class, 'index'])->name('donation');
+Route::get("/search", [KontrollerKampanye::class, "cariKampanye"])->name(
+    "search"
+);
