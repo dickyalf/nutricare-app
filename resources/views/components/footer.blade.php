@@ -146,8 +146,8 @@
   <button type="button" class="close">
     <i class="fa-solid fa-xmark"></i>
   </button>
-  <form class="search-form">
-    <input type="search" value="" placeholder="Type your search" />
+  <form class="search-form" action ="{{ route('search') }}" method="get">
+    <input type="search" value="search" name="search" placeholder="Type your search" />
     <button type="submit" class="search-btn">
       <i class="fas fa-search"></i>
     </button>
