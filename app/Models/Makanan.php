@@ -5,14 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use App\Models\Kampanye;
+
 class Makanan extends Model
 {
     use HasFactory;
 
-    protected $table = 'makanan';
+    protected $table = "makanan";
 
-    protected $fillable = ['nama', 'harga', 'deskripsi'];
+    protected $fillable = ["nama", "harga", "deskripsi"];
     public $timestamps = false;
 
+    public function kampanye()
+    {
+        return $this->hasMany(Kampanye::class);
+    }
 
 }
