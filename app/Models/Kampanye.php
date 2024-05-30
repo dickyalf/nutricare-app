@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 use App\Models\Makanan;
+use App\Models\Transaksi;
 
 class Kampanye extends Model
 {
@@ -18,5 +19,10 @@ class Kampanye extends Model
     public function makanan()
     {
         return $this->belongsTo(Makanan::class);
+    }
+
+    public function transaksi()
+    {
+        return $this->hasMany(Transaksi::class);
     }
 }

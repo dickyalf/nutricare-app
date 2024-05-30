@@ -36,8 +36,29 @@ class KontrollerKampanye extends Controller
     // gunakan route model binding untuk mendapatkan data detil kampanye dari database.
     public function pilihKampanye(Kampanye $kampanye)
     {
+        $transaksiList = [];
+        $uangTerkumpul = 0;
+        $uangKurang = 0;
+        $persentaseProgress = 0;
+        $transaksiList = $kampanye->transaksi;
+
+        foreach ($transaksiList as $transaksi) {
+            $uangTerkumpul += $transaksi->totalDonasi;
+        }
+
+        $uangKurang = $kampanye->targetDonasi - $uangTerkumpul;
+
+        if ($uangKurang < 0) {
+            $uangKurang = 0;
+        }
+
+        $persentaseProgress = $uangTerkumpul / (int) $kampanye->targetDonasi;
+        $persentaseProgress = number_format($persentaseProgress * 100);
         return view("donation-detail", [
             "dataDetilKampanye" => $kampanye,
-        ]); // kembalikan tampilan donation-detail kepada user dengan properti "dataDetailKampanye"
+            "uangTerkumpul" => $uangTerkumpul,
+            "uangKurang" => $uangKurang,
+            "persentaseProgress" => $persentaseProgress,
+        ]); // kembalikan tampilan donation-detail kepada user dengan properti `dataDetailKampanye`
     }
 }

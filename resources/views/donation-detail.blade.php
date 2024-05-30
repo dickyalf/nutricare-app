@@ -342,10 +342,10 @@
               <div class="featureBlock__donation featureBlock__donation--style2 mb-50">
                 <div class="featureBlock__donation__progress">
                   <div class="featureBlock__donation__bar">
-                    <span class="featureBlock__donation__text skill-bar" data-width="80%" style="width: 80%;">80%</span>
+                    <span class="featureBlock__donation__text skill-bar" data-width="{{ $persentaseProgress }}%" style="width: {{ $persentaseProgress }}%;">{{ $persentaseProgress }}%</span>
                     <div class="featureBlock__donation__line">
                       <span class="skill-bars">
-                      <span class="skill-bars__line skill-bar" data-width="80%" style="width: 80%;"></span>
+                      <span class="skill-bars__line skill-bar" data-width="{{ $persentaseProgress }}%" style="width: {{ $persentaseProgress }}%;"></span>
                       </span>
                     </div>
                   </div>
@@ -357,11 +357,11 @@
                   </div>
                   <div class="featureBlock__eqn__block text-center">
                     <span class="featureBlock__eqn__title">Raised</span>
-                    <span class="featureBlock__eqn__price">Rp2,290,000</span>
+                    <span class="featureBlock__eqn__price">Rp{{ number_format($uangTerkumpul) }}</span>
                   </div>
                   <div class="featureBlock__eqn__block text-end">
                     <span class="featureBlock__eqn__title">to go</span>
-                    <span class="featureBlock__eqn__price">Rp10,710,000</span>
+                    <span class="featureBlock__eqn__price">Rp{{ number_format($uangKurang) }}</span>
                   </div>
                 </div>
               </div>
