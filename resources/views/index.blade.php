@@ -1,5 +1,5 @@
 @extends('layouts/app')
-@section("title", "KeeBod")
+@section("title", "NutriCare")
 
 @section("body")
 

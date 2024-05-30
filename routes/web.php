@@ -8,7 +8,7 @@ Route::get("/", function () {
 });
 
 
-Route::get('/donation', [KontrollerKampanye::class, 'index'])->name('donation');
+Route::get('/donation', [KontrollerKampanye::class, 'mintaSemuaKampanye'])->name('donation');
 Route::get('/search', [KontrollerKampanye::class, 'cariKampanye'])->name('search');
 
 Route::get("/donation-detail/{slug}", [
