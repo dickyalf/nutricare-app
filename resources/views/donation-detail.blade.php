@@ -373,44 +373,8 @@
                   <span>Notice:</span> Test mode is enabled. While in test mode no live donations are processed.
                 </p>
               </div>
-              <div class="donationDetails__payments">
-                <div class="payments">
-                  <div class="paymentsHeader">
-                    <div class="payments__title">
-                      <h4 class="donationDetails__heading">Total Donasi</h4>
-                    </div>
-                    <div class="payments__methods">
-                        <h4 class="donationDetails__heading">Rp120,000</h4>
-
-                    </div>
-                  </div>
-                  <div class="paymentsCustoms">
-                    <div class="paymentsInput">
-                      <input class="paymentsCustoms__field" type="text" placeholder="Masukkan Jumlah Makanan">
-                    </div>
-                      <div class="payments__method">
-                        <input class="payments__input" id="pay4" type="radio" name="pay2">
-                        <label class="paymentsAmountChoice__label" for="pay4">1 Porsi</label>
-                      </div>
-                      <div class="payments__method">
-                        <input class="payments__input" id="pay5" type="radio" name="pay2">
-                        <label class="paymentsAmountChoice__label" for="pay5">3 Porsi</label>
-                      </div>
-                      <div class="payments__method">
-                        <input class="payments__input" id="pay6" type="radio" name="pay2">
-                        <label class="paymentsAmountChoice__label" for="pay6">5 Porsi</label>
-                      </div>
-                      <div class="payments__method">
-                        <input class="payments__input" id="pay7" type="radio" name="pay2">
-                        <label class="paymentsAmountChoice__label" for="pay7">10 Porsi</label>
-                      </div>
-                      <div class="payments__method">
-                        <input class="payments__input" id="pay8" type="radio" name="pay2">
-                        <label class="paymentsAmountChoice__label" for="pay8">20 Porsi</label>
-                      </div>
-                    </div>
-                </div>
-              </div>
+              <!-- gunakan livewire untuk mendapatkan estimasi harga total donasi secara langsung -->
+               @livewire('input-porsi', ['makanan' => $dataDetilKampanye->makanan])
               <div class="donationDetails__cross mb-45">
                 <p>
                   <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">

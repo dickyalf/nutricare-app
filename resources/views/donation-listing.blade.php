@@ -402,7 +402,7 @@
                                                     <div class="featureBlock__wrap">
                                                         <figure class="featureBlock__thumb">
                                                             <a class="featureBlock__thumb__link"
-                                                                href="donation-details.html">
+                                                                href="{{ route('donation-detail',$kampanye->slug) }}">
                                                                 <img src="{{ $kampanye->gambar }}"
                                                                     alt="Gainioz Featured Thumb">
                                                             </a>
@@ -415,7 +415,7 @@
                                                         <div class="featureBlock__content">
                                                             <h3 class="featureBlock__heading">
                                                                 <a class="featureBlock__heading__link"
-                                                                    href="donation-details.html">
+                                                                    href="{{ route('donation-detail',$kampanye->slug) }}">
                                                                     {{ $kampanye->nama }}
                                                                 </a>
                                                             </h3>
