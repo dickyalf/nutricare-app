@@ -42,10 +42,12 @@ class KontrollerKampanye extends Controller
         $persentaseProgress = 0;
         $transaksiList = $kampanye->transaksi;
 
+        // menjumlahkan semua total donasi dari tiap transaksi kedalam satu variabel untuk di display
         foreach ($transaksiList as $transaksi) {
             $uangTerkumpul += $transaksi->totalDonasi;
         }
 
+        // menentukan uang yang kurang dari target donasi
         $uangKurang = $kampanye->targetDonasi - $uangTerkumpul;
 
         if ($uangKurang < 0) {
