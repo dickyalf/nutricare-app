@@ -7,22 +7,12 @@ Route::get("/", function () {
     return view("index");
 });
 
-Route::get("/donation", function () {
-    return view("donation-listing");
-})->name("donation");
+
+Route::get('/donation', [KontrollerKampanye::class, 'index'])->name('donation');
+Route::get('/search', [KontrollerKampanye::class, 'cariKampanye'])->name('search');
 
 Route::get("/donation-detail/{slug}", [
     KontrollerKampanye::class,
     "pilihKampanye",
 ])->name("donation-detail");
-Route::get("/donation-detail", function () {
-    return view("donation-detail");
-})->name("detail");
 
-// Route::get('/donation', [DonationController::class, 'index'])->name('donation');
-// Route::get('/search', [DonationController::class, 'search'])->name('search');
-
-// Route::get('/donation', [KontrollerKampanye::class, 'index'])->name('donation');
-Route::get("/search", [KontrollerKampanye::class, "cariKampanye"])->name(
-    "search"
-);

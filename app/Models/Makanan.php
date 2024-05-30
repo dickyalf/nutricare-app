@@ -20,4 +20,5 @@ class Makanan extends Model
     {
         return $this->hasMany(Kampanye::class);
     }
+
 }

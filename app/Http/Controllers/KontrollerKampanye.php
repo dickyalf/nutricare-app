@@ -2,28 +2,38 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kampanye;
 use Illuminate\Http\Request;
 use App\Models\Kampanye;
 use App\Models\Transaksi;
 
 class KontrollerKampanye extends Controller
 {
-    public function mintaSemuaKampanye()
-    {
-        $semuaKampanye = Kampanye::all();
-        return view("donation", [
-            "semuaKampanye" => $semuaKampanye,
+
+    public function index() {
+        $semuaKampanye = Kampanye::paginate(9);
+        return view('donation-listing', [
+            'semuaKampanye' => $semuaKampanye
         ]);
     }
 
-    public function cariKampanye(Request $request)
-    {
-        // $keyword = $request->search;
+    // public function mintaSemuaKampanye() {
+    //     $semuaKampanye = Kampanye::paginate(9);
+    //     return view('donation-listing', [
+    //         'semuaKampanye' => $semuaKampanye
+    //     ]);
+    // }
 
-        $results = Kampanye::where("name", "like", "%")->get();
+    public function cariKampanye(Request $request) {
+        $search = $request->input('search'); // Retrieve the search input
 
-        return view("donation", [
-            "semuaKampanye" => $results,
+        // Query to search in 'nama' and 'deskripsi' columns
+        $results = Kampanye::where('nama', 'like', '%' . $search . '%')->paginate(9);
+            // ->orWhere('deskripsi', 'like', '%' . $search . '%')
+            // ->get();
+
+        return view('donation-listing', [
+            'semuaKampanye' => $results
         ]);
     }
 
