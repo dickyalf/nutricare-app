@@ -25,10 +25,4 @@ class Kampanye extends Model
     {
         return $this->hasMany(Transaksi::class);
     }
-
-    // route model binding menggunakan key 'slug'
-    public function getRouteKeyName()
-    {
-        return "slug";
-    }
 }
