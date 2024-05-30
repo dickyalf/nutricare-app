@@ -146,18 +146,18 @@
   <button type="button" class="close">
     <i class="fa-solid fa-xmark"></i>
   </button>
-  <form class="search-form">
-    <input type="search" value="" placeholder="Type your search" />
+  <form class="search-form" action ="{{ route('search') }}" method="get">
+    <input type="search" value="search" name="search" placeholder="Type your search" />
     <button type="submit" class="search-btn">
       <i class="fas fa-search"></i>
     </button>
   </form>
 </div>
 <!-- Template Search End -->
-<script src="assets/jquery/jquery.min.js"></script>
-<script src="assets/bootstrap/js/bootstrap.bundle.js"></script>
-<script src="assets/swiper/swiper.min.js"></script>
-<script src="assets/nice-select/jquery.nice-select.min.js"></script>
-<script src="assets/validator.min.js"></script>
-<script src="assets/animation/wow.min.js"></script>
-<script src="js/app.js"></script>
+<script src="{{ asset('assets/jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('assets/bootstrap/js/bootstrap.bundle.js') }}"></script>
+<script src="{{ asset('assets/swiper/swiper.min.js') }}"></script>
+<script src="{{ asset('assets/nice-select/jquery.nice-select.min.js') }}"></script>
+<script src="{{ asset('assets/validator.min.js') }}"></script>
+<script src="{{ asset('assets/animation/wow.min.js') }}"></script>
+<script src="{{ asset('js/app.js') }}"></script>
