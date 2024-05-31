@@ -7,16 +7,13 @@ Route::get("/", function () {
     return view("index");
 });
 
-Route::get("/donation", [KontrollerKampanye::class, "index"])->name("donation");
-Route::get("/search", [KontrollerKampanye::class, "cariKampanye"])->name(
-    "search"
-);
-
-Route::get("/donation-detail/{kampanye:slug}", [
 Route::get('/donation', [KontrollerKampanye::class, 'mintaSemuaKampanye'])->name('donation');
 Route::get('/search', [KontrollerKampanye::class, 'cariKampanye'])->name('search');
+Route::post('/konfirmasi-donasi', [KontrollerKampanye::class, 'konfirmasiDonasi']);
+Route::post('/buat-transaksi', [KontrollerKampanye::class, 'buatTransaksi']);
 
-Route::get("/donation-detail/{slug}", [
+
+Route::get("/donation-detail/{kampanye:slug}", [
     KontrollerKampanye::class,
     "pilihKampanye",
 ])->name("donation-detail");

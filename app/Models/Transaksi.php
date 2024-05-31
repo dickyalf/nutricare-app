@@ -13,6 +13,14 @@ class Transaksi extends Model
 
     protected $table = "transaksi";
 
+    protected $fillable = [
+        'pengguna_id',
+        'kampanye_id',
+        'tanggal_transaksi',
+        'jumlahMakanan',
+        'totalDonasi',
+    ];
+
     public $timestamps = false;
 
     public function kampanye()

@@ -26,7 +26,7 @@ return new class extends Migration {
             ->onDelete('cascade');
             $table->timestamp('tanggal_transaksi');
             $table->integer('jumlahMakanan');
-            $table->integer('totalDonasi');
+            $table->decimal('totalDonasi', 15, 2);
         });
     }
 

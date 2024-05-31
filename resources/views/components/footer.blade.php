@@ -2,12 +2,12 @@
 <!-- Main End -->
 <!-- footer -->
 <footer class="footer footer--bg footer--styleOne pt-70 pb-40">
-  <img src="image/shapes/footerShape2.png" alt="Gainioz Shape" class="footer__shape">
+  <img src="{{ asset('image/shapes/footerShape2.png')}}" alt="Gainioz Shape" class="footer__shape">
   <div class="container">
     <div class="row align-items-center">
       <div class="col">
         <div class="footer__logo">
-          <img src="image/logos/logo_2.svg" alt="Gainioz Logo" class="footer__logo__image">
+          <img src="{{ asset('image/logos/logo_2.svg')}}" alt="Gainioz Logo" class="footer__logo__image">
         </div>
       </div>
       <div class="col">

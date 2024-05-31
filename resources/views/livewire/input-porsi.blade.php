@@ -6,11 +6,12 @@
       </div>
       <div class="payments__methods">
           <h4 class="donationDetails__heading">Rp{{ number_format($totalDonasi) }}</h4>
+          <input type="hidden" name="donation-amount" id="donation-amount" value="{{$totalDonasi}}"> 
       </div>
     </div>
     <div class="paymentsCustoms">
       <div class="paymentsInput">
-        <input class="paymentsCustoms__field" type="number" placeholder="Masukkan Jumlah Makanan" wire:model="porsi" wire:keyup="pilih">
+        <input class="paymentsCustoms__field" id="porsi" type="number" placeholder="Masukkan Jumlah Makanan" wire:model="porsi" wire:keyup="pilih">
       </div>
         <div class="payments__method">
           <input class="payments__input" id="pay4" type="radio" name="pay2" value="1" wire:model="porsi" wire:click="pilih">
