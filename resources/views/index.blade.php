@@ -1,5 +1,5 @@
 @extends('layouts/app')
-@section("title", "KeeBod")
+@section("title", "NutriCare")
 
 @section("body")
 
@@ -300,13 +300,13 @@
     <!-- Hero/Welcome Section End -->
     <!-- About && Features && Donner Section -->
     <section class="about">
-      <img class="about__shape about__shape--one" src="image/shapes/love-shape3.svg" alt="Gainioz Shape">
-      <img class="about__shape about__shape--two" src="image/shapes/love-shape4.svg" alt="Gainioz Shape">
-      <img class="about__shape about__shape--three" src="image/shapes/love-shape5.svg" alt="Gainioz Shape">
+      <img class="about__shape about__shape--one" src="{{ asset('image/shapes/love-shape3.svg')}}" alt="Gainioz Shape">
+      <img class="about__shape about__shape--two" src="{{ asset('image/shapes/love-shape4.svg')}}" alt="Gainioz Shape">
+      <img class="about__shape about__shape--three" src="{{ asset('image/shapes/love-shape5.svg')}}" alt="Gainioz Shape">
       <div class="aboutArea aboutArea--padding position-relative">
         <img class="mask-aboutBack wow animate__fadeInLeft animate__animated" data-wow-duration="1200ms" data-wow-delay="300ms" src="image/shapes/mask-shape3.svg" alt="Gainioz Shape">
         <div class="mask mask--about wow animate__fadeInLeft animate__animated" data-wow-duration="1200ms" data-wow-delay="200ms">
-          <img src="image/girls/girls1.jpg" alt="Gainioz Shape" class="mask__thumb">
+          <img src="{{ asset('image/girls/girls1.jpg')}}" alt="Gainioz Shape" class="mask__thumb">
           <img class="mask__overlay" src="image/shapes/mask-shape2.svg" alt="Gainioz Shape">
         </div>
         <div class="container">

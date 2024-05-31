@@ -18,7 +18,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ asset('css/main.css') }}">
-
+  <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js"
+  data-client-key="{{ config('midtrans.client_key') }}"></script>
 </head>
 
 <body>

@@ -1,5 +1,5 @@
 @extends('layouts/app')
-@section('title', 'NutriCare')
+@section('title', 'Donation List')
 
 @section('body')
     <!-- Preloader -->
@@ -184,13 +184,13 @@
                             <a class="animation" href="/">Home</a>
                         </li>
                         <!-- <li class="list menu-item-has-children">
-                                    <a href="vertical-slider.html">Home Dummy</a>
-                                    <ul class="main-menu__dropdown sub-menu">
-                                        <li><a href="single-post1.html">Home Demo 1</a></li>
-                                        <li><a href="single-post2.html">Home Demo 2</a></li>
-                                        <li><a href="single-post3.html">Home Demo 3</a></li>
-                                    </ul>
-                                </li> -->
+                                                                    <a href="vertical-slider.html">Home Dummy</a>
+                                                                    <ul class="main-menu__dropdown sub-menu">
+                                                                        <li><a href="single-post1.html">Home Demo 1</a></li>
+                                                                        <li><a href="single-post2.html">Home Demo 2</a></li>
+                                                                        <li><a href="single-post3.html">Home Demo 3</a></li>
+                                                                    </ul>
+                                                                </li> -->
                         </li>
                         <li class="list menu-item-parent">
                             <a class="animation" href="#">About</a>
@@ -458,39 +458,120 @@
                                             </div>
                                         @endforeach
 
-                                        {{ $semuaKampanye->links('pagination::bootstrap-5') }}
+                                        @if (isset($search))
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="paginationBlock">
+                                                        <nav aria-label="Page navigation example">
+                                                            <ul class="pagination justify-content-center">
+                                                                @if ($semuaKampanye->appends(['search' => $search])->previousPageUrl())
+                                                                    <li class="page-item page-item--prev">
+                                                                        <a class="page-link"
+                                                                            href="{{ $semuaKampanye->appends(['search' => $search])->previousPageUrl() }}"
+                                                                            tabindex="-1" aria-disabled="false">
+                                                                            <i class="fa-solid fa-angle-left"></i>
+                                                                        </a>
+                                                                    </li>
+                                                                @else
+                                                                    <li class="page-item page-item--prev disabled">
+                                                                        <span class="page-link" tabindex="-1"
+                                                                            aria-disabled="true">
+                                                                            <i class="fa-solid fa-angle-left"></i>
+                                                                        </span>
+                                                                    </li>
+                                                                @endif
 
-                                        <div class="col-12">
-                                            <div class="sectionButton text-center pt-15">
-                                                <a class="btn btn--styleOne btn--primary it-btn" href="volunteers.html">
-                                                    <span class="btn__text">see all Volunteers</span>
-                                                    <i class="fa-solid fa-heart btn__icon"></i>
-                                                    <span class="it-btn__inner">
-                                                        <span class="it-btn__blobs">
-                                                            <span class="it-btn__blob"></span>
-                                                            <span class="it-btn__blob"></span>
-                                                            <span class="it-btn__blob"></span>
-                                                            <span class="it-btn__blob"></span>
-                                                        </span>
-                                                    </span>
-                                                    <svg class="it-btn__animation" xmlns="http://www.w3.org/2000/svg"
-                                                        version="1.1">
-                                                        <defs>
-                                                            <filter>
-                                                                <feGaussianBlur in="SourceGraphic" result="blur"
-                                                                    stdDeviation="10"></feGaussianBlur>
-                                                                <feColorMatrix in="blur" mode="matrix"
-                                                                    values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 21 -7"
-                                                                    result="goo">
-                                                                </feColorMatrix>
-                                                                <feBlend in2="goo" in="SourceGraphic"
-                                                                    result="mix"></feBlend>
-                                                            </filter>
-                                                        </defs>
-                                                    </svg>
-                                                </a>
+                                                                <div class="paginationBlock__number">
+                                                                    <ul>
+                                                                        @foreach ($semuaKampanye->appends(['search' => $search])->links()->elements[0] as $page => $url)
+                                                                            <li
+                                                                                class="page-item {{ $semuaKampanye->appends(['search' => $search])->currentPage() == $page ? 'active' : '' }}">
+                                                                                <a class="page-link"
+                                                                                    href="{{ $url }}">{{ $page }}</a>
+                                                                            </li>
+                                                                        @endforeach
+                                                                    </ul>
+                                                                </div>
+
+                                                                @if ($semuaKampanye->appends(['search' => $search])->nextPageUrl())
+                                                                    <li class="page-item page-item--next">
+                                                                        <a class="page-link"
+                                                                            href="{{ $semuaKampanye->appends(['search' => $search])->nextPageUrl() }}">
+                                                                            <i class="fa-solid fa-angle-right"></i>
+                                                                        </a>
+                                                                    </li>
+                                                                @else
+                                                                    <li class="page-item page-item--next disabled">
+                                                                        <span class="page-link" aria-disabled="true">
+                                                                            <i class="fa-solid fa-angle-right"></i>
+                                                                        </span>
+                                                                    </li>
+                                                                @endif
+                                                            </ul>
+                                                        </nav>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
+                                        @else
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="paginationBlock">
+                                                        <nav aria-label="Page navigation example">
+                                                            <ul class="pagination justify-content-center">
+                                                                @if ($semuaKampanye->previousPageUrl())
+                                                                    <li class="page-item page-item--prev">
+                                                                        <a class="page-link"
+                                                                            href="{{ $semuaKampanye->previousPageUrl() }}"
+                                                                            tabindex="-1" aria-disabled="false">
+                                                                            <i class="fa-solid fa-angle-left"></i>
+                                                                        </a>
+                                                                    </li>
+                                                                @else
+                                                                    <li class="page-item page-item--prev disabled">
+                                                                        <span class="page-link" tabindex="-1"
+                                                                            aria-disabled="true">
+                                                                            <i class="fa-solid fa-angle-left"></i>
+                                                                        </span>
+                                                                    </li>
+                                                                @endif
+
+                                                                <div class="paginationBlock__number">
+                                                                    <ul>
+                                                                        @foreach ($semuaKampanye->links()->elements[0] as $page => $url)
+                                                                            <li
+                                                                                class="page-item {{ $semuaKampanye->currentPage() == $page ? 'active' : '' }}">
+                                                                                <a class="page-link"
+                                                                                    href="{{ $url }}">{{ $page }}</a>
+                                                                            </li>
+                                                                        @endforeach
+                                                                    </ul>
+                                                                </div>
+
+                                                                @if ($semuaKampanye->nextPageUrl())
+                                                                    <li class="page-item page-item--next">
+                                                                        <a class="page-link"
+                                                                            href="{{ $semuaKampanye->nextPageUrl() }}">
+                                                                            <i class="fa-solid fa-angle-right"></i>
+                                                                        </a>
+                                                                    </li>
+                                                                @else
+                                                                    <li class="page-item page-item--next disabled">
+                                                                        <span class="page-link" aria-disabled="true">
+                                                                            <i class="fa-solid fa-angle-right"></i>
+                                                                        </span>
+                                                                    </li>
+                                                                @endif
+                                                            </ul>
+                                                        </nav>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
+
+
+
+
+
                                     </div>
                                 </div>
 
