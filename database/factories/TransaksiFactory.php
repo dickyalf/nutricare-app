@@ -19,13 +19,8 @@ class TransaksiFactory extends Factory
      */
     public function definition(): array
     {
-        $faker = Faker::create('id_ID');
         return [
-            'pengguna_id' => Pengguna::factory(),
-            'kampanye_id' => Kampanye::factory(),
-            'tanggal_transaksi' => $faker->dateTimeThisYear(),
-            'jumlahMakanan' => $faker->numberBetween(1, 10),
-            'totalDonasi' => $faker->numberBetween(100000, 1000000),
+            
         ];
     }
 }

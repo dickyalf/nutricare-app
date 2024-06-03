@@ -230,7 +230,7 @@
                     </li>
                     <li>
                         <a class="linkedin" href="#" rel="nofollow">
-                            <i class="fab fa-linkedin-in"></i>
+                             <i class="fab fa-linkedin-in"></i>
                         </a>
                     </li>
                 </ul>
