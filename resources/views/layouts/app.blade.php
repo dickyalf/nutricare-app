@@ -7,21 +7,24 @@
   <meta name="description" content="" />
   <meta name="author" content="" />
   <title>@yield('title')</title>
-  <link rel="icon" href="image/favicon.png" type="image/png">
-  <link rel="stylesheet" href="assets/animation/animate.min.css">
-  <link rel="stylesheet" href="assets/animation/custom-animation.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/swiper/swiper.min.css">
-  <link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
-  <link rel="stylesheet" href="assets/nice-select/nice-select.css">
+  <link rel="icon" href="{{ asset('image/favicon.png') }}" type="image/png">
+  <link rel="stylesheet" href="{{ asset('assets/animation/animate.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/animation/custom-animation.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/swiper/swiper.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/fontawesome/css/all.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/nice-select/nice-select.css') }}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+  <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js"
+  data-client-key="{{ config('midtrans.client_key') }}"></script>
 </head>
 
 <body>
     @yield('body')
-    @include("components/footer")
+    @include('components/footer')
 </body>
+
 </html>
