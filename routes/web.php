@@ -9,10 +9,9 @@ Route::get("/", function () {
 
 
 Route::get('/donation', [KontrollerKampanye::class, 'mintaSemuaKampanye'])->name('donation');
-Route::get('/search', [KontrollerKampanye::class, 'cariKampanye'])->name('search');
+Route::get('/cariKampanye', [KontrollerKampanye::class, 'cariKampanye'])->name('cariKampanye');
 
 Route::get("/donation-detail/{slug}", [
     KontrollerKampanye::class,
     "pilihKampanye",
 ])->name("donation-detail");
-

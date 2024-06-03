@@ -5,26 +5,56 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Kampanye;
 use App\Models\Transaksi;
+use Illuminate\View\View;
 
 class KontrollerKampanye extends Controller
 {
 
-    public function mintaSemuaKampanye() {
+    /**
+     * mintaSemuaKampanye
+     *
+     * @return void
+     * @return view donation-listing
+     */
+    public function mintaSemuaKampanye()
+    {
+        /** 
+         * mintaSemuaKampanye
+         *
+         * Fungsi ini mengambil semua kampanye yang ada dalam database
+         * dan mengembalikan hasilnya dalam bentuk paginasi.
+         */
         $semuaKampanye = Kampanye::paginate(9);
         return view('donation-listing', [
             'semuaKampanye' => $semuaKampanye
         ]);
     }
 
-    public function cariKampanye(Request $request) {
-        $search = $request->input('search'); // Retrieve the search input
 
-        // Query to search in 'nama' and 'deskripsi' columns
-        $results = Kampanye::where('nama', 'like', '%' . $search . '%')->paginate(9);
+    /**
+     * cariKampanye
+     *
+     * @param  mixed $request
+     * @return view donation-listing
+     */
+    public function cariKampanye(Request $request)
+    {
+        /** 
+         * cariKampanye
+         *
+         * Fungsi ini menangani fitur pencarian untuk kampanye.
+         * Fungsi ini menerima sebuah request yang berisi istilah pencarian,
+         * melakukan query pada model 'Kampanye' untuk menemukan kampanye
+         * dengan nama yang sesuai dengan istilah pencarian, dan mengembalikan
+         * hasil pencarian dalam bentuk paginasi.
+         */
+        $cari = $request->input('cari');
+
+        $semuaKampanye = Kampanye::where('nama', 'like', '%' . $cari . '%')->paginate(9);
 
         return view('donation-listing', [
-            'semuaKampanye' => $results,
-            'search' => $search
+            'semuaKampanye' => $semuaKampanye,
+            'cari' => $cari
         ]);
     }
 
