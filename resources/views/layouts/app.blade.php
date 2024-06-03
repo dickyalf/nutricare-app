@@ -24,6 +24,7 @@
 
 <body>
     @yield('body')
-    @include("components/footer")
+    @include('components/footer')
 </body>
+
 </html>

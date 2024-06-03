@@ -184,13 +184,13 @@
                             <a class="animation" href="/">Home</a>
                         </li>
                         <!-- <li class="list menu-item-has-children">
-                                                                    <a href="vertical-slider.html">Home Dummy</a>
-                                                                    <ul class="main-menu__dropdown sub-menu">
-                                                                        <li><a href="single-post1.html">Home Demo 1</a></li>
-                                                                        <li><a href="single-post2.html">Home Demo 2</a></li>
-                                                                        <li><a href="single-post3.html">Home Demo 3</a></li>
-                                                                    </ul>
-                                                                </li> -->
+                                                                                        <a href="vertical-slider.html">Home Dummy</a>
+                                                                                        <ul class="main-menu__dropdown sub-menu">
+                                                                                            <li><a href="single-post1.html">Home Demo 1</a></li>
+                                                                                            <li><a href="single-post2.html">Home Demo 2</a></li>
+                                                                                            <li><a href="single-post3.html">Home Demo 3</a></li>
+                                                                                        </ul>
+                                                                                    </li> -->
                         </li>
                         <li class="list menu-item-parent">
                             <a class="animation" href="#">About</a>
@@ -352,45 +352,6 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="featureTab featureTab--style2">
-                            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab"
-                                        data-bs-target="#home" type="button" role="tab" aria-controls="home"
-                                        aria-selected="true">all</button>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="profile-tab" data-bs-toggle="tab"
-                                        data-bs-target="#profile" type="button" role="tab" aria-controls="profile"
-                                        aria-selected="false">Education</button>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="contact-tab" data-bs-toggle="tab"
-                                        data-bs-target="#contact" type="button" role="tab" aria-controls="contact"
-                                        aria-selected="false">health</button>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="contact-tab" data-bs-toggle="tab"
-                                        data-bs-target="#contact" type="button" role="tab" aria-controls="contact"
-                                        aria-selected="false">medical</button>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="contact-tab" data-bs-toggle="tab"
-                                        data-bs-target="#contact" type="button" role="tab" aria-controls="contact"
-                                        aria-selected="false">Home</button>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="contact-tab" data-bs-toggle="tab"
-                                        data-bs-target="#contact" type="button" role="tab" aria-controls="contact"
-                                        aria-selected="false">kids africa</button>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="contact-tab" data-bs-toggle="tab"
-                                        data-bs-target="#contact" type="button" role="tab" aria-controls="contact"
-                                        aria-selected="false">Food</button>
-                                </li>
-                            </ul>
-
-
                             <div class="tab-content pt-55" id="myTabContent">
                                 <div class="tab-pane fade show active" id="home" role="tabpanel"
                                     aria-labelledby="home-tab">
@@ -444,30 +405,22 @@
                                                                     class="featureBlock__eqn__price">{{ $kampanye->targetDonasi }}
                                                                     Porsi</span>
                                                             </div>
-                                                            {{-- <div class="featureBlock__eqn__block">
-                                                                <span class="featureBlock__eqn__title">Raised</span>
-                                                                <span class="featureBlock__eqn__price"></span>
-                                                            </div>
-                                                            <div class="featureBlock__eqn__block">
-                                                                <span class="featureBlock__eqn__title">to go</span>
-                                                                <span class="featureBlock__eqn__price"></span>
-                                                            </div> --}}
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         @endforeach
 
-                                        @if (isset($search))
+                                        @if (isset($cari))
                                             <div class="row">
                                                 <div class="col-12">
                                                     <div class="paginationBlock">
                                                         <nav aria-label="Page navigation example">
                                                             <ul class="pagination justify-content-center">
-                                                                @if ($semuaKampanye->appends(['search' => $search])->previousPageUrl())
+                                                                @if ($semuaKampanye->appends(['cari' => $cari])->previousPageUrl())
                                                                     <li class="page-item page-item--prev">
                                                                         <a class="page-link"
-                                                                            href="{{ $semuaKampanye->appends(['search' => $search])->previousPageUrl() }}"
+                                                                            href="{{ $semuaKampanye->appends(['cari' => $cari])->previousPageUrl() }}"
                                                                             tabindex="-1" aria-disabled="false">
                                                                             <i class="fa-solid fa-angle-left"></i>
                                                                         </a>
@@ -483,9 +436,9 @@
 
                                                                 <div class="paginationBlock__number">
                                                                     <ul>
-                                                                        @foreach ($semuaKampanye->appends(['search' => $search])->links()->elements[0] as $page => $url)
+                                                                        @foreach ($semuaKampanye->appends(['cari' => $cari])->links()->elements[0] as $page => $url)
                                                                             <li
-                                                                                class="page-item {{ $semuaKampanye->appends(['search' => $search])->currentPage() == $page ? 'active' : '' }}">
+                                                                                class="page-item {{ $semuaKampanye->appends(['cari' => $cari])->currentPage() == $page ? 'active' : '' }}">
                                                                                 <a class="page-link"
                                                                                     href="{{ $url }}">{{ $page }}</a>
                                                                             </li>
@@ -493,10 +446,10 @@
                                                                     </ul>
                                                                 </div>
 
-                                                                @if ($semuaKampanye->appends(['search' => $search])->nextPageUrl())
+                                                                @if ($semuaKampanye->appends(['cari' => $cari])->nextPageUrl())
                                                                     <li class="page-item page-item--next">
                                                                         <a class="page-link"
-                                                                            href="{{ $semuaKampanye->appends(['search' => $search])->nextPageUrl() }}">
+                                                                            href="{{ $semuaKampanye->appends(['cari' => $cari])->nextPageUrl() }}">
                                                                             <i class="fa-solid fa-angle-right"></i>
                                                                         </a>
                                                                     </li>

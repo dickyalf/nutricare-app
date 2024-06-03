@@ -8,27 +8,54 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Midtrans\Config;
 use Midtrans\Snap;
+use Illuminate\View\View;
 
 class KontrollerKampanye extends Controller
 {
+    /**
+     * mintaSemuaKampanye
+     *
+     * @return void
+     * @return view donation-listing
+     */
     public function mintaSemuaKampanye()
     {
+        /** 
+         * mintaSemuaKampanye
+         *
+         * Fungsi ini mengambil semua kampanye yang ada dalam database
+         * dan mengembalikan hasilnya dalam bentuk paginasi.
+         */
         $semuaKampanye = Kampanye::paginate(9);
         return view('donation-listing', [
             'semuaKampanye' => $semuaKampanye
         ]);
     }
 
+    /**
+     * cariKampanye
+     *
+     * @param  mixed $request
+     * @return view donation-listing
+     */
     public function cariKampanye(Request $request)
     {
-        $search = $request->input("search"); // Retrieve the search input
+        /** 
+         * cariKampanye
+         *
+         * Fungsi ini menangani fitur pencarian untuk kampanye.
+         * Fungsi ini menerima sebuah request yang berisi istilah pencarian,
+         * melakukan query pada model 'Kampanye' untuk menemukan kampanye
+         * dengan nama yang sesuai dengan istilah pencarian, dan mengembalikan
+         * hasil pencarian dalam bentuk paginasi.
+         */
+        $cari = $request->input('cari');
 
-        // Query to search in 'nama' and 'deskripsi' columns
-        $results = Kampanye::where('nama', 'like', '%' . $search . '%')->paginate(9);
+        $semuaKampanye = Kampanye::where('nama', 'like', '%' . $cari . '%')->paginate(9);
 
         return view('donation-listing', [
-            'semuaKampanye' => $results,
-            'search' => $search
+            'semuaKampanye' => $semuaKampanye,
+            'cari' => $cari
         ]);
     }
 

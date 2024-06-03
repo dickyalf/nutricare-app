@@ -23,7 +23,5 @@ class DatabaseSeeder extends Seeder
             FotoDonasiSeeder::class,
             BuktiDonasiSeeder::class
         ]);
-
-
     }
 }

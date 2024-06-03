@@ -8,9 +8,10 @@ Route::get("/", function () {
 });
 
 Route::get('/donation', [KontrollerKampanye::class, 'mintaSemuaKampanye'])->name('donation');
-Route::get('/search', [KontrollerKampanye::class, 'cariKampanye'])->name('search');
+// Route::get('/search', [KontrollerKampanye::class, 'cariKampanye'])->name('search');
 Route::post('/konfirmasi-donasi', [KontrollerKampanye::class, 'konfirmasiDonasi']);
 Route::post('/buat-transaksi', [KontrollerKampanye::class, 'buatTransaksi']);
+Route::get('/cariKampanye', [KontrollerKampanye::class, 'cariKampanye'])->name('cariKampanye');
 
 
 Route::get("/donation-detail/{kampanye:slug}", [
