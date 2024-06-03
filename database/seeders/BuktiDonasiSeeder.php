@@ -13,6 +13,6 @@ class BuktiDonasiSeeder extends Seeder
      */
     public function run(): void
     {
-        BuktiDonasi::factory(50)->create();
+
     }
 }

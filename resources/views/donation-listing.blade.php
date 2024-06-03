@@ -1,5 +1,5 @@
 @extends('layouts/app')
-@section('title', 'Donation List')
+@section('title', 'NutriCare - List Donasi')
 
 @section('body')
     <!-- Preloader -->
@@ -8,7 +8,7 @@
             <div class="round_spinner">
                 <div class="spinner"></div>
                 <div class="text">
-                    <img src="image/logos/logo_1.svg" alt="Gainioz">
+                    <img src="{{ asset('image/logos/nutricare.png') }}" alt="Gainioz">
                 </div>
             </div>
             <h2 class="head">DO GOOD FOR OTHERS</h2>
@@ -29,7 +29,7 @@
                                 <!-- logo start -->
                                 <div class="header__logo">
                                     <a href="/" class="header__logo__link">
-                                        <img src="image/logos/logo_1.svg" alt="Gainioz" class="header__logo__image">
+                                        <img src="{{ asset('image/logos/nutricare.png') }}" alt="Gainioz" class="header__logo__image">
                                     </a>
                                 </div>
                                 <!-- logo end -->
@@ -114,7 +114,7 @@
         <div class="header header--mobile cc-header-menu mean-container position-relative" id="meanmenu">
             <div class="mean-bar headerBurgerMenu">
                 <a href="/">
-                    <img class="mean-bar__logo" alt="Techkit" src="image/logos/logo_1.svg" />
+                    <img class="mean-bar__logo" alt="Techkit" src="{{ asset('image/logos/nutricare.png') }}" />
                 </a>
                 <!-- Header Right Buttons Search Cart -->
                 <div class="header__right">
@@ -164,7 +164,7 @@
         <div class="cc cc--slideNav">
             <div class="cc__logo mb-40">
                 <a href="/">
-                    <img class="mean-bar__logo" alt="Techkit" src="image/logos/logo_1.svg" />
+                    <img class="mean-bar__logo" alt="Techkit" src="{{ asset('image/logos/nutricare.png') }}" />
                 </a>
             </div>
             <div class="offscreen-navigation mb-40">
@@ -175,13 +175,13 @@
                             <a class="animation" href="/">Home</a>
                         </li>
                         <!-- <li class="list menu-item-has-children">
-                                                                                        <a href="vertical-slider.html">Home Dummy</a>
-                                                                                        <ul class="main-menu__dropdown sub-menu">
-                                                                                            <li><a href="single-post1.html">Home Demo 1</a></li>
-                                                                                            <li><a href="single-post2.html">Home Demo 2</a></li>
-                                                                                            <li><a href="single-post3.html">Home Demo 3</a></li>
-                                                                                        </ul>
-                                                                                    </li> -->
+                                                                                                    <a href="vertical-slider.html">Home Dummy</a>
+                                                                                                    <ul class="main-menu__dropdown sub-menu">
+                                                                                                        <li><a href="single-post1.html">Home Demo 1</a></li>
+                                                                                                        <li><a href="single-post2.html">Home Demo 2</a></li>
+                                                                                                        <li><a href="single-post3.html">Home Demo 3</a></li>
+                                                                                                    </ul>
+                                                                                                </li> -->
                         </li>
                         <li class="list menu-item-parent">
                             <a class="animation" href="#">About</a>
@@ -347,60 +347,100 @@
                                 <div class="tab-pane fade show active" id="home" role="tabpanel"
                                     aria-labelledby="home-tab">
                                     <div class="row gx-3">
+                                    @if (!$semuaKampanye->count())
+                                    <div class="alert alert-warning text-center" role="alert">
+                                        <h4 class="alert-heading">Kampanye tidak ditemukan</h4>
+                                        <p>Maaf, kami tidak dapat menemukan kampanye yang Anda cari. Coba lagi nanti atau jelajahi kampanye lain yang tersedia.</p>
+                                        <hr>
+                                        <p class="mb-0">Terima kasih telah menggunakan platform kami.</p>
+                                    </div>
+                                    @else
+                                    @foreach ($semuaKampanye as $kampanye)
+                                        <div class="col-lg-4 col-sm-6 mb-35">
+                                            <div class="featureBlock featureBlock--active">
+                                                <div class="featureBlock__wrap">
+                                                    <figure class="featureBlock__thumb">
+                                                        <a class="featureBlock__thumb__link"
+                                                            href="{{ route('donation-detail', $kampanye->slug) }}">
+                                                            <img src="{{ $kampanye->gambar }}"
+                                                                alt="Gainioz Featured Thumb">
+                                                        </a>
+                                                        <a class="featureBlock__hashLink"
+                                                            href="donation-details.html">
+                                                            <span
+                                                                class="featureBlock__hashLink__text">{{ $kampanye->lokasi }}</span>
+                                                        </a>
+                                                    </figure>
+                                                    <div class="featureBlock__content">
+                                                        <h3 class="featureBlock__heading">
+                                                            <a class="featureBlock__heading__link"
+                                                                href="{{ route('donation-detail', $kampanye->slug) }}">
+                                                                {{ $kampanye->nama }}
+                                                            </a>
+                                                        </h3>
+                                                        <p class="featureBlock__text">
+                                                            {{ $kampanye->deskripsi }}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                @php
+                                                    //inisialisasi variabel
+                                                    $uangTerkumpul = 0;
+                                                    $uangKurang = 0;
+                                                    $persentaseProgress = 0;
+                                                    $transaksiList = $kampanye->transaksi;
 
-                                        @foreach ($semuaKampanye as $kampanye)
-                                            <div class="col-lg-4 col-sm-6 mb-35">
-                                                <div class="featureBlock featureBlock--active">
-                                                    <div class="featureBlock__wrap">
-                                                        <figure class="featureBlock__thumb">
-                                                            <a class="featureBlock__thumb__link"
-                                                                href="{{ route('donation-detail',$kampanye->slug) }}">
-                                                                <img src="{{ $kampanye->gambar }}"
-                                                                    alt="Gainioz Featured Thumb">
-                                                            </a>
-                                                            <a class="featureBlock__hashLink"
-                                                                href="donation-details.html">
-                                                                <span
-                                                                    class="featureBlock__hashLink__text">{{ $kampanye->lokasi }}</span>
-                                                            </a>
-                                                        </figure>
-                                                        <div class="featureBlock__content">
-                                                            <h3 class="featureBlock__heading">
-                                                                <a class="featureBlock__heading__link"
-                                                                    href="{{ route('donation-detail',$kampanye->slug) }}">
-                                                                    {{ $kampanye->nama }}
-                                                                </a>
-                                                            </h3>
-                                                            <p class="featureBlock__text">
-                                                                {{ $kampanye->deskripsi }}
-                                                            </p>
+                                                    // menjumlahkan semua total donasi dari tiap transaksi kedalam satu variabel untuk di display
+                                                    foreach ($transaksiList as $transaksi) {
+                                                        $uangTerkumpul += $transaksi->totalDonasi;
+                                                    }
+
+                                                    $uangKurang = $kampanye->targetDonasi - $uangTerkumpul;
+
+                                                    if ($uangKurang < 0) {
+                                                        $uangKurang = 0;
+                                                    }
+
+                                                    $persentaseProgress = $uangTerkumpul / $kampanye->targetDonasi;
+                                                    $persentaseProgress = number_format($persentaseProgress * 100);
+                                                @endphp
+                                                <div class="featureBlock__donation">
+                                                    <div class="featureBlock__donation__progress">
+                                                        <div class="featureBlock__donation__bar">
+                                                            <span class="featureBlock__donation__text skill-bar"
+                                                                data-width="{{ $persentaseProgress }}%"
+                                                                style="width: {{ $persentaseProgress }}%;">{{ $persentaseProgress }}%</span>
+                                                            <div class="featureBlock__donation__line">
+                                                                <span class="skill-bars">
+                                                                    <span class="skill-bars__line skill-bar"
+                                                                        data-width="{{ $persentaseProgress }}%"
+                                                                        style="width: {{ $persentaseProgress }}%;"></span>
+                                                                </span>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                    <div class="featureBlock__donation">
-                                                        <div class="featureBlock__donation__progress">
-                                                            <div class="featureBlock__donation__bar">
-                                                                <span class="featureBlock__donation__text skill-bar"
-                                                                    data-width="85%">85%</span>
-                                                                <div class="featureBlock__donation__line">
-                                                                    <span class="skill-bars">
-                                                                        <span class="skill-bars__line skill-bar"
-                                                                            data-width="85%"></span>
-                                                                    </span>
-                                                                </div>
-                                                            </div>
+                                                    <div class="featureBlock__eqn">
+                                                        <div class="featureBlock__eqn__block">
+                                                            <span class="featureBlock__eqn__title">our goal</span>
+                                                            <span
+                                                                class="featureBlock__eqn__price">Rp{{ number_format($kampanye->targetDonasi) }}</span>
                                                         </div>
-                                                        <div class="featureBlock__eqn">
-                                                            <div class="featureBlock__eqn__block">
-                                                                <span class="featureBlock__eqn__title">our goal</span>
-                                                                <span
-                                                                    class="featureBlock__eqn__price">{{ $kampanye->targetDonasi }}
-                                                                    Porsi</span>
-                                                            </div>
+                                                        <div class="featureBlock__eqn__block">
+                                                            <span class="featureBlock__eqn__title">Raised</span>
+                                                            <span
+                                                                class="featureBlock__eqn__price">Rp{{ number_format($uangTerkumpul) }}</span>
+                                                        </div>
+                                                        <div class="featureBlock__eqn__block">
+                                                            <span class="featureBlock__eqn__title">to go</span>
+                                                            <span
+                                                                class="featureBlock__eqn__price">Rp{{ number_format($uangKurang) }}</span>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        @endforeach
+                                        </div>
+                                    @endforeach
+                                    @endif
 
                                         @if (isset($cari))
                                             <div class="row">
