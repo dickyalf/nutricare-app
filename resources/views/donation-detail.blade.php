@@ -38,28 +38,11 @@
                                 <div class="header__menu">
                                     <nav class="mainMenu">
                                         <ul>
-                                            <li class="dropdown"><a href="index.html">Home</a>
-                                                <ul class="dropdown_menu dropdown_menu-2">
-                                                    <li class="dropdown_item-1"><a href="index.html">Home 1</a></li>
-                                                    <li class="dropdown_item-2"><a href="index-2.html">Home 2</a></li>
-                                                    <li class="dropdown_item-3"><a href="index-3.html">Home 3</a></li>
-                                                    <li class="dropdown_item-4"><a href="index-4.html">Home 4</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="about.html">About</a></li>
-                                            <li><a href="donation-listing.html">Donations</a></li>
-                                            <li><a href="blog.html">Blog</a></li>
-                                            <li class="dropdown"><a href="index.html">Pages</a>
-                                                <ul class="dropdown_menu dropdown_menu-2">
-                                                    <li class="dropdown_item-1"><a href="events.html">Events</a></li>
-                                                    <li class="dropdown_item-2"><a href="faq.html">FAQ`s</a></li>
-                                                    <li class="dropdown_item-3"><a href="products.html">Shop</a></li>
-                                                    <li class="dropdown_item-4"><a href="service.html">Services</a></li>
-                                                    <li class="dropdown_item-5"><a href="volunteers.html">Volunteers</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="contact.html">Contacts</a></li>
+                                            <li><a href="/">Home</a></li>
+                                            <li><a href="#">Tentang</a></li>
+                                            <li><a href="{{ route('donation') }}">Donasi</a></li>
+                                            <li><a href="#">Blog</a></li>
+                                            <li><a href="#">Kontak</a></li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -330,17 +313,17 @@
                     <img src="{{ asset('image/shapes/pagebreadcumbShapeTop.svg') }}" alt="Gainioz">
                 </div>
                 <div class="sectionShape sectionShape--bottom">
-                    <img src="{{ asset('image/shapes/pagebreadcumbShapeBottom.svg') }}" alt="Gainioz">
+                    <img src="{{ asset('image/about/99.jpg') }}" alt="Gainioz">
                 </div>
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
                             <div class="pageTitle text-center">
-                                <h2 class="pageTitle__heading text-white text-uppercase mb-25">Donation Details</h2>
+                                <h2 class="pageTitle__heading text-white text-uppercase mb-25">Detail Donasi</h2>
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="/">Home</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">Donation Details</li>
+                                        <li class="breadcrumb-item active" aria-current="page">Detail Donasi</li>
                                     </ol>
                                 </nav>
                             </div>
@@ -400,38 +383,13 @@
                                     </div>
                                     <div class="donationDetails__warning">
                                         <p>
-                                            <svg width="24" height="22" viewBox="0 0 24 22" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                                    d="M23.8236 19.6887L12.7561 0.966058C12.6007 0.698209 12.3114 0.5 12.0007 0.5C11.6847 0.5 11.3954 0.698209 11.2454 0.966058L0.177863 19.6887C0.0278673 19.9566 -0.0792725 20.3851 0.0760802 20.6476C0.231433 20.9101 0.515353 21.0708 0.826059 21.0708H23.1701C23.4808 21.0708 23.7647 20.9101 23.92 20.6476C24.0807 20.3851 23.9736 19.9512 23.8236 19.6887ZM13.715 18.4995H10.2865V15.9281H13.715V18.4995ZM13.715 14.2139H10.2865V6.49983H13.715V14.2139Z"
-                                                    fill="black" />
-                                            </svg>
-                                            <span>Notice:</span> Test mode is enabled. While in test mode no live donations are
-                                            processed.
+                                            <span
+                                                    class="featureBlock__eqn__price">Harga per porsi : Rp.{{ number_format($dataDetilKampanye->makanan->harga) }}</span>
                                         </p>
                                     </div>
                                     <!-- gunakan livewire untuk mendapatkan estimasi harga total donasi secara langsung -->
                                     @livewire('input-porsi', ['makanan' => $dataDetilKampanye->makanan])
-                                    <div class="donationDetails__cross mb-45">
-                                        <p>
-                                            <svg width="21" height="21" viewBox="0 0 21 21" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <mask id="mask0_1265_247" style="mask-type:alpha" maskUnits="userSpaceOnUse"
-                                                    x="0" y="0" width="21" height="21">
-                                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                                        d="M10.5 0C4.70156 0 0 4.70156 0 10.5C0 16.2984 4.70156 21 10.5 21C16.2984 21 21 16.2984 21 10.5C21 4.70156 16.2984 0 10.5 0ZM15.5766 14.0391C15.6469 14.1094 15.6844 14.2031 15.6844 14.3016C15.6844 14.4 15.6469 14.4984 15.5766 14.5641L14.5641 15.5812C14.4891 15.6562 14.3953 15.6891 14.3016 15.6891C14.2078 15.6891 14.1094 15.6516 14.0391 15.5812L10.5 12.0375L6.96562 15.5859C6.89531 15.6609 6.79687 15.6937 6.70312 15.6937C6.60937 15.6937 6.51093 15.6562 6.44062 15.5859L5.42812 14.5687C5.35781 14.4984 5.32031 14.4047 5.32031 14.3062C5.32031 14.2078 5.35781 14.1094 5.42812 14.0437L8.97656 10.4812L5.41874 6.96562C5.27343 6.82031 5.27343 6.58124 5.41874 6.43593L6.43124 5.41874C6.50156 5.34843 6.59531 5.31093 6.69374 5.31093C6.79218 5.31093 6.88593 5.34843 6.95624 5.41874L10.5047 8.92031L14.0531 5.41874C14.1234 5.34843 14.2172 5.31093 14.3156 5.31093C14.4141 5.31093 14.5078 5.34843 14.5781 5.41874L15.5906 6.43593C15.7359 6.58124 15.7359 6.82031 15.5906 6.96562L12.0328 10.4812L15.5766 14.0391Z"
-                                                        fill="white" />
-                                                </mask>
-                                                <g mask="url(#mask0_1265_247)">
-                                                    <rect width="21" height="21" rx="10.5" fill="#F05359" />
-                                                </g>
-                                            </svg>
-                                            We're unable to recognize your session. Please refresh the screen to try again;
-                                            otherwise contact your
-                                            website
-                                            administrator for assistance.
-                                        </p>
-                                    </div>
+                                    
                                     <h4 class="donationDetails__heading mb-25">{{ $dataDetilKampanye->makanan->nama }}</h4>
                                     <p class="donationDetails__text mb-30">{{ $dataDetilKampanye->makanan->deskripsi }}</p>
                                     <h4 class="donationDetails__heading mb-25">Our challenge & Goal</h4>
@@ -477,7 +435,7 @@
                                         <input type="hidden" id="kampanye-id" class="sidebarContacts__input" value="{{$dataDetilKampanye->id}}">
                                         <p>or Login <a href="">here</a></p>
                                         <button id="pay-button" class="btn btn--styleOne btn--secondary it-btn">
-                                            <span  class="btn__text">donate now</span>
+                                            <span  class="btn__text">Donasi Sekarang</span>
                                             <i class="fa-solid fa-heart btn__icon"></i>
                                             <span class="it-btn__inner">
                                                 <span class="it-btn__blobs">

@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use App\Models\Transaksi;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class TransaksiSeeder extends Seeder
 {
@@ -13,6 +15,14 @@ class TransaksiSeeder extends Seeder
      */
     public function run(): void
     {
-        Transaksi::factory(50)->create();
+        for ($i = 1; $i <= 5; $i++) {
+            DB::table('transaksi')->insert([
+                'pengguna_id' => $i,
+                'kampanye_id' => $i,
+                'tanggal_transaksi' => Carbon::now()->subDays($i),
+                'jumlahMakanan' => rand(1, 10),
+                'totalDonasi' => rand(10000, 50000)
+            ]);
+        }
     }
 }

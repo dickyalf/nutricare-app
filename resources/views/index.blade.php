@@ -39,19 +39,10 @@
                 <nav class="mainMenu">
                   <ul>
                     <li><a href="/">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="{{ route('donation') }}">Donations</a></li>
+                    <li><a href="#">Tentang</a></li>
+                    <li><a href="{{ route('donation') }}">Donasi</a></li>
                     <li><a href="#">Blog</a></li>
-                    <li class="dropdown"><a href="#">Pages</a>
-                      <ul class="dropdown_menu dropdown_menu-2">
-                        <li class="dropdown_item-1"><a href="#">Events</a></li>
-                        <li class="dropdown_item-2"><a href="#">FAQ`s</a></li>
-                        <li class="dropdown_item-3"><a href="#">Shop</a></li>
-                        <li class="dropdown_item-4"><a href="#">Services</a></li>
-                        <li class="dropdown_item-5"><a href="#">Volunteers</a></li>
-                      </ul>
-                    </li>
-                    <li><a href="#">Contacts</a></li>
+                    <li><a href="#">Kontak</a></li>
                   </ul>
                 </nav>
               </div>
@@ -164,32 +155,16 @@
               <a class="animation" href="/">Home</a>
             </li>
             <li class="list menu-item-parent">
-              <a class="animation" href="#">About</a>
+              <a class="animation" href="#">Tentang</a>
             </li>
             <li class="list menu-item-parent">
-              <a class="animation" href="{{ route('donation') }}">Donations</a>
+              <a class="animation" href="{{ route('donation') }}">Donasi</a>
             </li>
             <li class="list menu-item-parent">
               <a class="animation" href="#">Blog</a>
             </li>
-            <li class="list menu-item-parent menu-item-has-children">
-              <a class="animation" href="#">Pages</a>
-              <ul class="main-menu__dropdown sub-menu">
-                <li><a href="#">Events</a></li>
-                <li>
-                  <a href="#">Faq</a>
-                </li>
-                <li><a href="#">Shop</a></li>
-                <li>
-                  <a href="#">Service</a>
-                </li>
-                <li>
-                  <a href="#">Volunteers</a>
-                </li>
-              </ul>
-            </li>
             <li class="list menu-item-parent">
-              <a class="animation" href="#">Contacts</a>
+              <a class="animation" href="#">Kontak</a>
             </li>
           </ul>
         </nav>
@@ -290,8 +265,8 @@
           </div>
           <div class="col-xl-6 mb-30">
             <figure class="hero__figure wow animate__zoomIn animate__animated" data-wow-duration="1200ms" data-wow-delay="600ms">
-              <img src="image/man/man1.jpg" alt="Gainioz Man" class="hero__figure__thumbs">
-              <img class="hero__figure__overlay" src="image/shapes/shapes3.svg" alt="Gainioz">
+              <img src="image/about/kasian.jpg" alt="Gainioz Man" class="hero__figure__thumbs" style="width: 100%; height: auto;">
+
             </figure>
           </div>
         </div>
@@ -306,7 +281,7 @@
       <div class="aboutArea aboutArea--padding position-relative">
         <img class="mask-aboutBack wow animate__fadeInLeft animate__animated" data-wow-duration="1200ms" data-wow-delay="300ms" src="image/shapes/mask-shape3.svg" alt="Gainioz Shape">
         <div class="mask mask--about wow animate__fadeInLeft animate__animated" data-wow-duration="1200ms" data-wow-delay="200ms">
-          <img src="{{ asset('image/girls/girls1.jpg')}}" alt="Gainioz Shape" class="mask__thumb">
+          <img src="{{ asset('image/about/kasian2.jpg')}}" alt="Gainioz Shape" class="mask__thumb">
           <img class="mask__overlay" src="image/shapes/mask-shape2.svg" alt="Gainioz Shape">
         </div>
         <div class="container">
@@ -334,7 +309,7 @@
                 </p>
                 <span class="aboutContent__quote">join our Action and everyone can help</span>
                 <a class="btn btn--styleOne btn--secondary it-btn" href="{{ route('donation') }}">
-                  <span class="btn__text">donate now</span>
+                  <span class="btn__text">Donasi Sekarang</span>
                   <i class="fa-solid fa-heart btn__icon"></i>
                   <span class="it-btn__inner">
                   <span class="it-btn__blobs">
@@ -363,7 +338,7 @@
       </div>
       <div class="featureArea pt-70">
         <div class="featureArea__map">
-          <img src="image/shapes/map.png" alt="Gainioz Map">
+          <img src="image/about/kasian2.jpg" alt="Gainioz Map">
         </div>
         <div class="container">
           <div class="row">

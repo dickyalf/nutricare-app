@@ -38,19 +38,10 @@
                                     <nav class="mainMenu">
                                         <ul>
                                             <li><a href="/">Home</a></li>
-                                            <li><a href="#">About</a></li>
-                                            <li><a href="{{ route('donation') }}">Donations</a></li>
+                                            <li><a href="#">Tentang</a></li>
+                                            <li><a href="{{ route('donation') }}">Donasi</a></li>
                                             <li><a href="#">Blog</a></li>
-                                            <li class="dropdown"><a href="#">Pages</a>
-                                                <ul class="dropdown_menu dropdown_menu-2">
-                                                    <li class="dropdown_item-1"><a href="#">Events</a></li>
-                                                    <li class="dropdown_item-2"><a href="#">FAQ`s</a></li>
-                                                    <li class="dropdown_item-3"><a href="#">Shop</a></li>
-                                                    <li class="dropdown_item-4"><a href="#">Services</a></li>
-                                                    <li class="dropdown_item-5"><a href="#">Volunteers</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="#">Contacts</a></li>
+                                            <li><a href="#">Kontak</a></li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -84,7 +75,7 @@
                                     </div>
                                     <div class="header__button">
                                         <a class="btn btn--styleOne btn--secondary it-btn" href="{{ route('donation') }}">
-                                            <span class="btn__text">donate now</span>
+                                            <span class="btn__text">Donasi Sekarang</span>
                                             <i class="fa-solid fa-heart btn__icon"></i>
                                             <span class="it-btn__inner">
                                                 <span class="it-btn__blobs">
@@ -314,17 +305,17 @@
                 <img src="image/shapes/pagebreadcumbShapeTop.svg" alt="Gainioz">
             </div>
             <div class="sectionShape sectionShape--bottom">
-                <img src="image/shapes/pagebreadcumbShapeBottom.svg" alt="Gainioz">
+                <img src="image/about/99.jpg" alt="Gainioz">
             </div>
             <div class="container">
                 <div class="row">
                     <div class="col-12">
                         <div class="pageTitle text-center">
-                            <h2 class="pageTitle__heading text-white text-uppercase mb-25">Donation Listing</h2>
+                            <h2 class="pageTitle__heading text-white text-uppercase mb-25">Donasi</h2>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="/">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Donation</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Donasi</li>
                                 </ol>
                             </nav>
                         </div>
@@ -342,9 +333,9 @@
                         <div class="sectionTitle text-center mb-70">
                             <span class="sectionTitle__small justify-content-center">
                                 <i class="fa-solid fa-heart btn__icon"></i>
-                                Donation listing
+                                Daftar Donasi
                             </span>
-                            <h2 class="sectionTitle__big">Introduce Our Campains</h2>
+                            <h2 class="sectionTitle__big">Kampanye Kami</h2>
                         </div>
                         <!-- Section Heading/Title End -->
                     </div>

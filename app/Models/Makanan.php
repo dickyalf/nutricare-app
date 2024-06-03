@@ -11,6 +11,7 @@ class Makanan extends Model
 {
     use HasFactory;
 
+
     protected $table = "makanan";
 
     protected $fillable = ["nama", "harga", "deskripsi"];

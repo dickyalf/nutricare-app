@@ -12,6 +12,20 @@ class Kampanye extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'slug', 
+        'nama', 
+        'gambar', 
+        'tanggal_awal', 
+        'tanggal_akhir', 
+        'deskripsi', 
+        'lokasi', 
+        'targetDonasi', 
+        'status', 
+        'makanan_id'
+    ];
+
+
     protected $table = "kampanye";
 
     public $timestamps = false;
