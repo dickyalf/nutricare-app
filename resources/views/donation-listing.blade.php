@@ -1,5 +1,5 @@
 @extends('layouts/app')
-@section('title', 'NutriCare')
+@section('title', 'Donation List')
 
 @section('body')
     <!-- Preloader -->
@@ -184,13 +184,13 @@
                             <a class="animation" href="/">Home</a>
                         </li>
                         <!-- <li class="list menu-item-has-children">
-                                <a href="vertical-slider.html">Home Dummy</a>
-                                <ul class="main-menu__dropdown sub-menu">
-                                    <li><a href="single-post1.html">Home Demo 1</a></li>
-                                    <li><a href="single-post2.html">Home Demo 2</a></li>
-                                    <li><a href="single-post3.html">Home Demo 3</a></li>
-                                </ul>
-                            </li> -->
+                                                                    <a href="vertical-slider.html">Home Dummy</a>
+                                                                    <ul class="main-menu__dropdown sub-menu">
+                                                                        <li><a href="single-post1.html">Home Demo 1</a></li>
+                                                                        <li><a href="single-post2.html">Home Demo 2</a></li>
+                                                                        <li><a href="single-post3.html">Home Demo 3</a></li>
+                                                                    </ul>
+                                                                </li> -->
                         </li>
                         <li class="list menu-item-parent">
                             <a class="animation" href="#">About</a>
@@ -282,7 +282,7 @@
         <section class="pageBreadcumb pageBreadcumb--style1 position-relative"
             data-bg-image="image/bg/pageBreadcumbBg1.jpg">
             <div class="pageBreadcumbTopDown">
-                <a class="btn btn--styleOne btn--icon btn--icon2 it-btn" href="{{ route('donation') }}">
+                <a class="btn btn--styleOne btn--icon btn--icon2 it-btn" href="#donationScroll">
                     <svg class="btn__icon" width="10" height="14" viewBox="0 0 10 14" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -334,7 +334,7 @@
         </section>
         <!-- Page Breadcumb End -->
         <!-- About Feature -->
-        <div class="about position-relative pt-125 pb-130">
+        <div id="donationScroll" class="about position-relative pt-125 pb-130">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
@@ -344,7 +344,7 @@
                                 <i class="fa-solid fa-heart btn__icon"></i>
                                 Donation listing
                             </span>
-                            <h2 class="sectionTitle__big">Introduse Our Campains</h2>
+                            <h2 class="sectionTitle__big">Introduce Our Campains</h2>
                         </div>
                         <!-- Section Heading/Title End -->
                     </div>
@@ -402,25 +402,25 @@
                                                     <div class="featureBlock__wrap">
                                                         <figure class="featureBlock__thumb">
                                                             <a class="featureBlock__thumb__link"
-                                                                href="donation-details.html">
-                                                                <img src="image/featured/featuredThumb4.jpg"
+                                                                href="{{ route('donation-detail',$kampanye->slug) }}">
+                                                                <img src="{{ $kampanye->gambar }}"
                                                                     alt="Gainioz Featured Thumb">
                                                             </a>
                                                             <a class="featureBlock__hashLink"
                                                                 href="donation-details.html">
-                                                                <span class="featureBlock__hashLink__text">#Life</span>
+                                                                <span
+                                                                    class="featureBlock__hashLink__text">{{ $kampanye->lokasi }}</span>
                                                             </a>
                                                         </figure>
                                                         <div class="featureBlock__content">
                                                             <h3 class="featureBlock__heading">
                                                                 <a class="featureBlock__heading__link"
-                                                                    href="donation-details.html">
-                                                                    You Can Give poor in India...Clean Water & Food
+                                                                    href="{{ route('donation-detail',$kampanye->slug) }}">
+                                                                    {{ $kampanye->nama }}
                                                                 </a>
                                                             </h3>
                                                             <p class="featureBlock__text">
-                                                                We help local nonprofits access the funding, training, and
-                                                                support they need to become more
+                                                                {{ $kampanye->deskripsi }}
                                                             </p>
                                                         </div>
                                                     </div>
@@ -440,1118 +440,142 @@
                                                         <div class="featureBlock__eqn">
                                                             <div class="featureBlock__eqn__block">
                                                                 <span class="featureBlock__eqn__title">our goal</span>
-                                                                <span class="featureBlock__eqn__price">$28.0000</span>
+                                                                <span
+                                                                    class="featureBlock__eqn__price">{{ $kampanye->targetDonasi }}
+                                                                    Porsi</span>
                                                             </div>
-                                                            <div class="featureBlock__eqn__block">
+                                                            {{-- <div class="featureBlock__eqn__block">
                                                                 <span class="featureBlock__eqn__title">Raised</span>
-                                                                <span class="featureBlock__eqn__price">$9,9098</span>
+                                                                <span class="featureBlock__eqn__price"></span>
                                                             </div>
                                                             <div class="featureBlock__eqn__block">
                                                                 <span class="featureBlock__eqn__title">to go</span>
-                                                                <span class="featureBlock__eqn__price">$34,000</span>
-                                                            </div>
+                                                                <span class="featureBlock__eqn__price"></span>
+                                                            </div> --}}
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         @endforeach
 
+                                        @if (isset($search))
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="paginationBlock">
+                                                        <nav aria-label="Page navigation example">
+                                                            <ul class="pagination justify-content-center">
+                                                                @if ($semuaKampanye->appends(['search' => $search])->previousPageUrl())
+                                                                    <li class="page-item page-item--prev">
+                                                                        <a class="page-link"
+                                                                            href="{{ $semuaKampanye->appends(['search' => $search])->previousPageUrl() }}"
+                                                                            tabindex="-1" aria-disabled="false">
+                                                                            <i class="fa-solid fa-angle-left"></i>
+                                                                        </a>
+                                                                    </li>
+                                                                @else
+                                                                    <li class="page-item page-item--prev disabled">
+                                                                        <span class="page-link" tabindex="-1"
+                                                                            aria-disabled="true">
+                                                                            <i class="fa-solid fa-angle-left"></i>
+                                                                        </span>
+                                                                    </li>
+                                                                @endif
+
+                                                                <div class="paginationBlock__number">
+                                                                    <ul>
+                                                                        @foreach ($semuaKampanye->appends(['search' => $search])->links()->elements[0] as $page => $url)
+                                                                            <li
+                                                                                class="page-item {{ $semuaKampanye->appends(['search' => $search])->currentPage() == $page ? 'active' : '' }}">
+                                                                                <a class="page-link"
+                                                                                    href="{{ $url }}">{{ $page }}</a>
+                                                                            </li>
+                                                                        @endforeach
+                                                                    </ul>
+                                                                </div>
+
+                                                                @if ($semuaKampanye->appends(['search' => $search])->nextPageUrl())
+                                                                    <li class="page-item page-item--next">
+                                                                        <a class="page-link"
+                                                                            href="{{ $semuaKampanye->appends(['search' => $search])->nextPageUrl() }}">
+                                                                            <i class="fa-solid fa-angle-right"></i>
+                                                                        </a>
+                                                                    </li>
+                                                                @else
+                                                                    <li class="page-item page-item--next disabled">
+                                                                        <span class="page-link" aria-disabled="true">
+                                                                            <i class="fa-solid fa-angle-right"></i>
+                                                                        </span>
+                                                                    </li>
+                                                                @endif
+                                                            </ul>
+                                                        </nav>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @else
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="paginationBlock">
+                                                        <nav aria-label="Page navigation example">
+                                                            <ul class="pagination justify-content-center">
+                                                                @if ($semuaKampanye->previousPageUrl())
+                                                                    <li class="page-item page-item--prev">
+                                                                        <a class="page-link"
+                                                                            href="{{ $semuaKampanye->previousPageUrl() }}"
+                                                                            tabindex="-1" aria-disabled="false">
+                                                                            <i class="fa-solid fa-angle-left"></i>
+                                                                        </a>
+                                                                    </li>
+                                                                @else
+                                                                    <li class="page-item page-item--prev disabled">
+                                                                        <span class="page-link" tabindex="-1"
+                                                                            aria-disabled="true">
+                                                                            <i class="fa-solid fa-angle-left"></i>
+                                                                        </span>
+                                                                    </li>
+                                                                @endif
+
+                                                                <div class="paginationBlock__number">
+                                                                    <ul>
+                                                                        @foreach ($semuaKampanye->links()->elements[0] as $page => $url)
+                                                                            <li
+                                                                                class="page-item {{ $semuaKampanye->currentPage() == $page ? 'active' : '' }}">
+                                                                                <a class="page-link"
+                                                                                    href="{{ $url }}">{{ $page }}</a>
+                                                                            </li>
+                                                                        @endforeach
+                                                                    </ul>
+                                                                </div>
+
+                                                                @if ($semuaKampanye->nextPageUrl())
+                                                                    <li class="page-item page-item--next">
+                                                                        <a class="page-link"
+                                                                            href="{{ $semuaKampanye->nextPageUrl() }}">
+                                                                            <i class="fa-solid fa-angle-right"></i>
+                                                                        </a>
+                                                                    </li>
+                                                                @else
+                                                                    <li class="page-item page-item--next disabled">
+                                                                        <span class="page-link" aria-disabled="true">
+                                                                            <i class="fa-solid fa-angle-right"></i>
+                                                                        </span>
+                                                                    </li>
+                                                                @endif
+                                                            </ul>
+                                                        </nav>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
 
 
-                                        <div class="col-12">
-                                            <div class="sectionButton text-center pt-15">
-                                                <a class="btn btn--styleOne btn--primary it-btn" href="volunteers.html">
-                                                    <span class="btn__text">see all Volunteers</span>
-                                                    <i class="fa-solid fa-heart btn__icon"></i>
-                                                    <span class="it-btn__inner">
-                                                        <span class="it-btn__blobs">
-                                                            <span class="it-btn__blob"></span>
-                                                            <span class="it-btn__blob"></span>
-                                                            <span class="it-btn__blob"></span>
-                                                            <span class="it-btn__blob"></span>
-                                                        </span>
-                                                    </span>
-                                                    <svg class="it-btn__animation" xmlns="http://www.w3.org/2000/svg"
-                                                        version="1.1">
-                                                        <defs>
-                                                            <filter>
-                                                                <feGaussianBlur in="SourceGraphic" result="blur"
-                                                                    stdDeviation="10"></feGaussianBlur>
-                                                                <feColorMatrix in="blur" mode="matrix"
-                                                                    values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 21 -7"
-                                                                    result="goo">
-                                                                </feColorMatrix>
-                                                                <feBlend in2="goo" in="SourceGraphic"
-                                                                    result="mix"></feBlend>
-                                                            </filter>
-                                                        </defs>
-                                                    </svg>
-                                                </a>
-                                            </div>
-                                        </div>
+
+
+
                                     </div>
                                 </div>
-                                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                    <div class="row gx-3">
-                                        <div class="col-lg-4 col-sm-6 mb-35">
-                                            <div class="featureBlock featureBlock--active">
-                                                <div class="featureBlock__wrap">
-                                                    <figure class="featureBlock__thumb">
-                                                        <a class="featureBlock__thumb__link" href="donation-details.html">
-                                                            <img src="image/featured/featuredThumb4.jpg"
-                                                                alt="Gainioz Featured Thumb">
-                                                        </a>
-                                                        <a class="featureBlock__hashLink" href="donation-details.html">
-                                                            <span class="featureBlock__hashLink__text">#Life</span>
-                                                        </a>
-                                                    </figure>
-                                                    <div class="featureBlock__content">
-                                                        <h3 class="featureBlock__heading">
-                                                            <a class="featureBlock__heading__link"
-                                                                href="donation-details.html">
-                                                                You Can Give poor in India...Clean Water & Food
-                                                            </a>
-                                                        </h3>
-                                                        <p class="featureBlock__text">
-                                                            We help local nonprofits access the funding, training, and
-                                                            support they need to become more
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <div class="featureBlock__donation">
-                                                    <div class="featureBlock__donation__progress">
-                                                        <div class="featureBlock__donation__bar">
-                                                            <span class="featureBlock__donation__text skill-bar"
-                                                                data-width="85%">85%</span>
-                                                            <div class="featureBlock__donation__line">
-                                                                <span class="skill-bars">
-                                                                    <span class="skill-bars__line skill-bar"
-                                                                        data-width="85%"></span>
-                                                                </span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="featureBlock__eqn">
-                                                        <div class="featureBlock__eqn__block">
-                                                            <span class="featureBlock__eqn__title">our goal</span>
-                                                            <span class="featureBlock__eqn__price">$28.0000</span>
-                                                        </div>
-                                                        <div class="featureBlock__eqn__block">
-                                                            <span class="featureBlock__eqn__title">Raised</span>
-                                                            <span class="featureBlock__eqn__price">$9,9098</span>
-                                                        </div>
-                                                        <div class="featureBlock__eqn__block">
-                                                            <span class="featureBlock__eqn__title">to go</span>
-                                                            <span class="featureBlock__eqn__price">$34,000</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-sm-6 mb-35">
-                                            <div class="featureBlock">
-                                                <div class="featureBlock__wrap">
-                                                    <figure class="featureBlock__thumb">
-                                                        <a class="featureBlock__thumb__link" href="donation-details.html">
-                                                            <img src="image/featured/featuredThumb5.jpg"
-                                                                alt="Gainioz Featured Thumb">
-                                                        </a>
-                                                        <a class="featureBlock__hashLink" href="donation-details.html">
-                                                            <span class="featureBlock__hashLink__text">#Life</span>
-                                                        </a>
-                                                    </figure>
-                                                    <div class="featureBlock__content">
-                                                        <h3 class="featureBlock__heading">
-                                                            <a class="featureBlock__heading__link"
-                                                                href="donation-details.html">
-                                                                You Can Give Kids in India Clean Water
-                                                            </a>
-                                                        </h3>
-                                                        <p class="featureBlock__text">
-                                                            We help local nonprofits access the funding, training, and
-                                                            support they need to become more
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <div class="featureBlock__donation">
-                                                    <div class="featureBlock__donation__progress">
-                                                        <div class="featureBlock__donation__bar">
-                                                            <span class="featureBlock__donation__text skill-bar"
-                                                                data-width="85%">85%</span>
-                                                            <div class="featureBlock__donation__line">
-                                                                <span class="skill-bars">
-                                                                    <span class="skill-bars__line skill-bar"
-                                                                        data-width="85%"></span>
-                                                                </span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="featureBlock__eqn">
-                                                        <div class="featureBlock__eqn__block">
-                                                            <span class="featureBlock__eqn__title">our goal</span>
-                                                            <span class="featureBlock__eqn__price">$28.0000</span>
-                                                        </div>
-                                                        <div class="featureBlock__eqn__block">
-                                                            <span class="featureBlock__eqn__title">Raised</span>
-                                                            <span class="featureBlock__eqn__price">$9,9098</span>
-                                                        </div>
-                                                        <div class="featureBlock__eqn__block">
-                                                            <span class="featureBlock__eqn__title">to go</span>
-                                                            <span class="featureBlock__eqn__price">$34,000</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-sm-6 mb-35">
-                                            <div class="featureBlock">
-                                                <div class="featureBlock__wrap">
-                                                    <figure class="featureBlock__thumb">
-                                                        <a class="featureBlock__thumb__link" href="donation-details.html">
-                                                            <img src="image/featured/featuredThumb6.jpg"
-                                                                alt="Gainioz Featured Thumb">
-                                                        </a>
-                                                        <a class="featureBlock__hashLink" href="donation-details.html">
-                                                            <span class="featureBlock__hashLink__text">#Life</span>
-                                                        </a>
-                                                    </figure>
-                                                    <div class="featureBlock__content">
-                                                        <h3 class="featureBlock__heading">
-                                                            <a class="featureBlock__heading__link"
-                                                                href="donation-details.html">
-                                                                Lifeskills for Children in South Africa
-                                                            </a>
-                                                        </h3>
-                                                        <p class="featureBlock__text">
-                                                            We help local nonprofits access the funding, training, and
-                                                            support they need to become more
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <div class="featureBlock__donation">
-                                                    <div class="featureBlock__donation__progress">
-                                                        <div class="featureBlock__donation__bar">
-                                                            <span class="featureBlock__donation__text skill-bar"
-                                                                data-width="85%">85%</span>
-                                                            <div class="featureBlock__donation__line">
-                                                                <span class="skill-bars">
-                                                                    <span class="skill-bars__line skill-bar"
-                                                                        data-width="85%"></span>
-                                                                </span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="featureBlock__eqn">
-                                                        <div class="featureBlock__eqn__block">
-                                                            <span class="featureBlock__eqn__title">our goal</span>
-                                                            <span class="featureBlock__eqn__price">$28.0000</span>
-                                                        </div>
-                                                        <div class="featureBlock__eqn__block">
-                                                            <span class="featureBlock__eqn__title">Raised</span>
-                                                            <span class="featureBlock__eqn__price">$9,9098</span>
-                                                        </div>
-                                                        <div class="featureBlock__eqn__block">
-                                                            <span class="featureBlock__eqn__title">to go</span>
-                                                            <span class="featureBlock__eqn__price">$34,000</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-sm-6 mb-35">
-                                            <div class="featureBlock">
-                                                <div class="featureBlock__wrap">
-                                                    <figure class="featureBlock__thumb">
-                                                        <a class="featureBlock__thumb__link" href="donation-details.html">
-                                                            <img src="image/featured/featuredThumb7.jpg"
-                                                                alt="Gainioz Featured Thumb">
-                                                        </a>
-                                                        <a class="featureBlock__hashLink" href="donation-details.html">
-                                                            <span class="featureBlock__hashLink__text">#Life</span>
-                                                        </a>
-                                                    </figure>
-                                                    <div class="featureBlock__content">
-                                                        <h3 class="featureBlock__heading">
-                                                            <a class="featureBlock__heading__link"
-                                                                href="donation-details.html">
-                                                                Gift an Education… Make a Life Better!
-                                                            </a>
-                                                        </h3>
-                                                        <p class="featureBlock__text">
-                                                            We help local nonprofits access the funding, training, and
-                                                            support they need to become more
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <div class="featureBlock__donation">
-                                                    <div class="featureBlock__donation__progress">
-                                                        <div class="featureBlock__donation__bar">
-                                                            <span class="featureBlock__donation__text skill-bar"
-                                                                data-width="85%">85%</span>
-                                                            <div class="featureBlock__donation__line">
-                                                                <span class="skill-bars">
-                                                                    <span class="skill-bars__line skill-bar"
-                                                                        data-width="85%"></span>
-                                                                </span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="featureBlock__eqn">
-                                                        <div class="featureBlock__eqn__block">
-                                                            <span class="featureBlock__eqn__title">our goal</span>
-                                                            <span class="featureBlock__eqn__price">$28.0000</span>
-                                                        </div>
-                                                        <div class="featureBlock__eqn__block">
-                                                            <span class="featureBlock__eqn__title">Raised</span>
-                                                            <span class="featureBlock__eqn__price">$9,9098</span>
-                                                        </div>
-                                                        <div class="featureBlock__eqn__block">
-                                                            <span class="featureBlock__eqn__title">to go</span>
-                                                            <span class="featureBlock__eqn__price">$34,000</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-sm-6 mb-35">
-                                            <div class="featureBlock">
-                                                <div class="featureBlock__wrap">
-                                                    <figure class="featureBlock__thumb">
-                                                        <a class="featureBlock__thumb__link" href="donation-details.html">
-                                                            <img src="image/featured/featuredThumb8.jpg"
-                                                                alt="Gainioz Featured Thumb">
-                                                        </a>
-                                                        <a class="featureBlock__hashLink" href="donation-details.html">
-                                                            <span class="featureBlock__hashLink__text">#Life</span>
-                                                        </a>
-                                                    </figure>
-                                                    <div class="featureBlock__content">
-                                                        <h3 class="featureBlock__heading">
-                                                            <a class="featureBlock__heading__link"
-                                                                href="donation-details.html">
-                                                                Let’s Help Children Build a Happy Future
-                                                            </a>
-                                                        </h3>
-                                                        <p class="featureBlock__text">
-                                                            We help local nonprofits access the funding, training, and
-                                                            support they need to become more
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <div class="featureBlock__donation">
-                                                    <div class="featureBlock__donation__progress">
-                                                        <div class="featureBlock__donation__bar">
-                                                            <span class="featureBlock__donation__text skill-bar"
-                                                                data-width="85%">85%</span>
-                                                            <div class="featureBlock__donation__line">
-                                                                <span class="skill-bars">
-                                                                    <span class="skill-bars__line skill-bar"
-                                                                        data-width="85%"></span>
-                                                                </span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="featureBlock__eqn">
-                                                        <div class="featureBlock__eqn__block">
-                                                            <span class="featureBlock__eqn__title">our goal</span>
-                                                            <span class="featureBlock__eqn__price">$28.0000</span>
-                                                        </div>
-                                                        <div class="featureBlock__eqn__block">
-                                                            <span class="featureBlock__eqn__title">Raised</span>
-                                                            <span class="featureBlock__eqn__price">$9,9098</span>
-                                                        </div>
-                                                        <div class="featureBlock__eqn__block">
-                                                            <span class="featureBlock__eqn__title">to go</span>
-                                                            <span class="featureBlock__eqn__price">$34,000</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-sm-6 mb-35">
-                                            <div class="featureBlock">
-                                                <div class="featureBlock__wrap">
-                                                    <figure class="featureBlock__thumb">
-                                                        <a class="featureBlock__thumb__link" href="donation-details.html">
-                                                            <img src="image/featured/featuredThumb9.jpg"
-                                                                alt="Gainioz Featured Thumb">
-                                                        </a>
-                                                        <a class="featureBlock__hashLink" href="donation-details.html">
-                                                            <span class="featureBlock__hashLink__text">#Life</span>
-                                                        </a>
-                                                    </figure>
-                                                    <div class="featureBlock__content">
-                                                        <h3 class="featureBlock__heading">
-                                                            <a class="featureBlock__heading__link"
-                                                                href="donation-details.html">
-                                                                Help These Children Find Their Smiles
-                                                            </a>
-                                                        </h3>
-                                                        <p class="featureBlock__text">
-                                                            We help local nonprofits access the funding, training, and
-                                                            support they need to become more
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <div class="featureBlock__donation">
-                                                    <div class="featureBlock__donation__progress">
-                                                        <div class="featureBlock__donation__bar">
-                                                            <span class="featureBlock__donation__text skill-bar"
-                                                                data-width="85%">85%</span>
-                                                            <div class="featureBlock__donation__line">
-                                                                <span class="skill-bars">
-                                                                    <span class="skill-bars__line skill-bar"
-                                                                        data-width="85%"></span>
-                                                                </span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="featureBlock__eqn">
-                                                        <div class="featureBlock__eqn__block">
-                                                            <span class="featureBlock__eqn__title">our goal</span>
-                                                            <span class="featureBlock__eqn__price">$28.0000</span>
-                                                        </div>
-                                                        <div class="featureBlock__eqn__block">
-                                                            <span class="featureBlock__eqn__title">Raised</span>
-                                                            <span class="featureBlock__eqn__price">$9,9098</span>
-                                                        </div>
-                                                        <div class="featureBlock__eqn__block">
-                                                            <span class="featureBlock__eqn__title">to go</span>
-                                                            <span class="featureBlock__eqn__price">$34,000</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-sm-6 mb-35">
-                                            <div class="featureBlock">
-                                                <div class="featureBlock__wrap">
-                                                    <figure class="featureBlock__thumb">
-                                                        <a class="featureBlock__thumb__link" href="donation-details.html">
-                                                            <img src="image/featured/featuredThumb10.jpg"
-                                                                alt="Gainioz Featured Thumb">
-                                                        </a>
-                                                        <a class="featureBlock__hashLink" href="donation-details.html">
-                                                            <span class="featureBlock__hashLink__text">#Life</span>
-                                                        </a>
-                                                    </figure>
-                                                    <div class="featureBlock__content">
-                                                        <h3 class="featureBlock__heading">
-                                                            <a class="featureBlock__heading__link"
-                                                                href="donation-details.html">
-                                                                Little Help Can Make a Big Difference
-                                                            </a>
-                                                        </h3>
-                                                        <p class="featureBlock__text">
-                                                            We help local nonprofits access the funding, training, and
-                                                            support they need to become more
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <div class="featureBlock__donation">
-                                                    <div class="featureBlock__donation__progress">
-                                                        <div class="featureBlock__donation__bar">
-                                                            <span class="featureBlock__donation__text skill-bar"
-                                                                data-width="85%">85%</span>
-                                                            <div class="featureBlock__donation__line">
-                                                                <span class="skill-bars">
-                                                                    <span class="skill-bars__line skill-bar"
-                                                                        data-width="85%"></span>
-                                                                </span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="featureBlock__eqn">
-                                                        <div class="featureBlock__eqn__block">
-                                                            <span class="featureBlock__eqn__title">our goal</span>
-                                                            <span class="featureBlock__eqn__price">$28.0000</span>
-                                                        </div>
-                                                        <div class="featureBlock__eqn__block">
-                                                            <span class="featureBlock__eqn__title">Raised</span>
-                                                            <span class="featureBlock__eqn__price">$9,9098</span>
-                                                        </div>
-                                                        <div class="featureBlock__eqn__block">
-                                                            <span class="featureBlock__eqn__title">to go</span>
-                                                            <span class="featureBlock__eqn__price">$34,000</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-sm-6 mb-35">
-                                            <div class="featureBlock">
-                                                <div class="featureBlock__wrap">
-                                                    <figure class="featureBlock__thumb">
-                                                        <a class="featureBlock__thumb__link" href="donation-details.html">
-                                                            <img src="image/featured/featuredThumb11.jpg"
-                                                                alt="Gainioz Featured Thumb">
-                                                        </a>
-                                                        <a class="featureBlock__hashLink" href="donation-details.html">
-                                                            <span class="featureBlock__hashLink__text">#Life</span>
-                                                        </a>
-                                                    </figure>
-                                                    <div class="featureBlock__content">
-                                                        <h3 class="featureBlock__heading">
-                                                            <a class="featureBlock__heading__link"
-                                                                href="donation-details.html">
-                                                                Online Donation In The Modern World
-                                                            </a>
-                                                        </h3>
-                                                        <p class="featureBlock__text">
-                                                            We help local nonprofits access the funding, training, and
-                                                            support they need to become more
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <div class="featureBlock__donation">
-                                                    <div class="featureBlock__donation__progress">
-                                                        <div class="featureBlock__donation__bar">
-                                                            <span class="featureBlock__donation__text skill-bar"
-                                                                data-width="85%">85%</span>
-                                                            <div class="featureBlock__donation__line">
-                                                                <span class="skill-bars">
-                                                                    <span class="skill-bars__line skill-bar"
-                                                                        data-width="85%"></span>
-                                                                </span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="featureBlock__eqn">
-                                                        <div class="featureBlock__eqn__block">
-                                                            <span class="featureBlock__eqn__title">our goal</span>
-                                                            <span class="featureBlock__eqn__price">$28.0000</span>
-                                                        </div>
-                                                        <div class="featureBlock__eqn__block">
-                                                            <span class="featureBlock__eqn__title">Raised</span>
-                                                            <span class="featureBlock__eqn__price">$9,9098</span>
-                                                        </div>
-                                                        <div class="featureBlock__eqn__block">
-                                                            <span class="featureBlock__eqn__title">to go</span>
-                                                            <span class="featureBlock__eqn__price">$34,000</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-sm-6 mb-35">
-                                            <div class="featureBlock">
-                                                <div class="featureBlock__wrap">
-                                                    <figure class="featureBlock__thumb">
-                                                        <a class="featureBlock__thumb__link" href="donation-details.html">
-                                                            <img src="image/featured/featuredThumb12.jpg"
-                                                                alt="Gainioz Featured Thumb">
-                                                        </a>
-                                                        <a class="featureBlock__hashLink" href="donation-details.html">
-                                                            <span class="featureBlock__hashLink__text">#Life</span>
-                                                        </a>
-                                                    </figure>
-                                                    <div class="featureBlock__content">
-                                                        <h3 class="featureBlock__heading">
-                                                            <a class="featureBlock__heading__link"
-                                                                href="donation-details.html">
-                                                                You Can Give poor in India...Clean Water & Food
-                                                            </a>
-                                                        </h3>
-                                                        <p class="featureBlock__text">
-                                                            We help local nonprofits access the funding, training, and
-                                                            support they need to become more
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <div class="featureBlock__donation">
-                                                    <div class="featureBlock__donation__progress">
-                                                        <div class="featureBlock__donation__bar">
-                                                            <span class="featureBlock__donation__text skill-bar"
-                                                                data-width="85%">85%</span>
-                                                            <div class="featureBlock__donation__line">
-                                                                <span class="skill-bars">
-                                                                    <span class="skill-bars__line skill-bar"
-                                                                        data-width="85%"></span>
-                                                                </span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="featureBlock__eqn">
-                                                        <div class="featureBlock__eqn__block">
-                                                            <span class="featureBlock__eqn__title">our goal</span>
-                                                            <span class="featureBlock__eqn__price">$28.0000</span>
-                                                        </div>
-                                                        <div class="featureBlock__eqn__block">
-                                                            <span class="featureBlock__eqn__title">Raised</span>
-                                                            <span class="featureBlock__eqn__price">$9,9098</span>
-                                                        </div>
-                                                        <div class="featureBlock__eqn__block">
-                                                            <span class="featureBlock__eqn__title">to go</span>
-                                                            <span class="featureBlock__eqn__price">$34,000</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="sectionButton text-center pt-15">
-                                                <a class="btn btn--styleOne btn--primary it-btn" href="#">
-                                                    <span class="btn__text">see all Volunteers</span>
-                                                    <i class="fa-solid fa-heart btn__icon"></i>
-                                                    <span class="it-btn__inner">
-                                                        <span class="it-btn__blobs">
-                                                            <span class="it-btn__blob"></span>
-                                                            <span class="it-btn__blob"></span>
-                                                            <span class="it-btn__blob"></span>
-                                                            <span class="it-btn__blob"></span>
-                                                        </span>
-                                                    </span>
-                                                    <svg class="it-btn__animation" xmlns="http://www.w3.org/2000/svg"
-                                                        version="1.1">
-                                                        <defs>
-                                                            <filter>
-                                                                <feGaussianBlur in="SourceGraphic" result="blur"
-                                                                    stdDeviation="10"></feGaussianBlur>
-                                                                <feColorMatrix in="blur" mode="matrix"
-                                                                    values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 21 -7"
-                                                                    result="goo">
-                                                                </feColorMatrix>
-                                                                <feBlend in2="goo" in="SourceGraphic"
-                                                                    result="mix"></feBlend>
-                                                            </filter>
-                                                        </defs>
-                                                    </svg>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                                    <div class="row gx-3">
-                                        <div class="col-lg-4 col-sm-6 mb-35">
-                                            <div class="featureBlock featureBlock--active">
-                                                <div class="featureBlock__wrap">
-                                                    <figure class="featureBlock__thumb">
-                                                        <a class="featureBlock__thumb__link" href="donation-details.html">
-                                                            <img src="image/featured/featuredThumb4.jpg"
-                                                                alt="Gainioz Featured Thumb">
-                                                        </a>
-                                                        <a class="featureBlock__hashLink" href="donation-details.html">
-                                                            <span class="featureBlock__hashLink__text">#Life</span>
-                                                        </a>
-                                                    </figure>
-                                                    <div class="featureBlock__content">
-                                                        <h3 class="featureBlock__heading">
-                                                            <a class="featureBlock__heading__link"
-                                                                href="donation-details.html">
-                                                                You Can Give poor in India...Clean Water & Food
-                                                            </a>
-                                                        </h3>
-                                                        <p class="featureBlock__text">
-                                                            We help local nonprofits access the funding, training, and
-                                                            support they need to become more
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <div class="featureBlock__donation">
-                                                    <div class="featureBlock__donation__progress">
-                                                        <div class="featureBlock__donation__bar">
-                                                            <span class="featureBlock__donation__text skill-bar"
-                                                                data-width="85%">85%</span>
-                                                            <div class="featureBlock__donation__line">
-                                                                <span class="skill-bars">
-                                                                    <span class="skill-bars__line skill-bar"
-                                                                        data-width="85%"></span>
-                                                                </span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="featureBlock__eqn">
-                                                        <div class="featureBlock__eqn__block">
-                                                            <span class="featureBlock__eqn__title">our goal</span>
-                                                            <span class="featureBlock__eqn__price">$28.0000</span>
-                                                        </div>
-                                                        <div class="featureBlock__eqn__block">
-                                                            <span class="featureBlock__eqn__title">Raised</span>
-                                                            <span class="featureBlock__eqn__price">$9,9098</span>
-                                                        </div>
-                                                        <div class="featureBlock__eqn__block">
-                                                            <span class="featureBlock__eqn__title">to go</span>
-                                                            <span class="featureBlock__eqn__price">$34,000</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-sm-6 mb-35">
-                                            <div class="featureBlock">
-                                                <div class="featureBlock__wrap">
-                                                    <figure class="featureBlock__thumb">
-                                                        <a class="featureBlock__thumb__link" href="donation-details.html">
-                                                            <img src="image/featured/featuredThumb5.jpg"
-                                                                alt="Gainioz Featured Thumb">
-                                                        </a>
-                                                        <a class="featureBlock__hashLink" href="donation-details.html">
-                                                            <span class="featureBlock__hashLink__text">#Life</span>
-                                                        </a>
-                                                    </figure>
-                                                    <div class="featureBlock__content">
-                                                        <h3 class="featureBlock__heading">
-                                                            <a class="featureBlock__heading__link"
-                                                                href="donation-details.html">
-                                                                You Can Give Kids in India Clean Water
-                                                            </a>
-                                                        </h3>
-                                                        <p class="featureBlock__text">
-                                                            We help local nonprofits access the funding, training, and
-                                                            support they need to become more
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <div class="featureBlock__donation">
-                                                    <div class="featureBlock__donation__progress">
-                                                        <div class="featureBlock__donation__bar">
-                                                            <span class="featureBlock__donation__text skill-bar"
-                                                                data-width="85%">85%</span>
-                                                            <div class="featureBlock__donation__line">
-                                                                <span class="skill-bars">
-                                                                    <span class="skill-bars__line skill-bar"
-                                                                        data-width="85%"></span>
-                                                                </span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="featureBlock__eqn">
-                                                        <div class="featureBlock__eqn__block">
-                                                            <span class="featureBlock__eqn__title">our goal</span>
-                                                            <span class="featureBlock__eqn__price">$28.0000</span>
-                                                        </div>
-                                                        <div class="featureBlock__eqn__block">
-                                                            <span class="featureBlock__eqn__title">Raised</span>
-                                                            <span class="featureBlock__eqn__price">$9,9098</span>
-                                                        </div>
-                                                        <div class="featureBlock__eqn__block">
-                                                            <span class="featureBlock__eqn__title">to go</span>
-                                                            <span class="featureBlock__eqn__price">$34,000</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-sm-6 mb-35">
-                                            <div class="featureBlock">
-                                                <div class="featureBlock__wrap">
-                                                    <figure class="featureBlock__thumb">
-                                                        <a class="featureBlock__thumb__link" href="donation-details.html">
-                                                            <img src="image/featured/featuredThumb6.jpg"
-                                                                alt="Gainioz Featured Thumb">
-                                                        </a>
-                                                        <a class="featureBlock__hashLink" href="donation-details.html">
-                                                            <span class="featureBlock__hashLink__text">#Life</span>
-                                                        </a>
-                                                    </figure>
-                                                    <div class="featureBlock__content">
-                                                        <h3 class="featureBlock__heading">
-                                                            <a class="featureBlock__heading__link"
-                                                                href="donation-details.html">
-                                                                Lifeskills for Children in South Africa
-                                                            </a>
-                                                        </h3>
-                                                        <p class="featureBlock__text">
-                                                            We help local nonprofits access the funding, training, and
-                                                            support they need to become more
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <div class="featureBlock__donation">
-                                                    <div class="featureBlock__donation__progress">
-                                                        <div class="featureBlock__donation__bar">
-                                                            <span class="featureBlock__donation__text skill-bar"
-                                                                data-width="85%">85%</span>
-                                                            <div class="featureBlock__donation__line">
-                                                                <span class="skill-bars">
-                                                                    <span class="skill-bars__line skill-bar"
-                                                                        data-width="85%"></span>
-                                                                </span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="featureBlock__eqn">
-                                                        <div class="featureBlock__eqn__block">
-                                                            <span class="featureBlock__eqn__title">our goal</span>
-                                                            <span class="featureBlock__eqn__price">$28.0000</span>
-                                                        </div>
-                                                        <div class="featureBlock__eqn__block">
-                                                            <span class="featureBlock__eqn__title">Raised</span>
-                                                            <span class="featureBlock__eqn__price">$9,9098</span>
-                                                        </div>
-                                                        <div class="featureBlock__eqn__block">
-                                                            <span class="featureBlock__eqn__title">to go</span>
-                                                            <span class="featureBlock__eqn__price">$34,000</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-sm-6 mb-35">
-                                            <div class="featureBlock">
-                                                <div class="featureBlock__wrap">
-                                                    <figure class="featureBlock__thumb">
-                                                        <a class="featureBlock__thumb__link" href="donation-details.html">
-                                                            <img src="image/featured/featuredThumb7.jpg"
-                                                                alt="Gainioz Featured Thumb">
-                                                        </a>
-                                                        <a class="featureBlock__hashLink" href="donation-details.html">
-                                                            <span class="featureBlock__hashLink__text">#Life</span>
-                                                        </a>
-                                                    </figure>
-                                                    <div class="featureBlock__content">
-                                                        <h3 class="featureBlock__heading">
-                                                            <a class="featureBlock__heading__link"
-                                                                href="donation-details.html">
-                                                                Gift an Education… Make a Life Better!
-                                                            </a>
-                                                        </h3>
-                                                        <p class="featureBlock__text">
-                                                            We help local nonprofits access the funding, training, and
-                                                            support they need to become more
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <div class="featureBlock__donation">
-                                                    <div class="featureBlock__donation__progress">
-                                                        <div class="featureBlock__donation__bar">
-                                                            <span class="featureBlock__donation__text skill-bar"
-                                                                data-width="85%">85%</span>
-                                                            <div class="featureBlock__donation__line">
-                                                                <span class="skill-bars">
-                                                                    <span class="skill-bars__line skill-bar"
-                                                                        data-width="85%"></span>
-                                                                </span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="featureBlock__eqn">
-                                                        <div class="featureBlock__eqn__block">
-                                                            <span class="featureBlock__eqn__title">our goal</span>
-                                                            <span class="featureBlock__eqn__price">$28.0000</span>
-                                                        </div>
-                                                        <div class="featureBlock__eqn__block">
-                                                            <span class="featureBlock__eqn__title">Raised</span>
-                                                            <span class="featureBlock__eqn__price">$9,9098</span>
-                                                        </div>
-                                                        <div class="featureBlock__eqn__block">
-                                                            <span class="featureBlock__eqn__title">to go</span>
-                                                            <span class="featureBlock__eqn__price">$34,000</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-sm-6 mb-35">
-                                            <div class="featureBlock">
-                                                <div class="featureBlock__wrap">
-                                                    <figure class="featureBlock__thumb">
-                                                        <a class="featureBlock__thumb__link" href="donation-details.html">
-                                                            <img src="image/featured/featuredThumb8.jpg"
-                                                                alt="Gainioz Featured Thumb">
-                                                        </a>
-                                                        <a class="featureBlock__hashLink" href="donation-details.html">
-                                                            <span class="featureBlock__hashLink__text">#Life</span>
-                                                        </a>
-                                                    </figure>
-                                                    <div class="featureBlock__content">
-                                                        <h3 class="featureBlock__heading">
-                                                            <a class="featureBlock__heading__link"
-                                                                href="donation-details.html">
-                                                                Let’s Help Children Build a Happy Future
-                                                            </a>
-                                                        </h3>
-                                                        <p class="featureBlock__text">
-                                                            We help local nonprofits access the funding, training, and
-                                                            support they need to become more
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <div class="featureBlock__donation">
-                                                    <div class="featureBlock__donation__progress">
-                                                        <div class="featureBlock__donation__bar">
-                                                            <span class="featureBlock__donation__text skill-bar"
-                                                                data-width="85%">85%</span>
-                                                            <div class="featureBlock__donation__line">
-                                                                <span class="skill-bars">
-                                                                    <span class="skill-bars__line skill-bar"
-                                                                        data-width="85%"></span>
-                                                                </span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="featureBlock__eqn">
-                                                        <div class="featureBlock__eqn__block">
-                                                            <span class="featureBlock__eqn__title">our goal</span>
-                                                            <span class="featureBlock__eqn__price">$28.0000</span>
-                                                        </div>
-                                                        <div class="featureBlock__eqn__block">
-                                                            <span class="featureBlock__eqn__title">Raised</span>
-                                                            <span class="featureBlock__eqn__price">$9,9098</span>
-                                                        </div>
-                                                        <div class="featureBlock__eqn__block">
-                                                            <span class="featureBlock__eqn__title">to go</span>
-                                                            <span class="featureBlock__eqn__price">$34,000</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-sm-6 mb-35">
-                                            <div class="featureBlock">
-                                                <div class="featureBlock__wrap">
-                                                    <figure class="featureBlock__thumb">
-                                                        <a class="featureBlock__thumb__link" href="donation-details.html">
-                                                            <img src="image/featured/featuredThumb9.jpg"
-                                                                alt="Gainioz Featured Thumb">
-                                                        </a>
-                                                        <a class="featureBlock__hashLink" href="donation-details.html">
-                                                            <span class="featureBlock__hashLink__text">#Life</span>
-                                                        </a>
-                                                    </figure>
-                                                    <div class="featureBlock__content">
-                                                        <h3 class="featureBlock__heading">
-                                                            <a class="featureBlock__heading__link"
-                                                                href="donation-details.html">
-                                                                Help These Children Find Their Smiles
-                                                            </a>
-                                                        </h3>
-                                                        <p class="featureBlock__text">
-                                                            We help local nonprofits access the funding, training, and
-                                                            support they need to become more
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <div class="featureBlock__donation">
-                                                    <div class="featureBlock__donation__progress">
-                                                        <div class="featureBlock__donation__bar">
-                                                            <span class="featureBlock__donation__text skill-bar"
-                                                                data-width="85%">85%</span>
-                                                            <div class="featureBlock__donation__line">
-                                                                <span class="skill-bars">
-                                                                    <span class="skill-bars__line skill-bar"
-                                                                        data-width="85%"></span>
-                                                                </span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="featureBlock__eqn">
-                                                        <div class="featureBlock__eqn__block">
-                                                            <span class="featureBlock__eqn__title">our goal</span>
-                                                            <span class="featureBlock__eqn__price">$28.0000</span>
-                                                        </div>
-                                                        <div class="featureBlock__eqn__block">
-                                                            <span class="featureBlock__eqn__title">Raised</span>
-                                                            <span class="featureBlock__eqn__price">$9,9098</span>
-                                                        </div>
-                                                        <div class="featureBlock__eqn__block">
-                                                            <span class="featureBlock__eqn__title">to go</span>
-                                                            <span class="featureBlock__eqn__price">$34,000</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-sm-6 mb-35">
-                                            <div class="featureBlock">
-                                                <div class="featureBlock__wrap">
-                                                    <figure class="featureBlock__thumb">
-                                                        <a class="featureBlock__thumb__link" href="donation-details.html">
-                                                            <img src="image/featured/featuredThumb10.jpg"
-                                                                alt="Gainioz Featured Thumb">
-                                                        </a>
-                                                        <a class="featureBlock__hashLink" href="donation-details.html">
-                                                            <span class="featureBlock__hashLink__text">#Life</span>
-                                                        </a>
-                                                    </figure>
-                                                    <div class="featureBlock__content">
-                                                        <h3 class="featureBlock__heading">
-                                                            <a class="featureBlock__heading__link"
-                                                                href="donation-details.html">
-                                                                Little Help Can Make a Big Difference
-                                                            </a>
-                                                        </h3>
-                                                        <p class="featureBlock__text">
-                                                            We help local nonprofits access the funding, training, and
-                                                            support they need to become more
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <div class="featureBlock__donation">
-                                                    <div class="featureBlock__donation__progress">
-                                                        <div class="featureBlock__donation__bar">
-                                                            <span class="featureBlock__donation__text skill-bar"
-                                                                data-width="85%">85%</span>
-                                                            <div class="featureBlock__donation__line">
-                                                                <span class="skill-bars">
-                                                                    <span class="skill-bars__line skill-bar"
-                                                                        data-width="85%"></span>
-                                                                </span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="featureBlock__eqn">
-                                                        <div class="featureBlock__eqn__block">
-                                                            <span class="featureBlock__eqn__title">our goal</span>
-                                                            <span class="featureBlock__eqn__price">$28.0000</span>
-                                                        </div>
-                                                        <div class="featureBlock__eqn__block">
-                                                            <span class="featureBlock__eqn__title">Raised</span>
-                                                            <span class="featureBlock__eqn__price">$9,9098</span>
-                                                        </div>
-                                                        <div class="featureBlock__eqn__block">
-                                                            <span class="featureBlock__eqn__title">to go</span>
-                                                            <span class="featureBlock__eqn__price">$34,000</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-sm-6 mb-35">
-                                            <div class="featureBlock">
-                                                <div class="featureBlock__wrap">
-                                                    <figure class="featureBlock__thumb">
-                                                        <a class="featureBlock__thumb__link" href="donation-details.html">
-                                                            <img src="image/featured/featuredThumb11.jpg"
-                                                                alt="Gainioz Featured Thumb">
-                                                        </a>
-                                                        <a class="featureBlock__hashLink" href="donation-details.html">
-                                                            <span class="featureBlock__hashLink__text">#Life</span>
-                                                        </a>
-                                                    </figure>
-                                                    <div class="featureBlock__content">
-                                                        <h3 class="featureBlock__heading">
-                                                            <a class="featureBlock__heading__link"
-                                                                href="donation-details.html">
-                                                                Online Donation In The Modern World
-                                                            </a>
-                                                        </h3>
-                                                        <p class="featureBlock__text">
-                                                            We help local nonprofits access the funding, training, and
-                                                            support they need to become more
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <div class="featureBlock__donation">
-                                                    <div class="featureBlock__donation__progress">
-                                                        <div class="featureBlock__donation__bar">
-                                                            <span class="featureBlock__donation__text skill-bar"
-                                                                data-width="85%">85%</span>
-                                                            <div class="featureBlock__donation__line">
-                                                                <span class="skill-bars">
-                                                                    <span class="skill-bars__line skill-bar"
-                                                                        data-width="85%"></span>
-                                                                </span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="featureBlock__eqn">
-                                                        <div class="featureBlock__eqn__block">
-                                                            <span class="featureBlock__eqn__title">our goal</span>
-                                                            <span class="featureBlock__eqn__price">$28.0000</span>
-                                                        </div>
-                                                        <div class="featureBlock__eqn__block">
-                                                            <span class="featureBlock__eqn__title">Raised</span>
-                                                            <span class="featureBlock__eqn__price">$9,9098</span>
-                                                        </div>
-                                                        <div class="featureBlock__eqn__block">
-                                                            <span class="featureBlock__eqn__title">to go</span>
-                                                            <span class="featureBlock__eqn__price">$34,000</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-sm-6 mb-35">
-                                            <div class="featureBlock">
-                                                <div class="featureBlock__wrap">
-                                                    <figure class="featureBlock__thumb">
-                                                        <a class="featureBlock__thumb__link"
-                                                            href="donation-details.html">
-                                                            <img src="image/featured/featuredThumb12.jpg"
-                                                                alt="Gainioz Featured Thumb">
-                                                        </a>
-                                                        <a class="featureBlock__hashLink" href="donation-details.html">
-                                                            <span class="featureBlock__hashLink__text">#Life</span>
-                                                        </a>
-                                                    </figure>
-                                                    <div class="featureBlock__content">
-                                                        <h3 class="featureBlock__heading">
-                                                            <a class="featureBlock__heading__link"
-                                                                href="donation-details.html">
-                                                                You Can Give poor in India...Clean Water & Food
-                                                            </a>
-                                                        </h3>
-                                                        <p class="featureBlock__text">
-                                                            We help local nonprofits access the funding, training, and
-                                                            support they need to become more
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <div class="featureBlock__donation">
-                                                    <div class="featureBlock__donation__progress">
-                                                        <div class="featureBlock__donation__bar">
-                                                            <span class="featureBlock__donation__text skill-bar"
-                                                                data-width="85%">85%</span>
-                                                            <div class="featureBlock__donation__line">
-                                                                <span class="skill-bars">
-                                                                    <span class="skill-bars__line skill-bar"
-                                                                        data-width="85%"></span>
-                                                                </span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="featureBlock__eqn">
-                                                        <div class="featureBlock__eqn__block">
-                                                            <span class="featureBlock__eqn__title">our goal</span>
-                                                            <span class="featureBlock__eqn__price">$28.0000</span>
-                                                        </div>
-                                                        <div class="featureBlock__eqn__block">
-                                                            <span class="featureBlock__eqn__title">Raised</span>
-                                                            <span class="featureBlock__eqn__price">$9,9098</span>
-                                                        </div>
-                                                        <div class="featureBlock__eqn__block">
-                                                            <span class="featureBlock__eqn__title">to go</span>
-                                                            <span class="featureBlock__eqn__price">$34,000</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="sectionButton text-center pt-15">
-                                                <a class="btn btn--styleOne btn--primary it-btn" href="#">
-                                                    <span class="btn__text">see all Volunteers</span>
-                                                    <i class="fa-solid fa-heart btn__icon"></i>
-                                                    <span class="it-btn__inner">
-                                                        <span class="it-btn__blobs">
-                                                            <span class="it-btn__blob"></span>
-                                                            <span class="it-btn__blob"></span>
-                                                            <span class="it-btn__blob"></span>
-                                                            <span class="it-btn__blob"></span>
-                                                        </span>
-                                                    </span>
-                                                    <svg class="it-btn__animation" xmlns="http://www.w3.org/2000/svg"
-                                                        version="1.1">
-                                                        <defs>
-                                                            <filter>
-                                                                <feGaussianBlur in="SourceGraphic" result="blur"
-                                                                    stdDeviation="10"></feGaussianBlur>
-                                                                <feColorMatrix in="blur" mode="matrix"
-                                                                    values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 21 -7"
-                                                                    result="goo">
-                                                                </feColorMatrix>
-                                                                <feBlend in2="goo" in="SourceGraphic"
-                                                                    result="mix"></feBlend>
-                                                            </filter>
-                                                        </defs>
-                                                    </svg>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+
+
                             </div>
                         </div>
                     </div>

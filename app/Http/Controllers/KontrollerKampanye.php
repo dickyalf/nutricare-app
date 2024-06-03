@@ -2,28 +2,33 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Kampanye;
 use App\Models\Transaksi;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
+use Midtrans\Config;
+use Midtrans\Snap;
 
 class KontrollerKampanye extends Controller
 {
     public function mintaSemuaKampanye()
     {
-        $semuaKampanye = Kampanye::all();
-        return view("donation", [
-            "semuaKampanye" => $semuaKampanye,
+        $semuaKampanye = Kampanye::paginate(9);
+        return view('donation-listing', [
+            'semuaKampanye' => $semuaKampanye
         ]);
     }
 
     public function cariKampanye(Request $request)
     {
-        // $keyword = $request->search;
+        $search = $request->input("search"); // Retrieve the search input
 
-        $results = Kampanye::where("name", "like", "%")->get();
+        // Query to search in 'nama' and 'deskripsi' columns
+        $results = Kampanye::where('nama', 'like', '%' . $search . '%')->paginate(9);
 
-        return view("donation", [
-            "semuaKampanye" => $results,
+        return view('donation-listing', [
+            'semuaKampanye' => $results,
+            'search' => $search
         ]);
     }
 
@@ -54,7 +59,7 @@ class KontrollerKampanye extends Controller
             $uangKurang = 0;
         }
 
-        $persentaseProgress = $uangTerkumpul / (int) $kampanye->targetDonasi;
+        $persentaseProgress = $uangTerkumpul / $kampanye->targetDonasi;
         $persentaseProgress = number_format($persentaseProgress * 100);
         return view("donation-detail", [
             "dataDetilKampanye" => $kampanye,
@@ -62,5 +67,61 @@ class KontrollerKampanye extends Controller
             "uangKurang" => $uangKurang,
             "persentaseProgress" => $persentaseProgress,
         ]); // kembalikan tampilan donation-detail kepada user dengan properti `dataDetailKampanye`
+    }
+
+    public function konfirmasiDonasi(Request $request){
+        Config::$serverKey = config('midtrans.server_key');
+        Config::$isProduction = false;
+        Config::$isSanitized = true;
+        Config::$is3ds = true;
+
+        $amount = $request->input('amount');
+        $porsi = $request->input('food');
+        $totalPorsi = $amount / $porsi;
+
+        $transaction_details = [
+            'order_id' => uniqid(),
+            'gross_amount' => $amount, 
+        ];
+
+        $item_details = [
+            [
+                'id' => '1',
+                'price' => $totalPorsi,
+                'quantity' => $porsi,
+                'name' => 'Bakso',
+            ],
+        ];
+
+        $customer_details = [
+            'first_name' => $request->input('name'),
+            'email' => $request->input('email'),
+        ];
+
+        $transaction = [
+            'transaction_details' => $transaction_details,
+            'item_details' => $item_details,
+            'customer_details' => $customer_details,
+        ];
+
+        try {
+            $snapToken = Snap::getSnapToken($transaction);
+            return response()->json(['snapToken' => $snapToken]);
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()]);
+        }
+    
+    }
+
+    public function buatTransaksi(Request $request)
+    {
+        Transaksi::create([
+            'pengguna_id' => 1,
+            'kampanye_id' => $request->id,
+            'tanggal_transaksi' => Carbon::now(),
+            'jumlahMakanan' => $request->food,
+            'totalDonasi' => $request->amount,
+        ]);
+        return response()->json(['success' => true]);
     }
 }

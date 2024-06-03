@@ -18,6 +18,6 @@ class Makanan extends Model
 
     public function kampanye()
     {
-        return $this->hasMany(Kampanye::class);
+        return $this->belongsTo(Kampanye::class);
     }
 }

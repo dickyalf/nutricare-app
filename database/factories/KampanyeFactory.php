@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\Makanan;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Faker\Factory as Faker;
+use Illuminate\Support\Str;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Kampanye>
@@ -126,8 +127,12 @@ class KampanyeFactory extends Factory
             "Bergabunglah dalam misi kami untuk mengakhiri kelaparan. Donasi Anda membantu kami menyediakan makanan. Ayo, berkontribusi sekarang. Setiap tindakan Anda membuat perbedaan besar."
         ];
 
+        $namaFake = $faker->randomElement($nama);
+        $slug = Str::slug($namaFake);
+
         return [
-            'nama' => $faker->randomElement($nama),
+            'nama' => $namaFake,
+            'slug' => $slug ,
             'gambar' => $faker->imageUrl(640, 480, 'kampanye', true),
             'tanggal_awal' => $faker->dateTimeThisYear(),
             'tanggal_akhir' => $faker->dateTimeThisYear('+6 months'),
