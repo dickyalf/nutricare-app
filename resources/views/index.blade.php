@@ -9,8 +9,7 @@
             <div class="round_spinner">
                 <div class="spinner"></div>
                 <div class="text">
-                    {{-- <img src="image/logos/logo_1.svg" alt="LOL"> --}}
-                    <h1 class="p-4">NutriCare</h1>
+                    <img src="{{ asset('image/logos/nutricare.png') }}" alt="Gainioz">
                 </div>
             </div>
             <h2 class="head">DO GOOD FOR OTHERS</h2>
@@ -30,9 +29,8 @@
                         <div class="header__wrapper">
                             <!-- logo start -->
                             <div class="header__logo">
-                                
-                                <a href="/" class="">
-                                    <h1 class="p-4">NutriCare</h1>
+                                <a href="/" class="header__logo__link">
+                                    <img src="{{ asset('image/logos/nutricare.png') }}" alt="Gainioz" class="header__logo__image">
                                 </a>
                             </div>
                             <!-- logo end -->
@@ -41,19 +39,10 @@
                                 <nav class="mainMenu">
                                     <ul>
                                         <li><a href="/">Home</a></li>
-                                        <li><a href="#">About</a></li>
-                                        <li><a href="{{ route('donation') }}">Donations</a></li>
+                                        <li><a href="#">Tentang</a></li>
+                                        <li><a href="{{ route('donation') }}">Donasi</a></li>
                                         <li><a href="#">Blog</a></li>
-                                        <li class="dropdown"><a href="#">Pages</a>
-                                            <ul class="dropdown_menu dropdown_menu-2">
-                                                <li class="dropdown_item-1"><a href="#">Events</a></li>
-                                                <li class="dropdown_item-2"><a href="#">FAQ`s</a></li>
-                                                <li class="dropdown_item-3"><a href="#">Shop</a></li>
-                                                <li class="dropdown_item-4"><a href="#">Services</a></li>
-                                                <li class="dropdown_item-5"><a href="#">Volunteers</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="#">Contacts</a></li>
+                                        <li><a href="#">Kontak</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -87,7 +76,7 @@
                                 </div>
                                 <div class="header__button">
                                     <a class="btn btn--styleOne btn--secondary it-btn" href="{{ route('donation') }}">
-                                        <span class="btn__text">donate now</span>
+                                        <span class="btn__text">Donasi Sekarang</span>
                                         <i class="fa-solid fa-heart btn__icon"></i>
                                         <span class="it-btn__inner">
                                             <span class="it-btn__blobs">
@@ -123,7 +112,7 @@
         <div class="header header--mobile cc-header-menu mean-container position-relative" id="meanmenu">
             <div class="mean-bar headerBurgerMenu">
                 <a href="index.html">
-                    <img class="mean-bar__logo" alt="Techkit" src="image/logos/logo_1.svg" />
+                    <img class="mean-bar__logo" alt="Techkit" src="{{ asset('image/logos/nutricare.png') }}" />
                 </a>
                 <!-- Header Right Buttons Search Cart -->
                 <div class="header__right">
@@ -173,7 +162,7 @@
         <div class="cc cc--slideNav">
             <div class="cc__logo mb-40">
                 <a href="/">
-                    <img class="mean-bar__logo" alt="Techkit" src="image/logos/logo_1.svg" />
+                    <img class="mean-bar__logo" alt="Techkit" src="{{ asset('image/logos/nutricare.png') }}" />
                 </a>
             </div>
             <div class="offscreen-navigation mb-40">

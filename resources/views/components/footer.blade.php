@@ -2,16 +2,13 @@
 <!-- Main End -->
 <!-- footer -->
 <footer class="footer footer--bg footer--styleOne pt-70 pb-40">
-    <img src="image/shapes/footerShape2.png" alt="Gainioz Shape" class="footer__shape">
+    <img src="{{ asset('image/shapes/footerShape2.png') }}" alt="Gainioz Shape" class="footer__shape">
     <div class="container">
         <div class="row align-items-center">
             <div class="col">
-                {{-- <div class="footer__logo">
-                    <img src="image/logos/logo_2.svg" alt="Gainioz Logo" class="footer__logo__image">
-                </div> --}}
-                <a href="/" class="">
-                    <h1 class="p-4 text-white">NutriCare</h1>
-                </a>
+                <div class="footer__logo">
+                    <img src="{{ asset('image/logos/nutricare.png') }}" alt="Gainioz Logo" class="footer__logo__image">
+                </div>
             </div>
             <div class="col">
                 <div class="footer__social itSocial">
@@ -74,7 +71,7 @@
                             </div>
                             <div class="footer__menu">
                                 <ul>
-                                    <li><a href="{{ route('donation') }}">Donate Now</a></li>
+                                    <li><a href="{{ route('donation') }}">Donasi Sekarang</a></li>
                                     <li><a href="#">Store</a></li>
                                     <li><a href="#">Reports</a></li>
                                     <li><a href="#">Press Releases</a></li>

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Donation Detail')
+@section('title', 'NutriCare - Detail Donasi')
 
 @section('body')
     <!-- Preloader -->
@@ -8,8 +8,7 @@
             <div class="round_spinner">
                 <div class="spinner"></div>
                 <div class="text">
-                    {{-- <img src="image/logos/logo_1.svg" alt="Gainioz"> --}}
-                    <h1 class="p-4">NutriCare</h1>
+                    <img src="{{ asset('image/logos/nutricare.png') }}" alt="Gainioz">
                 </div>
             </div>
             <h2 class="head">DO GOOD FOR OTHERS</h2>
@@ -29,8 +28,9 @@
                             <div class="header__wrapper">
                                 <!-- logo start -->
                                 <div class="header__logo">
-                                    <a href="/" class="">
-                                        <h1 class="p-4">NutriCare</h1>
+                                    <a href="/" class="header__logo__link">
+                                        <img src="{{ asset('image/logos/nutricare.png') }}" alt="Gainioz"
+                                            class="header__logo__image">
                                     </a>
                                     
                                 </div>
@@ -77,7 +77,7 @@
                                     </div>
                                     <div class="header__button">
                                         <a class="btn btn--styleOne btn--secondary it-btn" href="donation-listing.html">
-                                            <span class="btn__text">donate now</span>
+                                            <span class="btn__text">Donasi Sekarang</span>
                                             <i class="fa-solid fa-heart btn__icon"></i>
                                             <span class="it-btn__inner">
                                                 <span class="it-btn__blobs">
@@ -116,7 +116,7 @@
         <div class="header header--mobile cc-header-menu mean-container position-relative" id="meanmenu">
             <div class="mean-bar headerBurgerMenu">
                 <a href="index.html">
-                    <img class="mean-bar__logo" alt="Techkit" src="image/logos/logo_1.svg" />
+                    <img class="mean-bar__logo" alt="Techkit" src="{{ asset('image/logos/nutricare.png') }}" />
                 </a>
                 <!-- Header Right Buttons Search Cart -->
                 <div class="header__right">
@@ -166,7 +166,7 @@
         <div class="cc cc--slideNav">
             <div class="cc__logo mb-40">
                 <a href="index.html">
-                    <img class="mean-bar__logo" alt="Techkit" src="image/logos/logo_1.svg" />
+                    <img class="mean-bar__logo" alt="Techkit" src="{{ asset('image/logos/nutricare.png') }}" />
                 </a>
             </div>
             <div class="offscreen-navigation mb-40">
@@ -386,8 +386,11 @@
                                     </div>
                                     <div class="donationDetails__warning">
                                         <p>
-                                            <span
-                                                    class="featureBlock__eqn__price">Harga per porsi : Rp.{{ number_format($dataDetilKampanye->makanan->harga) }}</span>
+                                            <div class="d-flex justify-content-between">
+                                                <span class="featureBlock__eqn__price ">Harga per porsi : Rp.{{ number_format($dataDetilKampanye->makanan->harga) }}</span>
+                                                <span class="featureBlock__eqn__price  text-right">Makanan : {{ $dataDetilKampanye->makanan->nama }}</span>
+                                            </div>
+                                            
                                         </p>
                                     </div>
                                     <!-- gunakan livewire untuk mendapatkan estimasi harga total donasi secara langsung -->
@@ -395,11 +398,8 @@
                                     
                                     <h4 class="donationDetails__heading mb-25">{{ $dataDetilKampanye->makanan->nama }}</h4>
                                     <p class="donationDetails__text mb-30">{{ $dataDetilKampanye->makanan->deskripsi }}</p>
-                                    <h4 class="donationDetails__heading mb-25">Deskripsi Kampanye</h4>
-                                    <p class="donationDetails__text mb-30">
-
-                                        {{ $dataDetilKampanye->deskripsi }}
-                                    </p>
+                                    <h4 class="donationDetails__heading mb-25">Deskripsi</h4>
+                                    <p class="donationDetails__text mb-30">{{ $dataDetilKampanye->deskripsi}}</p>
                                 </div>
                             </div>
                         </div>
@@ -452,10 +452,16 @@
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script type="text/javascript">
             document.getElementById('pay-button').addEventListener('click', function () {
-                const donorName = document.getElementById('donor-name').value;
-                const donorEmail = document.getElementById('donor-email').value;
-                const donationAmount = document.getElementById('donation-amount').value;
-                const foodAmount = document.getElementById('porsi').value;
+                const namaDonatur = document.getElementById('donor-name').value;
+                const emailDonatur = document.getElementById('donor-email').value;
+                const jumlahDonasi = document.getElementById('donation-amount').value;
+                const jumlahMakanan = document.getElementById('porsi').value;
+                const namaMakanan = '{{ $dataDetilKampanye->makanan->nama }}'; // Pastikan ini adalah string valid
+        
+                if (jumlahMakanan <= 0) {
+                    Swal.fire('Gagal', 'Masukkan Porsi makanan terlebih dahulu', 'error');
+                    return;
+                }
         
                 fetch('/konfirmasi-donasi', {
                     method: 'POST',
@@ -464,39 +470,41 @@
                         'X-CSRF-TOKEN': '{{ csrf_token() }}'
                     },
                     body: JSON.stringify({
-                        name: donorName,
-                        email: donorEmail,
-                        amount: donationAmount,
-                        food: foodAmount
+                        nama: namaDonatur,
+                        namaMakanan: namaMakanan,
+                        email: emailDonatur,
+                        jumlah: jumlahDonasi,
+                        porsi: jumlahMakanan
                     })
                 })
                 .then(response => response.json())
                 .then(data => {
                     if (data.snapToken) {
-                        document.getElementById('donation-details').style.display = 'none'; // Hide donation details
+                        document.getElementById('donation-details').style.display = 'none';
                         window.snap.embed(data.snapToken, {
                             embedId: 'snap-container',
                             onSuccess: function (result) {
-                                Swal.fire('Success', 'Payment successful!', 'success').then(() => {
+                                Swal.fire('Transaction Success', 'Pembayaran telah diterima!', 'success').then(() => {
                                     location.reload();
                                 });
                                 console.log(result);
-                                updateTransactionStatus(result.gross_amount, foodAmount);
+                                buatTransaksi(result.gross_amount, jumlahMakanan);
                             },
                             onPending: function (result) {
-                                Swal.fire('Closed', 'Transaction Cancelled!', 'error').then(() => {
+                                Swal.fire('Transaction Cancelled', 'Pembayaranmu kami batalkan, coba lagi!', 'info').then(() => {
                                     location.reload();
                                 });
                                 console.log(result);
                             },
                             onError: function (result) {
-                                Swal.fire('Error', 'Payment failed!', 'error').then(() => {
+                                Swal.fire('Gagal', 'Pembayaran Gagal!', 'error').then(() => {
                                     location.reload();
                                 });
                                 console.log(result);
                             },
                             onClose: function () {
-                                Swal.fire('Closed', 'You closed the popup without finishing the payment', 'warning').then(() => {
+                                Swal.fire('Transaction Cancelled', 'Anda menutup popup tanpa menyelesaikan pembayaran', 'warning').then(() => {
+                                    document.getElementById('donation-details').style.display = 'block'; // Show donation details again
                                     location.reload();
                                 });
                             }
@@ -508,7 +516,7 @@
                 .catch(error => console.error('Error:', error));
             });
         
-            function updateTransactionStatus(amount, food) {
+            function buatTransaksi(jumlah, porsi) {
                 const id = document.getElementById('kampanye-id').value;
                 fetch('/buat-transaksi', {
                     method: 'POST',
@@ -518,19 +526,20 @@
                     },
                     body: JSON.stringify({
                         id: id,
-                        amount: amount,
-                        food: food
+                        jumlah: jumlah,
+                        porsi: porsi
                     })
                 })
                 .then(response => response.json())
                 .then(data => {
                     if (!data.success) {
-                        console.error('Error updating status:', data.error);
+                        console.error('Error saat membuat transaksi:', data.error);
                     }
                 })
                 .catch(error => console.error('Error:', error));
             }
         </script>
+        
                
         
         <!-- Main End -->

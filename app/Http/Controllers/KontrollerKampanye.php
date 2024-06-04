@@ -26,7 +26,6 @@ class KontrollerKampanye extends Controller
          * Fungsi ini mengambil semua kampanye yang ada dalam database
          * dan mengembalikan hasilnya dalam bentuk paginasi.
          */
-    
         $semuaKampanye = Kampanye::paginate(9);
 
         $donasiTerkumpulKampanye = [];
@@ -127,8 +126,8 @@ class KontrollerKampanye extends Controller
         Config::$isSanitized = true;
         Config::$is3ds = true;
 
-        $amount = $request->input('amount');
-        $porsi = $request->input('food');
+        $amount = $request->input('jumlah');
+        $porsi = $request->input('porsi');
         $totalPorsi = $amount / $porsi;
 
         $transaction_details = [
@@ -141,12 +140,12 @@ class KontrollerKampanye extends Controller
                 'id' => '1',
                 'price' => $totalPorsi,
                 'quantity' => $porsi,
-                'name' => 'Bakso',
+                'name' => $request->input('namaMakanan'),
             ],
         ];
 
         $customer_details = [
-            'first_name' => $request->input('name'),
+            'first_name' => $request->input('nama'),
             'email' => $request->input('email'),
         ];
 
@@ -164,15 +163,26 @@ class KontrollerKampanye extends Controller
         }
     
     }
-
+    
+    /**
+     * buatTransaksi
+     *
+     * @param  mixed $request
+     * @return void
+     */
     public function buatTransaksi(Request $request)
     {
+
+    /**
+     * buatTransaksi
+     * memasukan transaksi ke database
+     */
         Transaksi::create([
             'pengguna_id' => 1,
             'kampanye_id' => $request->id,
             'tanggal_transaksi' => Carbon::now(),
-            'jumlahMakanan' => $request->food,
-            'totalDonasi' => $request->amount,
+            'jumlahMakanan' => $request->porsi,
+            'totalDonasi' => $request->jumlah,
         ]);
         return response()->json(['success' => true]);
     }
