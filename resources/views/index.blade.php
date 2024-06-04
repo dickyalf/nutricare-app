@@ -307,7 +307,7 @@
                     <div class="col-xl-6 mb-30">
                         <figure class="hero__figure wow animate__zoomIn animate__animated" data-wow-duration="1200ms"
                             data-wow-delay="600ms">
-                            <img src="image/man/man1.jpg" alt="Gainioz Man" class="hero__figure__thumbs">
+                            <img src="image/man/gambarHero.jpg" alt="Gainioz Man" class="hero__figure__thumbs">
                             <img class="hero__figure__overlay" src="image/shapes/shapes3.svg" alt="Gainioz">
                         </figure>
                     </div>

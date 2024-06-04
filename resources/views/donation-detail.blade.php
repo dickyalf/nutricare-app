@@ -342,8 +342,8 @@
                                     <div class="donationDetails__header mb-45">
                                         <figure class="thumb mb-45">
                                             <!-- melakukan pengecekan apakah terdapat gambar banner kampanye menuggnakan fitur dari blade -->
-                                            @if ($dataDetilKampanye->gambar == '')
-                                                <img src="{{ asset('$dataDetilKampanye->gambar') }}" alt="Gambar Kampanye">
+                                            @if ($dataDetilKampanye->gambar != '')
+                                                <img src="{{ asset($dataDetilKampanye->gambar) }}" alt="Gambar Kampanye">
                                             @endif
                                         </figure>
                                         <h3 class="donationDetails__title text-uppercase">{{ $dataDetilKampanye->nama }}</h3>
