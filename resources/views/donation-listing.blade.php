@@ -8,7 +8,8 @@
             <div class="round_spinner">
                 <div class="spinner"></div>
                 <div class="text">
-                    <img src="image/logos/logo_1.svg" alt="Gainioz">
+                    {{-- <img src="image/logos/logo_1.svg" alt="Gainioz"> --}}
+                    <h1 class="p-4">NutriCare</h1>
                 </div>
             </div>
             <h2 class="head">DO GOOD FOR OTHERS</h2>
@@ -28,8 +29,9 @@
                             <div class="header__wrapper">
                                 <!-- logo start -->
                                 <div class="header__logo">
-                                    <a href="/" class="header__logo__link">
-                                        <img src="image/logos/logo_1.svg" alt="Gainioz" class="header__logo__image">
+                                    
+                                    <a href="/" class="">
+                                        <h1 class="p-4">NutriCare</h1>
                                     </a>
                                 </div>
                                 <!-- logo end -->
@@ -175,13 +177,13 @@
                             <a class="animation" href="/">Home</a>
                         </li>
                         <!-- <li class="list menu-item-has-children">
-                                                                                        <a href="vertical-slider.html">Home Dummy</a>
-                                                                                        <ul class="main-menu__dropdown sub-menu">
-                                                                                            <li><a href="single-post1.html">Home Demo 1</a></li>
-                                                                                            <li><a href="single-post2.html">Home Demo 2</a></li>
-                                                                                            <li><a href="single-post3.html">Home Demo 3</a></li>
-                                                                                        </ul>
-                                                                                    </li> -->
+                                                                                                <a href="vertical-slider.html">Home Dummy</a>
+                                                                                                <ul class="main-menu__dropdown sub-menu">
+                                                                                                    <li><a href="single-post1.html">Home Demo 1</a></li>
+                                                                                                    <li><a href="single-post2.html">Home Demo 2</a></li>
+                                                                                                    <li><a href="single-post3.html">Home Demo 3</a></li>
+                                                                                                </ul>
+                                                                                            </li> -->
                         </li>
                         <li class="list menu-item-parent">
                             <a class="animation" href="#">About</a>
@@ -348,13 +350,16 @@
                                     aria-labelledby="home-tab">
                                     <div class="row gx-3">
 
-                                        @foreach ($semuaKampanye as $kampanye)
+
+                                        @foreach ($semuaKampanye as $index => $kampanye)
+                                            {{-- {{ $donasiTerkumpulKampanye[$index] }} --}}
+                                            {{-- {{  $donasiTerkumpulKampanye[$index] / $kampanye->targetDonasi }} --}}
                                             <div class="col-lg-4 col-sm-6 mb-35">
                                                 <div class="featureBlock featureBlock--active">
                                                     <div class="featureBlock__wrap">
                                                         <figure class="featureBlock__thumb">
                                                             <a class="featureBlock__thumb__link"
-                                                                href="{{ route('donation-detail',$kampanye->slug) }}">
+                                                                href="{{ route('donation-detail', $kampanye->slug) }}">
                                                                 <img src="{{ $kampanye->gambar }}"
                                                                     alt="Gainioz Featured Thumb">
                                                             </a>
@@ -367,7 +372,7 @@
                                                         <div class="featureBlock__content">
                                                             <h3 class="featureBlock__heading">
                                                                 <a class="featureBlock__heading__link"
-                                                                    href="{{ route('donation-detail',$kampanye->slug) }}">
+                                                                    href="{{ route('donation-detail', $kampanye->slug) }}">
                                                                     {{ $kampanye->nama }}
                                                                 </a>
                                                             </h3>
@@ -380,23 +385,34 @@
                                                         <div class="featureBlock__donation__progress">
                                                             <div class="featureBlock__donation__bar">
                                                                 <span class="featureBlock__donation__text skill-bar"
-                                                                    data-width="85%">85%</span>
+                                                                    data-width="{{ ($donasiTerkumpulKampanye[$index] / $kampanye->targetDonasi) * 100 }}%">{{ number_format(($donasiTerkumpulKampanye[$index] / $kampanye->targetDonasi) * 100) }}
+                                                                    %</span>
                                                                 <div class="featureBlock__donation__line">
                                                                     <span class="skill-bars">
                                                                         <span class="skill-bars__line skill-bar"
-                                                                            data-width="85%"></span>
+                                                                            data-width="{{ ($donasiTerkumpulKampanye[$index] / $kampanye->targetDonasi) * 100 }}%"></span>
                                                                     </span>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="featureBlock__eqn">
-                                                            <div class="featureBlock__eqn__block">
-                                                                <span class="featureBlock__eqn__title">our goal</span>
-                                                                <span
-                                                                    class="featureBlock__eqn__price">{{ $kampanye->targetDonasi }}
-                                                                    Porsi</span>
+                                                            <div class="featureBlock__eqn">
+                                                                <div class="featureBlock__eqn__block">
+                                                                    <span class="featureBlock__eqn__title">our goal</span>
+                                                                    <span class="featureBlock__eqn__price">Rp
+                                                                        {{ number_format($kampanye->targetDonasi) }}</span>
+                                                                </div>
+                                                                <div class="featureBlock__eqn__block text-center">
+                                                                    <span class="featureBlock__eqn__title">Raised</span>
+                                                                    <span class="featureBlock__eqn__price">Rp
+                                                                        {{ number_format($donasiTerkumpulKampanye[$index]) }}</span>
+                                                                </div>
+                                                                <div class="featureBlock__eqn__block text-end">
+                                                                    <span class="featureBlock__eqn__title">to go</span>
+                                                                    <span class="featureBlock__eqn__price">Rp
+                                                                        {{ number_format($kampanye->targetDonasi - $donasiTerkumpulKampanye[$index]) }}</span>
+                                                                </div>
                                                             </div>
                                                         </div>
+
                                                     </div>
                                                 </div>
                                             </div>

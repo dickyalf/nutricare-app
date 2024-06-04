@@ -9,7 +9,8 @@
             <div class="round_spinner">
                 <div class="spinner"></div>
                 <div class="text">
-                    <img src="image/logos/logo_1.svg" alt="Gainioz">
+                    {{-- <img src="image/logos/logo_1.svg" alt="LOL"> --}}
+                    <h1 class="p-4">NutriCare</h1>
                 </div>
             </div>
             <h2 class="head">DO GOOD FOR OTHERS</h2>
@@ -29,8 +30,9 @@
                         <div class="header__wrapper">
                             <!-- logo start -->
                             <div class="header__logo">
-                                <a href="/" class="header__logo__link">
-                                    <img src="image/logos/logo_1.svg" alt="Gainioz" class="header__logo__image">
+                                
+                                <a href="/" class="">
+                                    <h1 class="p-4">NutriCare</h1>
                                 </a>
                             </div>
                             <!-- logo end -->
@@ -314,11 +316,11 @@
                         </div>
                     </div>
                     <div class="col-xl-6 mb-30">
-                        <figure class="hero__figure wow animate__zoomIn animate__animated" data-wow-duration="1200ms"
-                            data-wow-delay="600ms">
-                            <img src="image/man/man1.jpg" alt="Gainioz Man" class="hero__figure__thumbs">
-                            <img class="hero__figure__overlay" src="image/shapes/shapes3.svg" alt="Gainioz">
-                        </figure>
+                        {{-- <figure class="hero__figure wow animate__zoomIn animate__animated" data-wow-duration="1200ms"
+                            data-wow-delay="600ms"> --}}
+                            <img src="image/man/kasian2.jpg" alt="Gainioz Man" class="">
+                            {{-- <img class="hero__figure__overlay" src="image/shapes/shapes3.svg" alt="Gainioz"> --}}
+                        {{-- </figure> --}}
                     </div>
                 </div>
             </div>

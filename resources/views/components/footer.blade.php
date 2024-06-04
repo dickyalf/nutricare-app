@@ -6,9 +6,12 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col">
-                <div class="footer__logo">
+                {{-- <div class="footer__logo">
                     <img src="image/logos/logo_2.svg" alt="Gainioz Logo" class="footer__logo__image">
-                </div>
+                </div> --}}
+                <a href="/" class="">
+                    <h1 class="p-4 text-white">NutriCare</h1>
+                </a>
             </div>
             <div class="col">
                 <div class="footer__social itSocial">
@@ -126,7 +129,7 @@
                     </div>
                     <div class="col mb-20">
                         <div class="footer__copyright pt-20">
-                            <p class="footer__copyright__text mb-0">Copyright@example 2022 all right receved</p>
+                            <p class="footer__copyright__text mb-0">TEJA (Terlalu Jago) 2024 all right receved</p>
                         </div>
                     </div>
                 </div>

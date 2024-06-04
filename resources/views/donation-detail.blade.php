@@ -8,7 +8,8 @@
             <div class="round_spinner">
                 <div class="spinner"></div>
                 <div class="text">
-                    <img src="image/logos/logo_1.svg" alt="Gainioz">
+                    {{-- <img src="image/logos/logo_1.svg" alt="Gainioz"> --}}
+                    <h1 class="p-4">NutriCare</h1>
                 </div>
             </div>
             <h2 class="head">DO GOOD FOR OTHERS</h2>
@@ -28,10 +29,10 @@
                             <div class="header__wrapper">
                                 <!-- logo start -->
                                 <div class="header__logo">
-                                    <a href="index.html" class="header__logo__link">
-                                        <img src="{{ asset('image/logos/logo_1.svg') }}" alt="Gainioz"
-                                            class="header__logo__image">
+                                    <a href="/" class="">
+                                        <h1 class="p-4">NutriCare</h1>
                                     </a>
+                                    
                                 </div>
                                 <!-- logo end -->
                                 <!-- Main Menu Start -->
@@ -342,9 +343,11 @@
                                     <div class="donationDetails__header mb-45">
                                         <figure class="thumb mb-45">
                                             <!-- melakukan pengecekan apakah terdapat gambar banner kampanye menuggnakan fitur dari blade -->
-                                            @if ($dataDetilKampanye->gambar == '')
-                                                <img src="{{ asset('$dataDetilKampanye->gambar') }}" alt="Gambar Kampanye">
-                                            @endif
+                                            {{-- @if ($dataDetilKampanye->gambar == '') --}}
+                                                <img src="{{ asset($dataDetilKampanye->gambar) }}" alt="Gambar Kampanye">
+                                                {{-- <img src="{{ asset('$kampanye->gambar') }}"
+                                                                    alt="Gambar Kampanye"> --}}
+                                            {{-- @endif --}}
                                         </figure>
                                         <h3 class="donationDetails__title text-uppercase">{{ $dataDetilKampanye->nama }}</h3>
                                     </div>
@@ -392,34 +395,11 @@
                                     
                                     <h4 class="donationDetails__heading mb-25">{{ $dataDetilKampanye->makanan->nama }}</h4>
                                     <p class="donationDetails__text mb-30">{{ $dataDetilKampanye->makanan->deskripsi }}</p>
-                                    <h4 class="donationDetails__heading mb-25">Our challenge & Goal</h4>
-                                    <p class="donationDetails__text mb-30">Lorem ipsum dolor sit amet, consectetur adipiscing
-                                        elit. Curabitur
-                                        vulputate vestibulum Phasellus rhoncus, dolor eget
-                                        viverra pretium, dolor tellus aliquet nunc, vitae ultricies erat elit eu lacus.
-                                        Vestibulum non justo
-                                        consectetur, cursus
-                                        ante, tincidunt sapien. Nulla quis diam sit amet turpis interdum accumsan quis nec enim.
-                                        Vivamus
-                                        faucibus ex sed nibh
-                                        egestas elementum. Mauris et bibendum dui. Aenean consequat pulvinar luctus</p>
-                                    <p class="donationDetails__text mb-30">We have covered many special events such as
-                                        fireworks, fairs,
-                                        parades, races, walks, awards ceremonies,
-                                        fashion shows,
-                                        sporting events, and even a memorial service.</p>
-                                    <p class="donationDetails__text mb-30">Lorem ipsum dolor sit amet, consectetur adipiscing
-                                        elit. Curabitur
-                                        vulputate vestibulum Phasellus rhoncus, dolor eget
-                                        viverra pretium, dolor tellus aliquet nunc, vitae ultricies erat elit eu lacus.
-                                        Vestibulum non justo
-                                        consectetur, cursus
-                                        ante, tincidunt sapien. Nulla quis diam sit amet turpis interdum accumsan quis nec enim.
-                                        Vivamus
-                                        faucibus ex sed nibh
-                                        egestas elementum. Mauris et bibendum dui. Aenean consequat pulvinar luctus. Suspendisse
-                                        consectetur
-                                        tristique tortor</p>
+                                    <h4 class="donationDetails__heading mb-25">Deskripsi Kampanye</h4>
+                                    <p class="donationDetails__text mb-30">
+
+                                        {{ $dataDetilKampanye->deskripsi }}
+                                    </p>
                                 </div>
                             </div>
                         </div>

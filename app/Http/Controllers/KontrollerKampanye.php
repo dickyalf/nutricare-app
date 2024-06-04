@@ -26,9 +26,22 @@ class KontrollerKampanye extends Controller
          * Fungsi ini mengambil semua kampanye yang ada dalam database
          * dan mengembalikan hasilnya dalam bentuk paginasi.
          */
+    
         $semuaKampanye = Kampanye::paginate(9);
+
+        $donasiTerkumpulKampanye = [];
+        $donasiTerkumpul = 0;
+
+        foreach($semuaKampanye as $kampanye) {
+            foreach($kampanye->transaksi as $transaksi) {
+                $donasiTerkumpul += $transaksi->totalDonasi;
+            }
+            $donasiTerkumpulKampanye[] = $donasiTerkumpul;
+            $donasiTerkumpul = 0;
+        }
         return view('donation-listing', [
-            'semuaKampanye' => $semuaKampanye
+            'semuaKampanye' => $semuaKampanye,
+            'donasiTerkumpulKampanye' => $donasiTerkumpulKampanye
         ]);
     }
 
@@ -53,9 +66,21 @@ class KontrollerKampanye extends Controller
 
         $semuaKampanye = Kampanye::where('nama', 'like', '%' . $cari . '%')->paginate(9);
 
+        $donasiTerkumpulKampanye = [];
+        $donasiTerkumpul = 0;
+
+        foreach($semuaKampanye as $kampanye) {
+            foreach($kampanye->transaksi as $transaksi) {
+                $donasiTerkumpul += $transaksi->totalDonasi;
+            }
+            $donasiTerkumpulKampanye[] = $donasiTerkumpul;
+            $donasiTerkumpul = 0;
+        }
+
         return view('donation-listing', [
             'semuaKampanye' => $semuaKampanye,
-            'cari' => $cari
+            'cari' => $cari,
+            'donasiTerkumpulKampanye' => $donasiTerkumpulKampanye
         ]);
     }
 
