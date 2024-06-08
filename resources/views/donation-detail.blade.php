@@ -32,6 +32,7 @@
                                         <img src="{{ asset('image/logos/nutricare.png') }}" alt="Gainioz"
                                             class="header__logo__image">
                                     </a>
+                                    
                                 </div>
                                 <!-- logo end -->
                                 <!-- Main Menu Start -->

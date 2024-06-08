@@ -126,7 +126,7 @@
                     </div>
                     <div class="col mb-20">
                         <div class="footer__copyright pt-20">
-                            <p class="footer__copyright__text mb-0">Copyright@example 2022 all right receved</p>
+                            <p class="footer__copyright__text mb-0">TEJA (Terlalu Jago) 2024 all right receved</p>
                         </div>
                     </div>
                 </div>
