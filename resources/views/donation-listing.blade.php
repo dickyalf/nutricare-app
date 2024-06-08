@@ -11,7 +11,7 @@
                     <img src="{{ asset('image/logos/nutricare.png') }}" alt="Gainioz">
                 </div>
             </div>
-            <h2 class="head">DO GOOD FOR OTHERS</h2>
+            <h2 class="head">MARI BERBUAT BAIK UNTUK ORANG LAIN</h2>
             <p></p>
         </div>
     </div>
@@ -60,7 +60,7 @@
                                                     </svg>
                                                 </a>
                                             </li>
-                                            <li>
+                                            {{-- <li>
                                                 <a href="products.html">
                                                     <span>2</span>
                                                     <svg width="25" height="20" viewBox="0 0 25 20" fill="none"
@@ -70,7 +70,7 @@
                                                             fill="#7FB432" />
                                                     </svg>
                                                 </a>
-                                            </li>
+                                            </li> --}}
                                         </ul>
                                     </div>
                                     <div class="header__button">

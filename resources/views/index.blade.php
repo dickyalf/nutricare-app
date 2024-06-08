@@ -12,7 +12,7 @@
                     <img src="{{ asset('image/logos/nutricare.png') }}" alt="Gainioz">
                 </div>
             </div>
-            <h2 class="head">DO GOOD FOR OTHERS</h2>
+            <h2 class="head">MARI BERBUAT BAIK UNTUK ORANG LAIN</h2>
             <p></p>
         </div>
     </div>
@@ -51,7 +51,7 @@
                             <div class="header__right">
                                 <div class="header__actions">
                                     <ul>
-                                        <li>
+                                        {{-- <li>
                                             <a href="products.html">
                                                 <span>2</span>
                                                 <svg width="25" height="20" viewBox="0 0 25 20" fill="none"
@@ -61,7 +61,7 @@
                                                         fill="#7FB432" />
                                                 </svg>
                                             </a>
-                                        </li>
+                                        </li> --}}
                                         <li>
                                             <a href="#template-search">
                                                 <svg width="23" height="23" viewBox="0 0 23 23" fill="none"
@@ -268,18 +268,14 @@
                         <div class="hero__content">
                             <span class="hero__title hero__title--small wow animate__fadeInUp animate__animated"
                                 data-wow-duration="1200ms" data-wow-delay="200ms"><i
-                                    class="fa-solid fa-heart btn__icon"></i>We Beleve
-                                That</span>
+                                    class="fa-solid fa-heart btn__icon"></i>Kami Percaya</span>
                             <h1 class="hero__title hero__title--big wow animate__fadeInUp animate__animated"
-                                data-wow-duration="1200ms" data-wow-delay="300ms">Do good For Others</h1>
+                                data-wow-duration="1200ms" data-wow-delay="300ms">MARI BERBUAT BAIK UNTUK ORANG LAIN</h1>
                             <p class="hero__text wow animate__fadeInUp animate__animated" data-wow-duration="1200ms"
-                                data-wow-delay="400ms">We help nonprofits from Afghanistan to Zimbabwe (and hundreds of
-                                places in between)
-                                access the
-                                tools, training,</p>
+                                data-wow-delay="400ms">Bantu mereka yang membutuhkan! Donasikan makanan melalui platform crowdfunding kami dan buat perubahan nyata.</p>
                             <a class="btn btn--styleOne btn--primary it-btn wow animate__fadeInUp animate__animated"
                                 data-wow-duration="1200ms" data-wow-delay="500ms" href="{{ route('donation') }}">
-                                <span class="btn__text">join the journey</span>
+                                <span class="btn__text">Ikuti Perjalanan Ini</span>
                                 <i class="fa-solid fa-heart btn__icon"></i>
                                 <span class="it-btn__inner">
                                     <span class="it-btn__blobs">
@@ -305,11 +301,11 @@
                         </div>
                     </div>
                     <div class="col-xl-6 mb-30">
-                        {{-- <figure class="hero__figure wow animate__zoomIn animate__animated" data-wow-duration="1200ms"
-                            data-wow-delay="600ms"> --}}
-                            <img src="image/man/kasian2.jpg" alt="Gainioz Man" class="">
-                            {{-- <img class="hero__figure__overlay" src="image/shapes/shapes3.svg" alt="Gainioz"> --}}
-                        {{-- </figure> --}}
+                        <figure class="hero__figure wow animate__zoomIn animate__animated" data-wow-duration="1200ms"
+                            data-wow-delay="600ms">
+                            <img src="image/man/gambarHero.jpg" alt="Gainioz Man" class="hero__figure__thumbs">
+                            <img class="hero__figure__overlay" src="image/shapes/shapes3.svg" alt="Gainioz">
+                        </figure>
                     </div>
                 </div>
             </div>
