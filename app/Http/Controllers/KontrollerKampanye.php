@@ -20,7 +20,7 @@ class KontrollerKampanye extends Controller
      */
     public function mintaSemuaKampanye()
     {
-        /** 
+        /**
          * mintaSemuaKampanye
          *
          * Fungsi ini mengambil semua kampanye yang ada dalam database
@@ -52,7 +52,7 @@ class KontrollerKampanye extends Controller
      */
     public function cariKampanye(Request $request)
     {
-        /** 
+        /**
          * cariKampanye
          *
          * Fungsi ini menangani fitur pencarian untuk kampanye.
@@ -126,16 +126,16 @@ class KontrollerKampanye extends Controller
         Config::$isSanitized = true;
         Config::$is3ds = true;
 
-        $amount = $request->input('jumlah');
+        $jumlah = $request->input('jumlah');
         $porsi = $request->input('porsi');
-        $totalPorsi = $amount / $porsi;
+        $totalPorsi = $jumlah / $porsi;
 
-        $transaction_details = [
+        $detailTransaksi = [
             'order_id' => uniqid(),
-            'gross_amount' => $amount, 
+            'gross_amount' => $jumlah,
         ];
 
-        $item_details = [
+        $detailBarang = [
             [
                 'id' => '1',
                 'price' => $totalPorsi,
@@ -144,26 +144,26 @@ class KontrollerKampanye extends Controller
             ],
         ];
 
-        $customer_details = [
+        $detailPembeli = [
             'first_name' => $request->input('nama'),
             'email' => $request->input('email'),
         ];
 
-        $transaction = [
-            'transaction_details' => $transaction_details,
-            'item_details' => $item_details,
-            'customer_details' => $customer_details,
+        $transaksi = [
+            'transaction_details' => $detailTransaksi,
+            'item_details' => $detailBarang,
+            'customer_details' => $detailPembeli,
         ];
 
         try {
-            $snapToken = Snap::getSnapToken($transaction);
+            $snapToken = Snap::getSnapToken($transaksi);
             return response()->json(['snapToken' => $snapToken]);
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()]);
         }
-    
+
     }
-    
+
     /**
      * buatTransaksi
      *
