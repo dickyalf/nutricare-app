@@ -482,7 +482,7 @@
                             embedId: 'snap-container',
                             onSuccess: function (result) {
                                 Swal.fire('Transaction Success', 'Pembayaran telah diterima!', 'success').then(() => {
-                                    location.reload();
+                                    window.location.href = '/'; // Redirect to homepage
                                 });
                                 console.log(result);
                                 buatTransaksi(result.gross_amount, jumlahMakanan);
