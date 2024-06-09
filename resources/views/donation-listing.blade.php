@@ -435,6 +435,7 @@
                                                             <span
                                                                 class="featureBlock__eqn__price">Rp{{ number_format($uangKurang) }}</span>
                                                         </div>
+
                                                     </div>
                                                 </div>
                                             </div>
