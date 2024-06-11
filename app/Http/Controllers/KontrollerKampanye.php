@@ -120,6 +120,13 @@ class KontrollerKampanye extends Controller
         ]); // kembalikan tampilan donation-detail kepada user dengan properti `dataDetailKampanye`
     }
 
+    /**
+     * pilihKampaye
+     *
+     * @param mixed $request
+     * @return response snapToken
+     */
+    // Memproses permintaan donasi dengan mengatur API Midtrans dan menghasilkan Token.
     public function konfirmasiDonasi(Request $request){
         Config::$serverKey = config('midtrans.server_key');
         Config::$isProduction = false;
